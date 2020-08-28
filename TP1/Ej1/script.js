@@ -79,4 +79,3 @@ function promedio_filas(matrix) {
 
 console.log("1)c) Promedio de cada fila: ");
 console.table(promedio_filas(matrix));
-
