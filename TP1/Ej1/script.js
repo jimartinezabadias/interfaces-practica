@@ -12,6 +12,7 @@ for (let i = 0; i < rows; i++){
 console.table(matrix);
 
 // Ej 1.A
+// Escribir una función que retorne el valor máximo de toda la matriz
 
 function max(matrix) {
     let m = 0;
@@ -59,3 +60,23 @@ const max_min_matriz = max_min_por_fila(matrix);
 
 console.log("1)b) Max en filas pares: " + max_min_matriz[0] + "\n" +
             "1)b) Min en filas impares: " + max_min_matriz[1]);
+
+
+// Ej 1.C
+// Calcular el valor promedio de cada fila y guardarlos en un arreglo.
+
+function promedio_filas(matrix) {
+    arr_promedios = [];
+    for (let i = 0; i < rows; i++){
+        sum_fila = 0;
+        for (let j = 0; j < cols; j++){
+            sum_fila += matrix[i][j];
+        }
+        arr_promedios[i] = sum_fila / cols;
+    }
+    return arr_promedios;
+}
+
+console.log("1)c) Promedio de cada fila: ");
+console.table(promedio_filas(matrix));
+
