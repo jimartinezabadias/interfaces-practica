@@ -66,9 +66,9 @@ console.log("1)b) Max en filas pares: " + max_min_matriz[0] + "\n" +
 // Calcular el valor promedio de cada fila y guardarlos en un arreglo.
 
 function promedio_filas(matrix) {
-    arr_promedios = [];
+    let arr_promedios = [];
     for (let i = 0; i < rows; i++){
-        sum_fila = 0;
+        let sum_fila = 0;
         for (let j = 0; j < cols; j++){
             sum_fila += matrix[i][j];
         }
