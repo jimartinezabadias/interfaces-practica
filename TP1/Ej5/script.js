@@ -1,7 +1,7 @@
 // Ej 5
 
 function set_pixel(image_data,x,y,r,g,b,a) {
-    let index = ( x + y * image_data.height) * 4;
+    let index = ( x + y * image_data.width) * 4;
     image_data.data[index+0] = r;
     image_data.data[index+1] = g;
     image_data.data[index+2] = b;
