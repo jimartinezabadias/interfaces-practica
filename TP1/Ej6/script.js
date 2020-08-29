@@ -5,7 +5,7 @@ let ctx = document.querySelector("#myCanvas").getContext("2d");
 let image_w = canvas.width;
 let image_h = canvas.height;
 
-let h = 60;
+let h = 270;
 let s = 100;
 let l = 50;
 

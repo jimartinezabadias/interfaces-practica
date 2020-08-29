@@ -1,4 +1,4 @@
-// Ej 5
+// Ej 7
 
 function set_pixel(image_data,x,y,r,g,b,a) {
     let index = ( x + y * image_data.width) * 4;
@@ -6,23 +6,6 @@ function set_pixel(image_data,x,y,r,g,b,a) {
     image_data.data[index+1] = g;
     image_data.data[index+2] = b;
     image_data.data[index+3] = a;
-}
-
-function gradient_three(image_data,r,g,b,a) {
-    
-    let coeficiente = 255 / (image_data.height / 2);
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){            
-            if (y <= image_h / 2){
-                r = coeficiente * y;
-                g = coeficiente * y;
-            } else {
-                g = 255 - (coeficiente * (y - (image_data.height / 2)));
-            }
-            set_pixel(image_data,x,y,r,g,b,a);
-        }
-    }
-    
 }
 
 let r = 0;
