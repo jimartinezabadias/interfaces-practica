@@ -81,8 +81,8 @@ function gradient_three(image_data,color_1,color_2,color_3) {
 }
 
 color_1 = [255,0,0];
-color_2 = [240,240,0];
-color_3 = [170,170,170];
+color_2 = [160,240,0];
+color_3 = [0,170,170];
 
 gradient_three(image_data,color_1,color_2,color_3);
 ctx_2.putImageData(image_data,0,0);
