@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #d4d4d4;
+}
+.main {
+    display: flex;
+    padding: 16px;
+}
+.toolbar {
+    display: flex;
+    flex-flow: column;
+    padding-top: 16px;
+    max-width: 100px;
+}
+.canvas-functions{
+    padding: 16px 0px;
+}
+.canvas{
+    padding: 16px;
+}
+.btn{
+    padding: 4px;
+    margin-bottom: 4px;
+}

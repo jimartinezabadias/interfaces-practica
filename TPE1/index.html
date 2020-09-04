@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP1 - Ej 7</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="main">
+			<div class="toolbar">
+				<button class="btn btn-tool">Lapiz</button>
+				<button class="btn btn-tool">Goma</button>
+				<br>
+				<button class="btn btn-tool">Negativo</button>
+				<button class="btn btn-tool">Brillo</button>
+				<button class="btn btn-tool">Binarización</button>
+				<button class="btn btn-tool">Sepia</button>
+				<button class="btn btn-tool">Saturación</button>
+				<button class="btn btn-tool">Suavizado</button>
+				<button class="btn btn-tool">Detección de Bordes</button>
+				<button class="btn btn-tool">Blur</button>
+			</div>
+			<div class="canvas">
+				<canvas class="canvas-preview" id="myCanvas" width="640" height="480"></canvas>
+				<div class="canvas-functions">
+					<button class="btn btn-tool"
+						onclick="white_canvas()">
+						Lienzo Blanco
+					</button>
+					<button class="btn btn-tool"
+						onclick="showFileChooser()">
+						Cargar Imagen
+					</button>
+					<input class="fileChooser" type="file" accept="image/*" style="display: none;">
+					<button class="btn btn-tool">Descargar Imagen</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="script.js"></script>
+</html>
+
