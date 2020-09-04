@@ -103,6 +103,30 @@ async function setImage() {
 
 }
 
+function set_pixel(image_data,x,y,r,g,b,a) {
+    let index = ( x + y * image_data.width) * 4;
+    image_data.data[index+0] = r;
+    image_data.data[index+1] = g;
+    image_data.data[index+2] = b;
+    image_data.data[index+3] = a;
+}
+
+function filterNeg(){
+    
+    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+    for ( let x = 0; x < image_data.width; x++){
+        for (let y = 0; y < image_data.height; y++){
+            let index = ( x + y * image_data.width) * 4;
+            let r = 255 - image_data.data[index];
+            let g = 255 - image_data.data[index+1];
+            let b = 255 - image_data.data[index+2];
+            set_pixel(image_data,x,y,r,g,b,255);
+        }
+    }
+    ctx.putImageData(image_data, 0, 0);
+}
+
 document.addEventListener("DOMContentLoaded", initPaint);
 
 fileChooser.addEventListener("change",setImage);
