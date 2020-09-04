@@ -34,7 +34,7 @@ function bw_filter(image_data) {
 }
 
 let image = new Image();
-// image.src = 'TafidelValle_Tucuman.JPG';
+// image.src = '../images/TafidelValle_Tucuman.JPG';
 image.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/TafidelValle_Tucuman.JPG/800px-TafidelValle_Tucuman.JPG';
 image.crossOrigin = "Anonymous";
 
