@@ -20,20 +20,6 @@ function initPaint() {
     
 }
 
-// async function loadImage() {
-
-//     // getting a hold of the file reference
-//     let file = this.files[0];
-
-//     // setting up the reader
-//     let reader = new FileReader();
-//     reader.readAsDataURL(file); // this is reading as data url
-
-//     let content = await reader.
-
-
-// }
-
 function readFileAsync(file) {
     return new Promise((resolve, reject) => {
         let reader = new FileReader();
@@ -61,18 +47,6 @@ async function processFile(asd) {
     }
 }
 
-// async function processImage(asd) {
-//     try {
-//         let file = asd.files[0];
-//         let content = await readFileAsync(file);
-        
-//         return content;
-
-//     } catch(err) {
-//         console.log(err);
-//     }
-// }
-
 function loadImageAsync(content) {
     return new Promise((resolve, reject) => {
         let image = new Image();
@@ -88,6 +62,35 @@ function loadImageAsync(content) {
     })
 }
 
+function largerThanCanvas(imageData) {
+    return (imageData.width > canvas.width) || (imageData.height > canvas.height);
+}
+
+function drawPreviewImage(imageData) {
+    
+    let imageScaledWidth = imageData.width;
+    let imageScaledHeight = imageData.height;
+
+    if (largerThanCanvas(imageData)){
+        
+        if (imageData.width > imageData.height){
+            let imageAspectRatio = (1.0 * imageData.height) / imageData.width;
+            imageScaledWidth = canvas.width;
+            imageScaledHeight = canvas.width * imageAspectRatio;
+        } else {
+            let imageAspectRatio = (1.0 * imageData.width) / imageData.height;
+            imageScaledWidth = canvas.height * imageAspectRatio;
+            imageScaledHeight = canvas.height;
+        }
+
+        
+    }
+    
+    // draw image on canvas
+    ctx.drawImage(imageData, 0, 0, imageScaledWidth, imageScaledHeight);
+
+}
+
 async function setImage() {
 
     let chosenFile = this;
@@ -96,15 +99,8 @@ async function setImage() {
     
     let imageData = await loadImageAsync(content);
 
+    drawPreviewImage(imageData);
 
-    let imageAspectRatio = (1.0 * imageData.height) / imageData.width;
-    let imageScaledWidth = canvas.width;
-    let imageScaledHeight = canvas.width * imageAspectRatio;
-    
-    // draw image on canvas
-    ctx.drawImage(imageData, 0, 0, imageScaledWidth, imageScaledHeight);
-
-    // console.log(imageData);
 }
 
 document.addEventListener("DOMContentLoaded", initPaint);

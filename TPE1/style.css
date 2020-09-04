@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #d4d4d4;
+    background-color: #282828;
 }
 .main {
     display: flex;
@@ -10,16 +10,25 @@ body{
 .toolbar {
     display: flex;
     flex-flow: column;
-    padding-top: 16px;
     max-width: 100px;
+    justify-content: center;
+    padding-right: 16px;
 }
-.canvas-functions{
-    padding: 16px 0px;
-}
-.canvas{
-    padding: 16px;
+
+.canvas-preview{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: repeating-linear-gradient(
+        -45deg,
+        #454545,
+        #454545 6px,
+        #323232 6px,
+        #323232 12px
+        );
 }
 .btn{
     padding: 4px;
+}
+.toolbar .btn{
     margin-bottom: 4px;
 }

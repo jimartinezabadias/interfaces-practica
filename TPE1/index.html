@@ -21,8 +21,8 @@
 				<button class="btn btn-tool">Blur</button>
 			</div>
 			<div class="canvas">
-				<canvas class="canvas-preview" id="myCanvas" width="640" height="480"></canvas>
-				<div class="canvas-functions">
+
+				<div class="top-functions">
 					<button class="btn btn-tool"
 						onclick="white_canvas()">
 						Lienzo Blanco
@@ -32,8 +32,14 @@
 						Cargar Imagen
 					</button>
 					<input class="fileChooser" type="file" accept="image/*" style="display: none;">
+				</div>
+
+				<canvas class="canvas-preview" id="myCanvas" width="640" height="480"></canvas>
+				
+				<div class="bottom-functions">
 					<button class="btn btn-tool">Descargar Imagen</button>
 				</div>
+
 			</div>
 		</div>
 	</body>
