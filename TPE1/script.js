@@ -2,16 +2,19 @@
 
 "use strict"
 
-let canvas = document.querySelector("#myCanvas");
-let ctx = canvas.getContext("2d");
-let fileChooser = document.querySelector('.fileChooser');
+let canvas;
+let ctx;
+let fileChooser;
+let image_data;
 
-let using_pencil = false;
+let using_pencil;
+let using_goma;
+
 
 function white_canvas() {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
+
     disable_buttons(false);
 }
 
@@ -35,10 +38,6 @@ function showFileChooser() {
 
 function pencil() {
     using_pencil = true;
-}
-
-function initPaint() {
-    disable_buttons(true);
 }
 
 function readFileAsync(file) {
@@ -118,9 +117,9 @@ async function setImage() {
 
     let content = await processFile(chosenFile);
     
-    let imageData = await loadImageAsync(content);
+    image_data = await loadImageAsync(content);
 
-    drawPreviewImage(imageData);
+    drawPreviewImage(image_data);
 
     disable_buttons(false);
 
@@ -153,17 +152,38 @@ function filterNeg(){
 function use_mouse(e){
     
     if (using_pencil){
-        let mouse_x = e.clientX;
-        let mouse_y = e.clientY;
-        console.log(mouse_x + ", " + mouse_y);
-        // set_pixel(image_data,x,y,r,g,b,255);
+        
     }
+
+    if (using_goma){
+
+    }
+
+    let mouse_x = e.clientX;
+    let mouse_y = e.clientY;
+    console.log(mouse_x + ", " + mouse_y);
+    // set_pixel(image_data,x,y,r,g,b,255);
+
 }
 
+function initPaint() {
+    
+    canvas = document.querySelector("#myCanvas");
+    ctx = canvas.getContext("2d");
+    
+    image_data = null;
 
+    fileChooser = document.querySelector('.fileChooser');
 
-fileChooser.addEventListener("change",setImage);
+    using_pencil = false;
+    using_goma = false;
 
-canvas.addEventListener("click",use_mouse);
+    disable_buttons(true);
+
+    fileChooser.addEventListener("change",setImage);
+
+    canvas.addEventListener("click",use_mouse);
+
+}
 
 document.addEventListener("DOMContentLoaded", initPaint);
