@@ -6,6 +6,8 @@ let canvas = document.querySelector("#myCanvas");
 let ctx = canvas.getContext("2d");
 let fileChooser = document.querySelector('.fileChooser');
 
+let using_pencil = false;
+
 function white_canvas() {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -29,6 +31,10 @@ function disable_buttons(state) {
 
 function showFileChooser() {
     fileChooser.click();
+}
+
+function pencil() {
+    using_pencil = true;
 }
 
 function initPaint() {
@@ -144,6 +150,20 @@ function filterNeg(){
     ctx.putImageData(image_data, 0, 0);
 }
 
-document.addEventListener("DOMContentLoaded", initPaint);
+function use_mouse(e){
+    
+    if (using_pencil){
+        let mouse_x = e.clientX;
+        let mouse_y = e.clientY;
+        console.log(mouse_x + ", " + mouse_y);
+        // set_pixel(image_data,x,y,r,g,b,255);
+    }
+}
+
+
 
 fileChooser.addEventListener("change",setImage);
+
+canvas.addEventListener("click",use_mouse);
+
+document.addEventListener("DOMContentLoaded", initPaint);
