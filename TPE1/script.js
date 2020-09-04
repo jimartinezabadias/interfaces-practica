@@ -5,7 +5,6 @@
 let canvas;
 let ctx;
 let fileChooser;
-let image_data;
 
 let using_pencil;
 let using_goma;
@@ -117,7 +116,7 @@ async function setImage() {
 
     let content = await processFile(chosenFile);
     
-    image_data = await loadImageAsync(content);
+    let image_data = await loadImageAsync(content);
 
     drawPreviewImage(image_data);
 
@@ -150,28 +149,32 @@ function filterNeg(){
 }
 
 function use_mouse(e){
+
+    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    
+    let bx = e.target.getBoundingClientRect();
+
+    let mouse_x = e.clientX - bx.left;
+    let mouse_y =  e.clientY - bx.top;
+
+    // console.log(mouse_x + ", " + mouse_y);
+    // console.log(canvas.);
     
     if (using_pencil){
-        
+        set_pixel(image_data,mouse_x,mouse_y,0,0,0,255);
     }
 
     if (using_goma){
 
     }
 
-    let mouse_x = e.clientX;
-    let mouse_y = e.clientY;
-    console.log(mouse_x + ", " + mouse_y);
-    // set_pixel(image_data,x,y,r,g,b,255);
-
+    ctx.putImageData(image_data,0,0);
 }
 
 function initPaint() {
     
     canvas = document.querySelector("#myCanvas");
     ctx = canvas.getContext("2d");
-    
-    image_data = null;
 
     fileChooser = document.querySelector('.fileChooser');
 
