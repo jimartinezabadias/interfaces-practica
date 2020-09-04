@@ -9,6 +9,22 @@ let fileChooser = document.querySelector('.fileChooser');
 function white_canvas() {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    disable_buttons(false);
+}
+
+function disable_buttons(state) {
+    let buttons = document.querySelector(".toolbar").querySelectorAll("button"); 
+
+    buttons.forEach(b => {
+        b.disabled = state;
+    })
+
+    buttons = document.querySelector(".bottom-functions").querySelectorAll("button"); 
+    
+    buttons.forEach(b => {
+        b.disabled = state;
+    })
 }
 
 function showFileChooser() {
@@ -16,8 +32,7 @@ function showFileChooser() {
 }
 
 function initPaint() {
-    
-    
+    disable_buttons(true);
 }
 
 function readFileAsync(file) {
@@ -100,6 +115,8 @@ async function setImage() {
     let imageData = await loadImageAsync(content);
 
     drawPreviewImage(imageData);
+
+    disable_buttons(false);
 
 }
 
