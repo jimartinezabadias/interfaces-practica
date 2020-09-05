@@ -175,7 +175,6 @@ function filterBinary() {
 
     for ( let x = 0; x < image_data.width; x++){
         for (let y = 0; y < image_data.height; y++){
-            // let index = ( x + y * image_data.width) * 4;
             let avg = avg_rgb(image_data,x,y);
             let r = get_binary_color(avg);
             let g = get_binary_color(avg);
@@ -186,6 +185,50 @@ function filterBinary() {
     ctx.putImageData(image_data, 0, 0);
 
 }
+
+function filterSepia() {
+
+    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+    for ( let x = 0; x < image_data.width; x++){
+        for (let y = 0; y < image_data.height; y++){
+            
+            let index = ( x + y * image_data.width) * 4;
+            
+            let r = image_data.data[index];
+            let g = image_data.data[index+1];
+            let b = image_data.data[index+2];
+
+            let tr = 0.393 * r + 0.769 * g + 0.189 * b;
+            let tg = 0.349 * r + 0.686 * g + 0.168 * b;
+            let tb = 0.272 * r + 0.534 * g + 0.131 * b;
+            
+            if (tr > 255) {
+                r = 255;
+            } else {
+                r = tr;
+            }
+
+            if (tg > 255) {
+                g = 255;
+            } else {
+                g = tg;
+            }
+
+            if (tb > 255) {
+                b = 255;
+            } else {
+                b = tb;
+            }
+
+            set_pixel(image_data,x,y,r,g,b,255);
+        }
+    }
+    
+    ctx.putImageData(image_data, 0, 0);
+
+}
+
 
 function current_mouse_position(e) {
     let bx = e.target.getBoundingClientRect();
