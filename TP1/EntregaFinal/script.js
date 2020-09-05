@@ -322,7 +322,6 @@ function filterBrightness() {
     let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 
     let filter_ammount = (document.querySelector("#brightness_range").value) / 100;
-    console.log(filter_ammount);
 
     for ( let x = 0; x < image_data.width; x++){
         for (let y = 0; y < image_data.height; y++){
@@ -340,6 +339,48 @@ function filterBrightness() {
             }
             if (filter_ammount > 1) {
                 hsl_pixel.l = hsl_pixel.l + ( (100 - hsl_pixel.l) * ( filter_ammount - 1));
+            }
+            
+            
+            let new_rgb = HSLToRGB(hsl_pixel.h,hsl_pixel.s,hsl_pixel.l);
+
+            // update image data
+
+            r = new_rgb.r;
+            g = new_rgb.g;
+            b = new_rgb.b;
+            set_pixel(image_data,x,y,r,g,b,255);
+      
+
+        }
+    }
+
+    ctx.putImageData(image_data, 0, 0);
+
+}
+
+function filterSaturation() {
+    
+    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+    let filter_ammount = (document.querySelector("#saturation_range").value) / 100;
+
+    for ( let x = 0; x < image_data.width; x++){
+        for (let y = 0; y < image_data.height; y++){
+            
+            let index = ( x + y * image_data.width) * 4;
+            
+            let r = image_data.data[index];
+            let g = image_data.data[index+1];
+            let b = image_data.data[index+2];
+    
+            let hsl_pixel = RGBToHSL(r,g,b);
+            
+            if (filter_ammount <= 1) {
+                hsl_pixel.s = hsl_pixel.s * filter_ammount;
+            }
+            if (filter_ammount > 1) {
+                hsl_pixel.s = hsl_pixel.s + ( (100 - hsl_pixel.s) * ( filter_ammount - 1));
             }
             
             
@@ -445,3 +486,4 @@ document.addEventListener("DOMContentLoaded", initPaint);
 
 // no se nota que herramienta esta seleccionada
 // guardar image width and height para no aplicar los filtros a todo el canvas
+// que los filtros no sean acumulables

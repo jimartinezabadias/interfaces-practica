@@ -19,7 +19,7 @@
 				<div class="filter">
 					<button class="btn btn-tool"
 						onclick="filterBrightness()">Brillo</button>
-					<div class="filter-controls">
+					<div class="filter_controls">
 						<label for="brightness_range">Porcentaje:</label>
 						<input type="number" 
 							id="brightness_range" 
@@ -35,8 +35,21 @@
 					onclick="filterBinary()">Binarización</button>
 				<button class="btn btn-tool"
 					onclick="filterSepia()">Sepia</button>
-					
-				<button class="btn btn-tool">Saturación</button>
+				
+				<div class="filter">
+					<button class="btn btn-tool"
+						onclick="filterSaturation()">Saturación</button>
+					<div class="filter_controls">
+						<label for="saturation_range">Porcentaje:</label>
+						<input type="number" 
+							id="saturation_range" 
+							name="saturation_range" 
+							min="0" 
+							max="200"
+							value="100">
+						<span>%</span>
+					</div>
+				</div>
 				<button class="btn btn-tool">Suavizado</button>
 				<button class="btn btn-tool">Detección de Bordes</button>
 				<button class="btn btn-tool">Blur</button>
