@@ -150,6 +150,17 @@ function filterNeg(){
     ctx.putImageData(image_data, 0, 0);
 }
 
+function current_mouse_positios(e) {
+    let bx = e.target.getBoundingClientRect();
+
+    // let mouse_x = e.clientX - bx.left;
+    // let mouse_y =  e.clientY - bx.top;
+    return {
+        x: e.clientX - bx.left,
+        y: e.clientY - bx.top
+    };
+}
+
 function stop_using_mouse(e) {
     using_pencil = false;
     ctx.closePath();
@@ -157,14 +168,11 @@ function stop_using_mouse(e) {
 
 function move_mouse(e) {
     
-    let bx = e.target.getBoundingClientRect();
-
-    let mouse_x = e.clientX - bx.left;
-    let mouse_y =  e.clientY - bx.top;
+    let mouse_position = current_mouse_positios(e);
     
     if (using_pencil){
         // ctx.beginPath();
-        ctx.lineTo(mouse_x, mouse_y);
+        ctx.lineTo(mouse_position.x, mouse_position.y);
         
         ctx.stroke();
 
@@ -174,16 +182,17 @@ function move_mouse(e) {
 
 function start_using_mouse(e){
 
-    let bx = e.target.getBoundingClientRect();
+    let mouse_position = current_mouse_positios(e);
+    // let bx = e.target.getBoundingClientRect();
 
-    let mouse_x = e.clientX - bx.left;
-    let mouse_y =  e.clientY - bx.top;
+    // let mouse_x = e.clientX - bx.left;
+    // let mouse_y =  e.clientY - bx.top;
     
     if (selected_tool == 'pencil'){
         using_pencil = true;
         ctx.beginPath();
-        ctx.moveTo(mouse_x, mouse_y); 
-        ctx.lineTo(mouse_x, mouse_y); 
+        ctx.moveTo(mouse_position.x, mouse_position.y); 
+        ctx.lineTo(mouse_position.x, mouse_position.y); 
         ctx.stroke();  
     }
 
