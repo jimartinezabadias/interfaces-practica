@@ -32,3 +32,7 @@ body{
 .toolbar .btn{
     margin-bottom: 4px;
 }
+
+.filter-controls{
+    padding: 8px;
+}
