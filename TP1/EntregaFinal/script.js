@@ -153,6 +153,40 @@ function filterNeg(){
     ctx.putImageData(image_data, 0, 0);
 }
 
+function avg_rgb(image_data,x,y) {
+    let index = ( x + y * image_data.width) * 4;
+    let sum = 0;
+    sum += image_data.data[index+0];
+    sum += image_data.data[index+1];
+    sum += image_data.data[index+2];
+    return sum / 3;
+}
+
+function get_binary_color(color) {
+    if (color < 255/2){
+        return 0;
+    }
+    return 255;
+}
+
+function filterBinary() {
+
+    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+    for ( let x = 0; x < image_data.width; x++){
+        for (let y = 0; y < image_data.height; y++){
+            // let index = ( x + y * image_data.width) * 4;
+            let avg = avg_rgb(image_data,x,y);
+            let r = get_binary_color(avg);
+            let g = get_binary_color(avg);
+            let b = get_binary_color(avg);
+            set_pixel(image_data,x,y,r,g,b,255);
+        }
+    }
+    ctx.putImageData(image_data, 0, 0);
+
+}
+
 function current_mouse_position(e) {
     let bx = e.target.getBoundingClientRect();
 
