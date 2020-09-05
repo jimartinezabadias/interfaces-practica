@@ -37,8 +37,11 @@ function showFileChooser() {
     fileChooser.click();
 }
 
-function pencil() {
+function select_pencil() {
     selected_tool = 'pencil';
+}
+function select_rubber() {
+    selected_tool = 'rubber';
 }
 
 function readFileAsync(file) {
@@ -150,11 +153,9 @@ function filterNeg(){
     ctx.putImageData(image_data, 0, 0);
 }
 
-function current_mouse_positios(e) {
+function current_mouse_position(e) {
     let bx = e.target.getBoundingClientRect();
 
-    // let mouse_x = e.clientX - bx.left;
-    // let mouse_y =  e.clientY - bx.top;
     return {
         x: e.clientX - bx.left,
         y: e.clientY - bx.top
@@ -163,42 +164,48 @@ function current_mouse_positios(e) {
 
 function stop_using_mouse(e) {
     using_pencil = false;
+    using_rubber = false;
     ctx.closePath();
 }
 
 function move_mouse(e) {
     
-    let mouse_position = current_mouse_positios(e);
+    let mouse_position = current_mouse_position(e);
     
     if (using_pencil){
-        // ctx.beginPath();
         ctx.lineTo(mouse_position.x, mouse_position.y);
-        
         ctx.stroke();
-
+    }
+    if (using_rubber){
+        ctx.lineTo(mouse_position.x, mouse_position.y);
+        ctx.stroke();
     }
 
 }
 
 function start_using_mouse(e){
 
-    let mouse_position = current_mouse_positios(e);
-    // let bx = e.target.getBoundingClientRect();
-
-    // let mouse_x = e.clientX - bx.left;
-    // let mouse_y =  e.clientY - bx.top;
+    let mouse_position = current_mouse_position(e);
     
     if (selected_tool == 'pencil'){
         using_pencil = true;
         ctx.beginPath();
-        ctx.moveTo(mouse_position.x, mouse_position.y); 
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#323232';
+        // ctx.moveTo(mouse_position.x, mouse_position.y); 
         ctx.lineTo(mouse_position.x, mouse_position.y); 
         ctx.stroke();  
     }
 
-    // if (selected_tool == 'rubber'){
-
-    // }
+    if (selected_tool == 'rubber'){
+        using_rubber = true;
+        ctx.beginPath();
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = '#ffffff';
+        // ctx.moveTo(mouse_position.x, mouse_position.y); 
+        ctx.lineTo(mouse_position.x, mouse_position.y); 
+        ctx.stroke(); 
+    }
 
 }
 
@@ -210,6 +217,7 @@ function initPaint() {
     fileChooser = document.querySelector('.fileChooser');
 
     selected_tool = 'none';
+    
     using_pencil = false;
     using_rubber = false;
 
