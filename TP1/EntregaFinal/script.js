@@ -234,7 +234,7 @@ function start_using_mouse(e){
     if (selected_tool == 'rubber'){
         using_rubber = true;
         ctx.beginPath();
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 8;
         ctx.strokeStyle = '#ffffff';
         // ctx.moveTo(mouse_position.x, mouse_position.y); 
         ctx.lineTo(mouse_position.x, mouse_position.y); 
