@@ -6,8 +6,10 @@ let canvas;
 let ctx;
 let fileChooser;
 
+let selected_tool;
 let using_pencil;
-let using_goma;
+let using_rubber;
+
 
 
 function white_canvas() {
@@ -36,7 +38,7 @@ function showFileChooser() {
 }
 
 function pencil() {
-    using_pencil = true;
+    selected_tool = 'pencil';
 }
 
 function readFileAsync(file) {
@@ -148,27 +150,47 @@ function filterNeg(){
     ctx.putImageData(image_data, 0, 0);
 }
 
-function use_mouse(e){
+function stop_using_mouse(e) {
+    using_pencil = false;
+    ctx.closePath();
+}
 
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+function move_mouse(e) {
     
     let bx = e.target.getBoundingClientRect();
 
     let mouse_x = e.clientX - bx.left;
     let mouse_y =  e.clientY - bx.top;
-
-    // console.log(mouse_x + ", " + mouse_y);
-    // console.log(canvas.);
     
     if (using_pencil){
-        set_pixel(image_data,mouse_x,mouse_y,0,0,0,255);
+        // ctx.beginPath();
+        ctx.lineTo(mouse_x, mouse_y);
+        
+        ctx.stroke();
+
     }
 
-    if (using_goma){
+}
 
+function start_using_mouse(e){
+
+    let bx = e.target.getBoundingClientRect();
+
+    let mouse_x = e.clientX - bx.left;
+    let mouse_y =  e.clientY - bx.top;
+    
+    if (selected_tool == 'pencil'){
+        using_pencil = true;
+        ctx.beginPath();
+        ctx.moveTo(mouse_x, mouse_y); 
+        ctx.lineTo(mouse_x, mouse_y); 
+        ctx.stroke();  
     }
 
-    ctx.putImageData(image_data,0,0);
+    // if (selected_tool == 'rubber'){
+
+    // }
+
 }
 
 function initPaint() {
@@ -178,15 +200,22 @@ function initPaint() {
 
     fileChooser = document.querySelector('.fileChooser');
 
+    selected_tool = 'none';
     using_pencil = false;
-    using_goma = false;
+    using_rubber = false;
 
     disable_buttons(true);
 
     fileChooser.addEventListener("change",setImage);
 
-    canvas.addEventListener("click",use_mouse);
+    canvas.addEventListener("mousedown",start_using_mouse);
+    canvas.addEventListener("mousemove",move_mouse);
+    canvas.addEventListener("mouseup",stop_using_mouse);
+    
 
 }
 
 document.addEventListener("DOMContentLoaded", initPaint);
+
+
+// no se nota que herramienta esta seleccionada
