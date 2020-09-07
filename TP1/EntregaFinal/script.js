@@ -573,6 +573,7 @@ function stop_using_mouse(e) {
     using_pencil = false;
     using_rubber = false;
     ctx.closePath();
+    current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 }
 
 function move_mouse(e) {
@@ -582,6 +583,7 @@ function move_mouse(e) {
     if (using_pencil || using_rubber){
         ctx.lineTo(mouse_position.x, mouse_position.y);
         ctx.stroke();
+        current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
     }
 
 }
@@ -597,7 +599,9 @@ function start_using_mouse(e){
         ctx.strokeStyle = '#323232';
         // ctx.moveTo(mouse_position.x, mouse_position.y); 
         ctx.lineTo(mouse_position.x, mouse_position.y); 
-        ctx.stroke();  
+        ctx.stroke();
+        current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+
     }
 
     if (selected_tool == 'rubber'){
@@ -607,7 +611,8 @@ function start_using_mouse(e){
         ctx.strokeStyle = '#ffffff';
         // ctx.moveTo(mouse_position.x, mouse_position.y); 
         ctx.lineTo(mouse_position.x, mouse_position.y); 
-        ctx.stroke(); 
+        ctx.stroke();
+        current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
     }
 
 }
