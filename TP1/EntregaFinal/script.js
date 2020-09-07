@@ -521,13 +521,36 @@ function filterEdge() {
     let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 
     // Sobel returns an Uint8ClampedArray
-    var sobelData = Sobel(image_data);
+    let sobelData = Sobel(image_data);
 
     // [sobelData].toImageData() returns a new ImageData object
-    var sobelImageData = sobelData.toImageData();
+    let sobelImageData = sobelData.toImageData();
 
     ctx.putImageData(sobelImageData, 0, 0);
 
+}
+
+/*
+
+    Download Image
+
+*/
+
+function downloadURI(uri, name) {
+    let link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    link = null;
+  }
+  
+
+function downloadImage() {
+    let dataURL = canvas.toDataURL();
+    downloadURI(dataURL, "image.png");
+    // console.log(dataURL);
 }
 
 
