@@ -155,21 +155,41 @@ function set_pixel(image_data,x,y,r,g,b,a) {
     image_data.data[index+3] = a;
 }
 
-function filterNeg(){
+function bkpImageData(current_image_data) {
     
-    // cambiar para que agarre la imagen original, no del contexto
-    let aux_image_data = current_image_data;
-
-    for ( let x = 0; x < aux_image_data.width; x++){
-        for (let y = 0; y < aux_image_data.height; y++){
-            let index = ( x + y * aux_image_data.width) * 4;
-            let r = 255 - aux_image_data.data[index];
-            let g = 255 - aux_image_data.data[index+1];
-            let b = 255 - aux_image_data.data[index+2];
-            set_pixel(aux_image_data,x,y,r,g,b,255);
+    let bkp_image_data = new ImageData(current_image_data.width,current_image_data.height);
+    
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
+            let index = ( x + y * current_image_data.width) * 4;
+            let r = current_image_data.data[index];
+            let g = current_image_data.data[index+1];
+            let b = current_image_data.data[index+2];
+            set_pixel(bkp_image_data,x,y,r,g,b,255);
         }
     }
-    ctx.putImageData(aux_image_data, 0, 0);
+
+    return bkp_image_data;
+
+}
+
+function filterNeg(){
+    
+    let bkp_image_data = bkpImageData(current_image_data);
+
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
+            let index = ( x + y * current_image_data.width) * 4;
+            let r = 255 - current_image_data.data[index];
+            let g = 255 - current_image_data.data[index+1];
+            let b = 255 - current_image_data.data[index+2];
+            set_pixel(current_image_data,x,y,r,g,b,255);
+        }
+    }
+    
+    ctx.putImageData(current_image_data, 0, 0);
+    
+    current_image_data = bkp_image_data;
 }
 
 function avg_rgb(image_data,x,y) {
@@ -190,33 +210,35 @@ function get_binary_color(color) {
 
 function filterBinary() {
 
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let bkp_image_data = bkpImageData(current_image_data);
 
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){
-            let avg = avg_rgb(image_data,x,y);
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
+            let avg = avg_rgb(current_image_data,x,y);
             let r = get_binary_color(avg);
             let g = get_binary_color(avg);
             let b = get_binary_color(avg);
-            set_pixel(image_data,x,y,r,g,b,255);
+            set_pixel(current_image_data,x,y,r,g,b,255);
         }
     }
-    ctx.putImageData(image_data, 0, 0);
+    ctx.putImageData(current_image_data, 0, 0);
+
+    current_image_data = bkp_image_data;
 
 }
 
 function filterSepia() {
 
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let bkp_image_data = bkpImageData(current_image_data);
 
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
             
-            let index = ( x + y * image_data.width) * 4;
+            let index = ( x + y * current_image_data.width) * 4;
             
-            let r = image_data.data[index];
-            let g = image_data.data[index+1];
-            let b = image_data.data[index+2];
+            let r = current_image_data.data[index];
+            let g = current_image_data.data[index+1];
+            let b = current_image_data.data[index+2];
 
             let tr = 0.393 * r + 0.769 * g + 0.189 * b;
             let tg = 0.349 * r + 0.686 * g + 0.168 * b;
@@ -240,12 +262,13 @@ function filterSepia() {
                 b = tb;
             }
 
-            set_pixel(image_data,x,y,r,g,b,255);
+            set_pixel(current_image_data,x,y,r,g,b,255);
         }
     }
     
-    ctx.putImageData(image_data, 0, 0);
+    ctx.putImageData(current_image_data, 0, 0);
 
+    current_image_data = bkp_image_data;
 }
 
 function RGBToHSL(r,g,b) {
@@ -338,18 +361,19 @@ function HSLToRGB(h,s,l) {
 
 function filterBrightness() {
     
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    // let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let bkp_image_data = bkpImageData(current_image_data);
 
     let filter_ammount = (document.querySelector("#brightness_range").value) / 100;
 
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
             
-            let index = ( x + y * image_data.width) * 4;
+            let index = ( x + y * current_image_data.width) * 4;
             
-            let r = image_data.data[index];
-            let g = image_data.data[index+1];
-            let b = image_data.data[index+2];
+            let r = current_image_data.data[index];
+            let g = current_image_data.data[index+1];
+            let b = current_image_data.data[index+2];
     
             let hsl_pixel = RGBToHSL(r,g,b);
             
@@ -368,30 +392,33 @@ function filterBrightness() {
             r = new_rgb.r;
             g = new_rgb.g;
             b = new_rgb.b;
-            set_pixel(image_data,x,y,r,g,b,255);
+            set_pixel(current_image_data,x,y,r,g,b,255);
       
 
         }
     }
 
-    ctx.putImageData(image_data, 0, 0);
+    ctx.putImageData(current_image_data, 0, 0);
+
+    current_image_data = bkp_image_data;
 
 }
 
 function filterSaturation() {
     
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    // let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let bkp_image_data = bkpImageData(current_image_data);
 
     let filter_ammount = (document.querySelector("#saturation_range").value) / 100;
 
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){
+    for ( let x = 0; x < current_image_data.width; x++){
+        for (let y = 0; y < current_image_data.height; y++){
             
-            let index = ( x + y * image_data.width) * 4;
+            let index = ( x + y * current_image_data.width) * 4;
             
-            let r = image_data.data[index];
-            let g = image_data.data[index+1];
-            let b = image_data.data[index+2];
+            let r = current_image_data.data[index];
+            let g = current_image_data.data[index+1];
+            let b = current_image_data.data[index+2];
     
             let hsl_pixel = RGBToHSL(r,g,b);
             
@@ -410,22 +437,24 @@ function filterSaturation() {
             r = new_rgb.r;
             g = new_rgb.g;
             b = new_rgb.b;
-            set_pixel(image_data,x,y,r,g,b,255);
+            set_pixel(current_image_data,x,y,r,g,b,255);
       
 
         }
     }
 
-    ctx.putImageData(image_data, 0, 0);
+    ctx.putImageData(current_image_data, 0, 0);
 
+    current_image_data = bkp_image_data;
 }
 
 function filterEdge() {
     
-    let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+    // let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let bkp_image_data = bkpImageData(current_image_data);
 
-    var width = imageData.width;
-    var height = imageData.height;
+    var width = current_image_data.width;
+    var height = current_image_data.height;
 
     var kernelX = [
       [-1,0,1],
@@ -439,7 +468,7 @@ function filterEdge() {
       [1,2,1]
     ];
 
-    var sobelData = imageData;
+    var sobelData = current_image_data;
     var grayscaleData = [];
 
     function bindPixelAt(data) {
@@ -449,7 +478,7 @@ function filterEdge() {
       };
     }
 
-    var data = imageData.data;
+    var data = current_image_data.data;
     var pixelAt = bindPixelAt(data);
     var x, y;
 
@@ -499,6 +528,8 @@ function filterEdge() {
       }
     }
     ctx.putImageData(sobelData, 0, 0);
+
+    current_image_data = bkp_image_data;
 }
 
 
