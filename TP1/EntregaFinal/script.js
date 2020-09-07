@@ -5,16 +5,33 @@
 let canvas;
 let ctx;
 let fileChooser;
+let current_image_data;
 
 let selected_tool;
 let using_pencil;
 let using_rubber;
 
 
-
 function white_canvas() {
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    let aux_image_data = ctx.createImageData(canvas.width,canvas.height);
+    
+    // for pintando de blanco.
+    for ( let x = 0; x < aux_image_data.width; x++){
+        for (let y = 0; y < aux_image_data.height; y++){
+            let r = 255;
+            let g = 255;
+            let b = 255;
+            set_pixel(aux_image_data,x,y,r,g,b,255);
+        }
+    }
+
+    current_image_data = aux_image_data;
+    
+    ctx.putImageData(current_image_data, 0, 0);
+
+    // ctx.fillStyle = "#ffffff";
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     disable_buttons(false);
 }
@@ -86,32 +103,30 @@ function loadImageAsync(content) {
     })
 }
 
-function largerThanCanvas(imageData) {
-    return (imageData.width > canvas.width) || (imageData.height > canvas.height);
+function largerThanCanvas(image) {
+    return (image.width > canvas.width) || (image.height > canvas.height);
 }
 
-function drawPreviewImage(imageData) {
+function drawPreviewImage(image) {
     
-    let imageScaledWidth = imageData.width;
-    let imageScaledHeight = imageData.height;
+    let imageScaledWidth = image.width;
+    let imageScaledHeight = image.height;
 
-    if (largerThanCanvas(imageData)){
+    if (largerThanCanvas(image)){
         
-        if (imageData.width > imageData.height){
-            let imageAspectRatio = (1.0 * imageData.height) / imageData.width;
+        if (image.width > image.height){
+            let imageAspectRatio = (1.0 * image.height) / image.width;
             imageScaledWidth = canvas.width;
             imageScaledHeight = canvas.width * imageAspectRatio;
         } else {
-            let imageAspectRatio = (1.0 * imageData.width) / imageData.height;
+            let imageAspectRatio = (1.0 * image.width) / image.height;
             imageScaledWidth = canvas.height * imageAspectRatio;
             imageScaledHeight = canvas.height;
         }
 
-        
     }
     
-    // draw image on canvas
-    ctx.drawImage(imageData, 0, 0, imageScaledWidth, imageScaledHeight);
+    ctx.drawImage(image, 0, 0, imageScaledWidth, imageScaledHeight);
 
 }
 
@@ -121,9 +136,12 @@ async function setImage() {
 
     let content = await processFile(chosenFile);
     
-    let image_data = await loadImageAsync(content);
+    let image = await loadImageAsync(content);
 
-    drawPreviewImage(image_data);
+    // Draws image to fit canvas
+    drawPreviewImage(image);
+
+    current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 
     disable_buttons(false);
 
@@ -139,18 +157,19 @@ function set_pixel(image_data,x,y,r,g,b,a) {
 
 function filterNeg(){
     
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    // cambiar para que agarre la imagen original, no del contexto
+    let aux_image_data = current_image_data;
 
-    for ( let x = 0; x < image_data.width; x++){
-        for (let y = 0; y < image_data.height; y++){
-            let index = ( x + y * image_data.width) * 4;
-            let r = 255 - image_data.data[index];
-            let g = 255 - image_data.data[index+1];
-            let b = 255 - image_data.data[index+2];
-            set_pixel(image_data,x,y,r,g,b,255);
+    for ( let x = 0; x < aux_image_data.width; x++){
+        for (let y = 0; y < aux_image_data.height; y++){
+            let index = ( x + y * aux_image_data.width) * 4;
+            let r = 255 - aux_image_data.data[index];
+            let g = 255 - aux_image_data.data[index+1];
+            let b = 255 - aux_image_data.data[index+2];
+            set_pixel(aux_image_data,x,y,r,g,b,255);
         }
     }
-    ctx.putImageData(image_data, 0, 0);
+    ctx.putImageData(aux_image_data, 0, 0);
 }
 
 function avg_rgb(image_data,x,y) {
@@ -462,15 +481,15 @@ function filterEdge() {
         );
 
         var pixelY = (
-          (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
-          (kernelY[0][1] * pixelAt(x, y - 1)) +
-          (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
-          (kernelY[1][0] * pixelAt(x - 1, y)) +
-          (kernelY[1][1] * pixelAt(x, y)) +
-          (kernelY[1][2] * pixelAt(x + 1, y)) +
-          (kernelY[2][0] * pixelAt(x - 1, y + 1)) +
-          (kernelY[2][1] * pixelAt(x, y + 1)) +
-          (kernelY[2][2] * pixelAt(x + 1, y + 1))
+            (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
+            (kernelY[0][1] * pixelAt(x, y - 1)) +
+            (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
+            (kernelY[1][0] * pixelAt(x - 1, y)) +
+            (kernelY[1][1] * pixelAt(x, y)) +
+            (kernelY[1][2] * pixelAt(x + 1, y)) +
+            (kernelY[2][0] * pixelAt(x - 1, y + 1)) +
+            (kernelY[2][1] * pixelAt(x, y + 1)) +
+            (kernelY[2][2] * pixelAt(x + 1, y + 1))
         );
 
         var magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
@@ -529,11 +548,7 @@ function move_mouse(e) {
     
     let mouse_position = current_mouse_position(e);
     
-    if (using_pencil){
-        ctx.lineTo(mouse_position.x, mouse_position.y);
-        ctx.stroke();
-    }
-    if (using_rubber){
+    if (using_pencil || using_rubber){
         ctx.lineTo(mouse_position.x, mouse_position.y);
         ctx.stroke();
     }
@@ -573,6 +588,8 @@ function initPaint() {
 
     fileChooser = document.querySelector('.fileChooser');
 
+    current_image_data = null;
+
     selected_tool = 'none';
     
     using_pencil = false;
@@ -594,7 +611,6 @@ document.addEventListener("DOMContentLoaded", initPaint);
 // extraer sobel del filter edge
 // hacer filtro suavizar usando sobel
 // filtros no acumulables
-// bajar imagen
 
 // guardar image width and height para no aplicar los filtros a todo el canvas
 // no se nota que herramienta esta seleccionada
