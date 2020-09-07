@@ -401,32 +401,9 @@ function filterSaturation() {
 
 }
 
-Sobel.toImageData = function toImageData(data, width, height) {
-    if (typeof ImageData === 'function' && Object.prototype.toString.call(data) === '[object Uint16Array]') {
-      return new ImageData(data, width, height);
-    } else {
-      if (typeof window === 'object' && typeof window.document === 'object') {
-        var canvas = document.createElement('canvas');
-
-        if (typeof canvas.getContext === 'function') {
-          var context = canvas.getContext('2d');
-          var imageData = context.createImageData(width, height);
-          imageData.data.set(data);
-          return imageData;
-        } else {
-          return new FakeImageData(data, width, height);
-        }
-      } else {
-        return new FakeImageData(data, width, height);
-      }
-    }
-  };
-
-function Sobel(imageData) {
+function filterEdge() {
     
-    if (!(this instanceof Sobel)) {
-      return new Sobel(imageData);
-    }
+    let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
 
     var width = imageData.width;
     var height = imageData.height;
@@ -443,7 +420,7 @@ function Sobel(imageData) {
       [1,2,1]
     ];
 
-    var sobelData = [];
+    var sobelData = imageData;
     var grayscaleData = [];
 
     function bindPixelAt(data) {
@@ -498,37 +475,13 @@ function Sobel(imageData) {
 
         var magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
 
-        sobelData.push(magnitude, magnitude, magnitude, 255);
+        // sobelData.push(magnitude, magnitude, magnitude, 255);
+        set_pixel(sobelData,x,y,magnitude,magnitude,magnitude,255);
       }
     }
-
-    var clampedArray = sobelData;
-
-    if (typeof Uint8ClampedArray === 'function') {
-      clampedArray = new Uint8ClampedArray(sobelData);
-    }
-
-    clampedArray.toImageData = function() {
-      return Sobel.toImageData(clampedArray, width, height);
-    };
-
-    return clampedArray;
-  }
-
-
-function filterEdge() {
-
-    let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
-
-    // Sobel returns an Uint8ClampedArray
-    let sobelData = Sobel(image_data);
-
-    // [sobelData].toImageData() returns a new ImageData object
-    let sobelImageData = sobelData.toImageData();
-
-    ctx.putImageData(sobelImageData, 0, 0);
-
+    ctx.putImageData(sobelData, 0, 0);
 }
+
 
 /*
 
@@ -549,8 +502,7 @@ function downloadURI(uri, name) {
 
 function downloadImage() {
     let dataURL = canvas.toDataURL();
-    downloadURI(dataURL, "image.png");
-    // console.log(dataURL);
+    downloadURI(dataURL, "modified_image.png");
 }
 
 
@@ -639,6 +591,8 @@ function initPaint() {
 
 document.addEventListener("DOMContentLoaded", initPaint);
 
+// extraer sobel del filter edge
+// hacer filtro suavizar usando sobel
 // filtros no acumulables
 // bajar imagen
 
