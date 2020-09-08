@@ -453,23 +453,23 @@ function filterEdge() {
     // let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
     let bkp_image_data = bkpImageData(current_image_data);
 
-    var width = current_image_data.width;
-    var height = current_image_data.height;
+    let width = current_image_data.width;
+    let height = current_image_data.height;
 
-    var kernelX = [
-      [-1,0,1],
-      [-2,0,2],
-      [-1,0,1]
+    let kernelX = [
+        [-1,0,1],
+        [-2,0,2],
+        [-1,0,1]
     ];
 
-    var kernelY = [
+    let kernelY = [
       [-1,-2,-1],
       [0,0,0],
       [1,2,1]
     ];
 
-    var sobelData = current_image_data;
-    var grayscaleData = [];
+    let sobelData = current_image_data;
+    let grayscaleData = [];
 
     function bindPixelAt(data) {
       return function(x, y, i) {
@@ -478,17 +478,17 @@ function filterEdge() {
       };
     }
 
-    var data = current_image_data.data;
-    var pixelAt = bindPixelAt(data);
-    var x, y;
+    let data = current_image_data.data;
+    let pixelAt = bindPixelAt(data);
+    let x, y;
 
     for (y = 0; y < height; y++) {
       for (x = 0; x < width; x++) {
-        var r = pixelAt(x, y, 0);
-        var g = pixelAt(x, y, 1);
-        var b = pixelAt(x, y, 2);
+        let r = pixelAt(x, y, 0);
+        let g = pixelAt(x, y, 1);
+        let b = pixelAt(x, y, 2);
 
-        var avg = (r + g + b) / 3;
+        let avg = (r + g + b) / 3;
         grayscaleData.push(avg, avg, avg, 255);
       }
     }
@@ -497,7 +497,7 @@ function filterEdge() {
 
     for (y = 0; y < height; y++) {
       for (x = 0; x < width; x++) {
-        var pixelX = (
+        let pixelX = (
             (kernelX[0][0] * pixelAt(x - 1, y - 1)) +
             (kernelX[0][1] * pixelAt(x, y - 1)) +
             (kernelX[0][2] * pixelAt(x + 1, y - 1)) +
@@ -509,7 +509,7 @@ function filterEdge() {
             (kernelX[2][2] * pixelAt(x + 1, y + 1))
         );
 
-        var pixelY = (
+        let pixelY = (
             (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
             (kernelY[0][1] * pixelAt(x, y - 1)) +
             (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
@@ -521,8 +521,8 @@ function filterEdge() {
             (kernelY[2][2] * pixelAt(x + 1, y + 1))
         );
 
-        var magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
-
+        let magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
+        magnitude = (magnitude/1000) * 255;
         // sobelData.push(magnitude, magnitude, magnitude, 255);
         set_pixel(sobelData,x,y,magnitude,magnitude,magnitude,255);
       }
@@ -530,6 +530,10 @@ function filterEdge() {
     ctx.putImageData(sobelData, 0, 0);
 
     current_image_data = bkp_image_data;
+}
+
+function filterSmooth() {
+    
 }
 
 
