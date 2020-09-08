@@ -532,8 +532,51 @@ function filterEdge() {
     current_image_data = bkp_image_data;
 }
 
+function promedioVecinos(image_data,pix_x,pix_y) {
+    
+    let avg = {
+        r : 0,
+        g : 0,
+        b: 0
+    };
+
+    for (let x = pix_x -1; x <= pix_x + 1; x++){
+        for (let y = pix_y -1; y <= pix_y + 1; y++){
+            let index = ( x + y * image_data.width) * 4;
+            avg.r += image_data.data[index];
+            avg.g += image_data.data[index+1];
+            avg.b += image_data.data[index+2];
+        }
+    }
+    
+    avg.r = Math.floor( avg.r / 9);
+    avg.g = Math.floor( avg.g / 9);
+    avg.b = Math.floor( avg.b / 9);
+
+    return avg;
+
+}
+
 function filterSmooth() {
     
+    let bkp_image_data = bkpImageData(current_image_data);
+    
+    for ( let x = 1; x < current_image_data.width - 1; x++){
+        for (let y = 1; y < current_image_data.height - 1; y++){
+            
+            let promedio = promedioVecinos(bkp_image_data,x,y);
+
+            let r = promedio.r;
+            let g = promedio.g;
+            let b = promedio.b;
+
+            set_pixel(current_image_data,x,y,r,g,b,255);
+        }
+    }
+
+    ctx.putImageData(current_image_data, 0, 0);
+
+    current_image_data = bkp_image_data;
 }
 
 
@@ -648,9 +691,11 @@ function initPaint() {
 
 document.addEventListener("DOMContentLoaded", initPaint);
 
-// extraer sobel del filter edge
-// hacer filtro suavizar usando sobel
-// filtros no acumulables
 
+
+// tamanio de imagen importada
 // guardar image width and height para no aplicar los filtros a todo el canvas
 // no se nota que herramienta esta seleccionada
+
+// extraer sobel del filter edge (?? comen)
+// hacer filtro suavizar usando sobel (hecho sin sobel)
