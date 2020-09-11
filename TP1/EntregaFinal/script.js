@@ -677,10 +677,12 @@ function current_mouse_position(e) {
 }
 
 function stop_using_mouse(e) {
-    using_pencil = false;
-    using_rubber = false;
-    ctx.closePath();
-    current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    if (using_pencil || using_rubber){
+        using_pencil = false;
+        using_rubber = false;
+        ctx.closePath();
+        current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    }
 }
 
 function move_mouse(e) {
