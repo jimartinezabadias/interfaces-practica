@@ -54,11 +54,25 @@ function showFileChooser() {
     fileChooser.click();
 }
 
+function deselect_buttons() {
+    let buttons = document.querySelectorAll(".btn-tool");
+    buttons.forEach(b => {
+        b.classList.remove("selected");
+    })
+}
+
 function select_pencil() {
     selected_tool = 'pencil';
+    // deseleccionar todos los otros botones
+    deselect_buttons();
+    let button = document.querySelector("#pencil_btn");
+    button.classList.add("selected");
 }
 function select_rubber() {
     selected_tool = 'rubber';
+    deselect_buttons();
+    let button = document.querySelector("#rubber_btn");
+    button.classList.add("selected");
 }
 
 function readFileAsync(file) {
@@ -175,6 +189,12 @@ function bkpImageData(current_image_data) {
 
 function filterNeg(){
     
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#neg_filter_btn");
+    button.classList.add("selected");
+
     let bkp_image_data = bkpImageData(current_image_data);
 
     for ( let x = 0; x < current_image_data.width; x++){
@@ -210,6 +230,12 @@ function get_binary_color(color) {
 
 function filterBinary() {
 
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#bin_filter_btn");
+    button.classList.add("selected");
+
     let bkp_image_data = bkpImageData(current_image_data);
 
     for ( let x = 0; x < current_image_data.width; x++){
@@ -228,6 +254,13 @@ function filterBinary() {
 }
 
 function filterSepia() {
+
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#sepia_filter_btn");
+    button.classList.add("selected");
+
 
     let bkp_image_data = bkpImageData(current_image_data);
 
@@ -361,7 +394,12 @@ function HSLToRGB(h,s,l) {
 
 function filterBrightness() {
     
-    // let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#bright_filter_btn");
+    button.classList.add("selected");
+
     let bkp_image_data = bkpImageData(current_image_data);
 
     let filter_ammount = (document.querySelector("#brightness_range").value) / 100;
@@ -406,7 +444,12 @@ function filterBrightness() {
 
 function filterSaturation() {
     
-    // let image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#saturation_filter_btn");
+    button.classList.add("selected");
+
     let bkp_image_data = bkpImageData(current_image_data);
 
     let filter_ammount = (document.querySelector("#saturation_range").value) / 100;
@@ -449,8 +492,13 @@ function filterSaturation() {
 }
 
 function filterEdge() {
-    
-    // let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#edge_filter_btn");
+    button.classList.add("selected");
+
     let bkp_image_data = bkpImageData(current_image_data);
 
     let width = current_image_data.width;
@@ -558,6 +606,12 @@ function promedioVecinos(image_data,pix_x,pix_y) {
 }
 
 function filterSmooth() {
+
+    deselect_buttons();
+    selected_tool = 'none';
+
+    let button = document.querySelector("#smooth_filter_btn");
+    button.classList.add("selected");
     
     let bkp_image_data = bkpImageData(current_image_data);
     

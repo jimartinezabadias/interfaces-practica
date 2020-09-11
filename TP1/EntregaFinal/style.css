@@ -1,16 +1,23 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #282828;
+    background-color: #454545;
+    color: #c1c1c1;
+    font-family: sans-serif;
 }
 .main {
     display: flex;
-    padding: 16px;
+    justify-content: center;
+}
+.paint_main{
+    padding: 16px;  
+    display: flex;
+    
 }
 .toolbar {
     display: flex;
     flex-flow: column;
-    max-width: 100px;
+    max-width: 110px;
     justify-content: center;
     padding-right: 16px;
 }
@@ -18,21 +25,83 @@ body{
 .canvas-preview{
     margin-top: 16px;
     margin-bottom: 16px;
-    background: repeating-linear-gradient(
+    /* background: repeating-linear-gradient(
         -45deg,
         #454545,
         #454545 6px,
         #323232 6px,
         #323232 12px
-        );
+        ); */
+    background-color: #323232;
 }
-.btn{
-    padding: 4px;
+
+button {
+    color: #c1c1c1;
+    display: inline-block;
+    border: 1px solid #323232;
+    padding: 8px 16px;
+    margin: 0;
+    text-decoration: none;
+    /* background: #747474; */
+    /* color: #ffffff; */
+    background-color: #454545;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    /* transition: background 250ms ease-in-out, 
+                transform 150ms ease; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
+
+button:hover {
+    background: #323232;
+    /* color: #dcdcdc; */
+}
+/* button:hover,
+button:focus {
+    background: #686868;
+    color: #dcdcdc;
+} */
+
+button:focus {
+    outline: 1px solid #323232;
+    outline-offset: -2px; 
+}
+
+button:disabled {
+    background-color: #282828;
+    color: #454545;
+    cursor: default;
+}
+
+
+.selected {
+    background-color: #323232;
+    /* color: #dcdcdc; */
+}
+
 .toolbar .btn{
     margin-bottom: 4px;
+    width: 100%;
 }
 
 .filter_controls{
     padding: 8px;
+}
+
+.filter_range {
+    width: 100%;
+    margin: 8px 0px;
+}
+
+.filter {
+    border: 1px solid #323232;
+    padding: 8px;
+    margin-bottom: 4px;
+}
+
+#saturation_filter_btn,
+#bright_filter_btn {
+    margin: 0;
 }
