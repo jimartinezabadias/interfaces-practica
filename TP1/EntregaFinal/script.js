@@ -744,7 +744,7 @@ function initPaint() {
 
     canvas.addEventListener("mousedown",start_using_mouse);
     canvas.addEventListener("mousemove",move_mouse);
-    canvas.addEventListener("mouseup",stop_using_mouse);
+    document.addEventListener("mouseup",stop_using_mouse);
     
 
 }
@@ -752,10 +752,12 @@ function initPaint() {
 document.addEventListener("DOMContentLoaded", initPaint);
 
 
-
 // tamanio de imagen importada
 // guardar image width and height para no aplicar los filtros a todo el canvas
-// no se nota que herramienta esta seleccionada
+
+// Bug: cuando dibuja fuera del canvas y vuelve a entrar.
+
+
 
 // extraer sobel del filter edge (?? comen)
 // hacer filtro suavizar usando sobel (hecho sin sobel)
