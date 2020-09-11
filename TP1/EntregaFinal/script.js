@@ -48,6 +48,12 @@ function disable_buttons(state) {
     buttons.forEach(b => {
         b.disabled = state;
     })
+
+    let inputs = document.querySelector(".toolbar").querySelectorAll(".filter_range"); 
+    
+    inputs.forEach(i => {
+        i.disabled = state;
+    })
 }
 
 function showFileChooser() {
