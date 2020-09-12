@@ -152,8 +152,11 @@ function drawPreviewImage(image) {
             imageScaledWidth = canvas.height * imageAspectRatio;
             imageScaledHeight = canvas.height;
         }
-
+    
     }
+    
+    canvas.width = imageScaledWidth;
+    canvas.height = imageScaledHeight;
     
     ctx.drawImage(image, 0, 0, imageScaledWidth, imageScaledHeight);
 
@@ -170,8 +173,8 @@ async function setImage() {
     // Draws image to fit canvas
     drawPreviewImage(image);
 
+    
     current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
-
     
     disable_toolbar(false);
 

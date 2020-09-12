@@ -23,16 +23,18 @@ body{
 }
 
 .canvas-preview{
+    min-width: 640px;
+    min-height: 480px;
     margin-top: 16px;
     margin-bottom: 16px;
-    /* background: repeating-linear-gradient(
+    background: repeating-linear-gradient(
         -45deg,
-        #454545,
-        #454545 6px,
+        #282828,
+        #282828 6px,
         #323232 6px,
         #323232 12px
-        ); */
-    background-color: #323232;
+        );
+    /* background-color: #323232; */
 }
 
 button {
@@ -109,4 +111,8 @@ button:disabled {
 .top_functions{
     display: flex;
     justify-content: space-between;
+}
+
+canvas {
+    border: 1px solid #000000;
 }
