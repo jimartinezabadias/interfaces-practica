@@ -172,6 +172,7 @@ async function setImage() {
 
     current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 
+    
     disable_toolbar(false);
 
     // white_canvas, upload_img, download_img, reset
@@ -675,7 +676,8 @@ function downloadImage() {
 }
 
 function reset_app() {
-    white_canvas();
+    // white_canvas();
+    deselect_buttons();
     initPaint();
 }
 
@@ -743,12 +745,17 @@ function start_using_mouse(e){
 
 }
 
-function initPaint() {
-    
+function initCanvas() {
     canvas = document.querySelector("#myCanvas");
     ctx = canvas.getContext("2d");
 
-    fileChooser = document.querySelector('.fileChooser');
+    canvas.width = 640;
+    canvas.height = 480;
+}
+
+function initPaint() {
+    
+    initCanvas();
 
     current_image_data = null;
 
@@ -762,6 +769,7 @@ function initPaint() {
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(false,false,true,true);
 
+    fileChooser = document.querySelector('.fileChooser');
     fileChooser.addEventListener("change",setImage);
 
     canvas.addEventListener("mousedown",start_using_mouse);
