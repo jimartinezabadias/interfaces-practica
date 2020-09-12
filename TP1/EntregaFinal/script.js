@@ -30,21 +30,29 @@ function white_canvas() {
     
     ctx.putImageData(current_image_data, 0, 0);
 
-    // ctx.fillStyle = "#ffffff";
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    disable_toolbar(false);
 
-    disable_buttons(false);
+    // white_canvas, upload_img, download_img, reset
+    disable_function_buttons(true,true,false,false);
+
 }
 
-function disable_buttons(state) {
+function disable_function_buttons(white_canvas_state,image_upload_state,image_download_state,reset_app_state) {
+    let white_canvas_btn = document.querySelector("#white_canvas_btn");
+    let image_upload = document.querySelector("#image_upload_btn");
+    let download_btn = document.querySelector("#image_download_btn");
+    let reset_btn = document.querySelector("#reset_app_btn");
+
+    white_canvas_btn.disabled = white_canvas_state;
+    image_upload.disabled = image_upload_state;
+    download_btn.disabled = image_download_state;
+    reset_btn.disabled = reset_app_state;
+}
+
+function disable_toolbar(state) {
     let buttons = document.querySelector(".toolbar").querySelectorAll("button"); 
 
-    buttons.forEach(b => {
-        b.disabled = state;
-    })
-
-    buttons = document.querySelector(".bottom-functions").querySelectorAll("button"); 
-    
     buttons.forEach(b => {
         b.disabled = state;
     })
@@ -54,6 +62,7 @@ function disable_buttons(state) {
     inputs.forEach(i => {
         i.disabled = state;
     })
+
 }
 
 function showFileChooser() {
@@ -163,7 +172,10 @@ async function setImage() {
 
     current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
 
-    disable_buttons(false);
+    disable_toolbar(false);
+
+    // white_canvas, upload_img, download_img, reset
+    disable_function_buttons(true,true,false,false);
 
 }
 
@@ -662,6 +674,11 @@ function downloadImage() {
     downloadURI(dataURL, "modified_image.png");
 }
 
+function reset_app() {
+    white_canvas();
+    initPaint();
+}
+
 
 /*
 *    Pencil and Rubber functions
@@ -740,14 +757,16 @@ function initPaint() {
     using_pencil = false;
     using_rubber = false;
 
-    disable_buttons(true);
+    disable_toolbar(true);
+    
+    // white_canvas, upload_img, download_img, reset
+    disable_function_buttons(false,false,true,true);
 
     fileChooser.addEventListener("change",setImage);
 
     canvas.addEventListener("mousedown",start_using_mouse);
     canvas.addEventListener("mousemove",move_mouse);
     document.addEventListener("mouseup",stop_using_mouse);
-    
 
 }
 

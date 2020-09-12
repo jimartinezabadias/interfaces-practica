@@ -71,23 +71,42 @@
 				<div class="canvas_container">
 	
 					<div class="top_functions">
-						<button class="btn btn-tool"
-							onclick="white_canvas()">
-							Lienzo Blanco
-						</button>
-						<button class="btn btn-tool"
-							onclick="showFileChooser()">
-							Cargar Imagen
-						</button>
-						<input class="fileChooser" type="file" accept="image/*" style="display: none;">
+						<div class="new_img_functions">
+							<button class="btn btn-tool"
+								id="white_canvas_btn"
+								onclick="white_canvas()">
+								Lienzo Blanco
+							</button>
+							
+							<button class="btn btn-tool"
+								id="image_upload_btn"
+								onclick="showFileChooser()">
+								Subir Imagen
+							</button>
+							
+							<input class="fileChooser" type="file" accept="image/*" style="display: none;">
+						</div>
+
+						<div class="save_functions">
+							<button class="btn btn-tool"
+								id="image_download_btn"
+								onclick="downloadImage()">
+								Descargar Imagen
+							</button>
+							
+							<button class="btn btn-tool"
+								id="reset_app_btn"
+								onclick="reset_app()">
+								Reiniciar
+							</button>
+						</div>
 					</div>
 	
 					<canvas class="canvas-preview" id="myCanvas" width="640" height="480"></canvas>
 					
-					<div class="bottom-functions">
-						<button class="btn btn-tool"
-							onclick="downloadImage()">Descargar Imagen</button>
-					</div>
+					<!-- <div class="bottom-functions">
+						
+					</div> -->
 	
 				</div>
 			</div>
