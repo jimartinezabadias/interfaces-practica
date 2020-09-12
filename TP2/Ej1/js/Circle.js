@@ -13,6 +13,13 @@ class Circle extends Figure {
         this.context.closePath();
     }
 
+    setLinearGragientFill(color1,color2){
+        let gradient = this.context.createLinearGradient(this.posX - this.radius,this.posY - this.radius,this.posX + this.radius,this.posY + this.radius);
+        gradient.addColorStop(0, color1);
+        gradient.addColorStop(1, color2);
+        super.setFill(gradient);
+    }
+
     getRadius(){
         return this.radius;
     }

@@ -14,12 +14,11 @@ function newRandomFigure(canvas,context) {
     let posX = randomInteger(0,canvas.width);
     let posY = randomInteger(0,canvas.height);
 
-
     switch (figureType) {
         case 0:
             let width = randomInteger(5,50);
             let height = randomInteger(5,50);
-            newFigure = new Rectangle(posX,posY,width,30,height,context);
+            newFigure = new Rectangle(posX,posY,width,height,0,context);
             break;
         case 1:
             let radius = randomInteger(5,30);
@@ -51,6 +50,31 @@ function getArrayRandomFigures(canvas,context,maxFigures) {
 
 }
 
+function setRandomFill(figure,image) {
+    
+    let fillType = randomInteger(0,1); 
+
+    let r = randomInteger(0,255);
+    let g = randomInteger(0,255);
+    let b = randomInteger(0,255);
+    let color = `rgba(${r},${g},${b},255)`;
+    
+    switch (fillType) {
+        case 0:
+            // color solido
+            figure.setFill(color);
+            break;
+        case 1:
+            // gradiente
+            figure.setLinearGragientFill(color,`rgba(255,255,255,255)`);
+            break;
+        // case 2:
+        //     // imagen
+        //     break;
+        }
+
+}
+
 
 function mainFunction() {
     
@@ -60,6 +84,12 @@ function mainFunction() {
     let maxFigures = 30;
 
     let arrayFigures = getArrayRandomFigures(canvas,context,maxFigures);
+
+    
+    // let image = 
+    arrayFigures.forEach(figure => {
+        setRandomFill(figure);
+    });
     
     drawArrayRandomFigures(arrayFigures);
 
