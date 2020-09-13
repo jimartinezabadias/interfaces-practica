@@ -97,7 +97,7 @@ function readFileAsync(file) {
         reader.readAsDataURL(file); // this is reading as data url
 
         reader.onload = () => {
-        resolve(reader.result);
+            resolve(reader.result);
         };
 
         reader.onerror = reject;
@@ -458,6 +458,8 @@ function filterBrightness() {
         }
     }
 
+    deselect_buttons();
+
     ctx.putImageData(current_image_data, 0, 0);
 
     current_image_data = bkp_image_data;
@@ -508,6 +510,8 @@ function filterSaturation() {
         }
     }
 
+    deselect_buttons();
+
     ctx.putImageData(current_image_data, 0, 0);
 
     current_image_data = bkp_image_data;
@@ -533,19 +537,19 @@ function filterEdge() {
     ];
 
     let kernelY = [
-      [-1,-2,-1],
-      [0,0,0],
-      [1,2,1]
+        [-1,-2,-1],
+        [0,0,0],
+        [1,2,1]
     ];
 
     let sobelData = current_image_data;
     let grayscaleData = [];
 
     function bindPixelAt(data) {
-      return function(x, y, i) {
-        i = i || 0;
-        return data[((width * y) + x) * 4 + i];
-      };
+        return function(x, y, i) {
+            i = i || 0;
+            return data[((width * y) + x) * 4 + i];
+        };
     }
 
     let data = current_image_data.data;
@@ -553,50 +557,51 @@ function filterEdge() {
     let x, y;
 
     for (y = 0; y < height; y++) {
-      for (x = 0; x < width; x++) {
-        let r = pixelAt(x, y, 0);
-        let g = pixelAt(x, y, 1);
-        let b = pixelAt(x, y, 2);
+        for (x = 0; x < width; x++) {
+            let r = pixelAt(x, y, 0);
+            let g = pixelAt(x, y, 1);
+            let b = pixelAt(x, y, 2);
 
-        let avg = (r + g + b) / 3;
-        grayscaleData.push(avg, avg, avg, 255);
-      }
+            let avg = (r + g + b) / 3;
+            grayscaleData.push(avg, avg, avg, 255);
+        }
     }
 
     pixelAt = bindPixelAt(grayscaleData);
 
-    for (y = 0; y < height; y++) {
-      for (x = 0; x < width; x++) {
-        let pixelX = (
-            (kernelX[0][0] * pixelAt(x - 1, y - 1)) +
-            (kernelX[0][1] * pixelAt(x, y - 1)) +
-            (kernelX[0][2] * pixelAt(x + 1, y - 1)) +
-            (kernelX[1][0] * pixelAt(x - 1, y)) +
-            (kernelX[1][1] * pixelAt(x, y)) +
-            (kernelX[1][2] * pixelAt(x + 1, y)) +
-            (kernelX[2][0] * pixelAt(x - 1, y + 1)) +
-            (kernelX[2][1] * pixelAt(x, y + 1)) +
-            (kernelX[2][2] * pixelAt(x + 1, y + 1))
-        );
+    for (x = 0; x < width; x++) {
+        for (y = 0; y < height; y++) {
+            let pixelX = (
+                (kernelX[0][0] * pixelAt(x - 1, y - 1)) +
+                (kernelX[0][1] * pixelAt(x, y - 1)) +
+                (kernelX[0][2] * pixelAt(x + 1, y - 1)) +
+                (kernelX[1][0] * pixelAt(x - 1, y)) +
+                (kernelX[1][1] * pixelAt(x, y)) +
+                (kernelX[1][2] * pixelAt(x + 1, y)) +
+                (kernelX[2][0] * pixelAt(x - 1, y + 1)) +
+                (kernelX[2][1] * pixelAt(x, y + 1)) +
+                (kernelX[2][2] * pixelAt(x + 1, y + 1))
+            );
 
-        let pixelY = (
-            (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
-            (kernelY[0][1] * pixelAt(x, y - 1)) +
-            (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
-            (kernelY[1][0] * pixelAt(x - 1, y)) +
-            (kernelY[1][1] * pixelAt(x, y)) +
-            (kernelY[1][2] * pixelAt(x + 1, y)) +
-            (kernelY[2][0] * pixelAt(x - 1, y + 1)) +
-            (kernelY[2][1] * pixelAt(x, y + 1)) +
-            (kernelY[2][2] * pixelAt(x + 1, y + 1))
-        );
+            let pixelY = (
+                (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
+                (kernelY[0][1] * pixelAt(x, y - 1)) +
+                (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
+                (kernelY[1][0] * pixelAt(x - 1, y)) +
+                (kernelY[1][1] * pixelAt(x, y)) +
+                (kernelY[1][2] * pixelAt(x + 1, y)) +
+                (kernelY[2][0] * pixelAt(x - 1, y + 1)) +
+                (kernelY[2][1] * pixelAt(x, y + 1)) +
+                (kernelY[2][2] * pixelAt(x + 1, y + 1))
+            );
 
-        let magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
-        magnitude = (magnitude/1000) * 255;
-        // sobelData.push(magnitude, magnitude, magnitude, 255);
-        set_pixel(sobelData,x,y,magnitude,magnitude,magnitude,255);
-      }
+            let magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
+            magnitude = (magnitude/1000) * 255;
+            // sobelData.push(magnitude, magnitude, magnitude, 255);
+            set_pixel(sobelData,x,y,magnitude,magnitude,magnitude,255);
+        }
     }
+    
     ctx.putImageData(sobelData, 0, 0);
 
     current_image_data = bkp_image_data;
@@ -727,7 +732,7 @@ function start_using_mouse(e){
         using_pencil = true;
         ctx.beginPath();
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#323232';
+        ctx.strokeStyle = '#282828';
         // ctx.moveTo(mouse_position.x, mouse_position.y); 
         ctx.lineTo(mouse_position.x, mouse_position.y); 
         ctx.stroke();
@@ -752,8 +757,10 @@ function initCanvas() {
     canvas = document.querySelector("#myCanvas");
     ctx = canvas.getContext("2d");
 
-    canvas.width = 640;
-    canvas.height = 480;
+    // canvas.width = 640;
+    // canvas.height = 480;
+    canvas.width = 800;
+    canvas.height = 552;
 }
 
 function initPaint() {
