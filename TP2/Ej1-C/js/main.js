@@ -12,7 +12,7 @@ function randomInteger(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function newRandomFigure(canvas,context) {
+function newRandomFigure() {
 
     let newFigure = null;
     let figureType = randomInteger(0,1); 
@@ -44,44 +44,6 @@ function drawArrayRandomFigures(arrFigures) {
 
 }
 
-function getArrayRandomFigures(canvas,context,maxFigures) {
-    
-    let arrFigures = new Array;
-
-    for (let i = 0; i < maxFigures; i++) {
-        arrFigures[i] = newRandomFigure(canvas,context); 
-    }
-    
-    return arrFigures;
-
-}
-
-function setRandomFill(figure,image) {
-    
-    let fillType = randomInteger(0,2); 
-
-    let r = randomInteger(0,255);
-    let g = randomInteger(0,255);
-    let b = randomInteger(0,255);
-    let color = `rgba(${r},${g},${b},255)`;
-    
-    switch (fillType) {
-        case 0:
-            // color solido
-            figure.setFill(color);
-            break;
-        case 1:
-            // gradiente
-            figure.setLinearGragientFill(color,`rgba(255,255,255,255)`);
-            break;
-        case 2:
-            // imagen
-            figure.setImagePatternFill(image);
-            break;
-        }
-
-}
-
 function loadImage(src){
     return new Promise((resolve, reject) => {
         let img = new Image();
@@ -107,7 +69,20 @@ function showFileChooser() {
 async function openFile() {
     let fileData = await loadFile(this.files[0]);
     let imageData = await loadImage(fileData);
-    currentImage = imageData;
+    // currentImage = imageData;
+    
+    // let figure = newRandomFigure();
+
+    let posX = randomInteger(0,canvas.width);
+    let posY = randomInteger(0,canvas.height);
+    let width = randomInteger(5,50);
+    let height = randomInteger(5,50);
+    
+    // let figure = new Rectangle(posX,posY,width,height,null,context);
+    let figure = new Circle(posX,posY,height,null,context);
+    figure.setImageFill(imageData);
+    figure.draw();
+
 }
 
 function mainFunction() {
@@ -121,22 +96,6 @@ function mainFunction() {
     imageUploadBtn.addEventListener("click",showFileChooser);
     fileChooser.addEventListener("change",openFile);
 
-    let maxFigures = 30;
-
-    // let arrayFigures = getArrayRandomFigures(canvas,context,maxFigures);
-
-    
-
-    // load image
-    // let image = await loadImage("../../images/texture1.png");
-    // let image = await loadImage("../../images/matechar.jpg");
-    
-    // arrayFigures.forEach(figure => {
-    //     setRandomFill(figure,image);
-    // });
-
-    
-    // drawArrayRandomFigures(arrayFigures);
 
 }
 

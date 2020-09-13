@@ -20,6 +20,23 @@ class Circle extends Figure {
         super.setFill(gradient);
     }
 
+    setImageFill(imageData){
+        // console.log(imageData);
+        this.context.drawImage(
+            imageData,
+            this.posX - this.radius,
+            this.posY - this.radius,
+            this.radius * 2,
+            this.radius * 2);
+        // let scaledImage = this.context.getImageData(this.posY,this.posY,this.width,this.height);
+        
+        // super.setSingleImageFill(scaledImage);
+        
+        // 
+        // this.context.fillStyle = "#ffffff";
+        // this.context.fillRect(this.posY,this.posY,this.width,this.height);
+    }
+
     getRadius(){
         return this.radius;
     }
