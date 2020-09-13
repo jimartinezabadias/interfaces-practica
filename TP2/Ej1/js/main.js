@@ -52,7 +52,7 @@ function getArrayRandomFigures(canvas,context,maxFigures) {
 
 function setRandomFill(figure,image) {
     
-    let fillType = randomInteger(0,1); 
+    let fillType = randomInteger(0,2); 
 
     let r = randomInteger(0,255);
     let g = randomInteger(0,255);
@@ -68,15 +68,24 @@ function setRandomFill(figure,image) {
             // gradiente
             figure.setLinearGragientFill(color,`rgba(255,255,255,255)`);
             break;
-        // case 2:
-        //     // imagen
-        //     break;
+        case 2:
+            // imagen
+            figure.setImagePatternFill(image);
+            break;
         }
 
 }
 
+function loadImage(src){
+    return new Promise((resolve, reject) => {
+        let img = new Image()
+        img.src = src
+        img.onload = () => resolve(img)
+        img.onerror = reject
+    });
+}
 
-function mainFunction() {
+async function mainFunction() {
     
     let canvas = document.querySelector("#myCanvas");
     let context = canvas.getContext("2d");
@@ -86,10 +95,14 @@ function mainFunction() {
     let arrayFigures = getArrayRandomFigures(canvas,context,maxFigures);
 
     
-    // let image = 
+    // load image
+    let image = await loadImage("../../images/texture1.png");
+    // let image = await loadImage("../../images/matechar.jpg");
+    
     arrayFigures.forEach(figure => {
-        setRandomFill(figure);
+        setRandomFill(figure,image);
     });
+
     
     drawArrayRandomFigures(arrayFigures);
 

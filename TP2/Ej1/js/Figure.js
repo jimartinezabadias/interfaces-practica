@@ -30,6 +30,11 @@ class Figure {
         return this.fill;
     }
 
+    setImagePatternFill(img){
+        let pattern = this.context.createPattern(img,'repeat');
+        this.setFill(pattern);
+    }
+
     draw(){
         this.context.fillStyle = this.fill;
     }
