@@ -41,4 +41,14 @@ class Circle extends Figure {
         return this.radius;
     }
 
+    pointBelongs(point){
+        let distance =  (point.x - this.posX) * (point.x - this.posX) +
+                        (point.y - this.posY) * (point.y - this.posY);
+        
+        if (distance < (this.radius) * (this.radius)) {
+            return true;
+        }
+        return false;
+    }
+
 }

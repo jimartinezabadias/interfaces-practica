@@ -18,15 +18,15 @@ function mainFunction() {
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
 
-    // let fig = new Rectangle(200,200,100,100,0,context);
-    // fig.draw();
+    let fig = new Circle(200,200,100,0,context);
+    fig.draw();
 
-    // let point = {
-    //     x: 200,
-    //     y: 250
-    // };
+    let point = {
+        x: 150,
+        y: 120
+    };
 
-    // console.log(fig.pointBelongs(point));
+    console.log(fig.pointBelongs(point));
 }
 
 document.addEventListener("DOMContentLoaded", mainFunction);
