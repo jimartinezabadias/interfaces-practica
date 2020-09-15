@@ -15,7 +15,7 @@ body{
 }
 .help_main {
     padding: 0px 32px 0px 8px;
-    max-width: 400px;
+    max-width: 300px;
 }
 .toolbar {
     display: flex;
