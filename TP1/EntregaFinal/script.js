@@ -32,6 +32,7 @@ function white_canvas() {
 
     
     disable_toolbar(false);
+    select_no_tool();
 
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(true,true,false,false);
@@ -185,6 +186,7 @@ async function setImage() {
     current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
     
     disable_toolbar(false);
+    select_no_tool();
 
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(true,true,false,false);
@@ -777,7 +779,7 @@ function initPaint() {
 
     current_image_data = null;
 
-    select_no_tool();
+    selected_tool = 'none';
 
     
     using_pencil = false;
