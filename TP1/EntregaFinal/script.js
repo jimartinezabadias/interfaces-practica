@@ -32,7 +32,9 @@ function white_canvas() {
 
     
     disable_toolbar(false);
+    
     select_no_tool();
+    select_no_filter_btn();
 
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(true,true,false,false);
@@ -70,8 +72,15 @@ function showFileChooser() {
     fileChooser.click();
 }
 
-function deselect_buttons() {
-    let buttons = document.querySelectorAll(".btn-tool");
+function deselect_tool_buttons() {
+    let buttons = document.querySelector(".tools").querySelectorAll("button");
+    buttons.forEach(b => {
+        b.classList.remove("selected");
+    })
+}
+
+function deselect_filter_buttons() {
+    let buttons = document.querySelector(".filters").querySelectorAll("button");
     buttons.forEach(b => {
         b.classList.remove("selected");
     })
@@ -80,22 +89,28 @@ function deselect_buttons() {
 function select_pencil() {
     selected_tool = 'pencil';
     // deseleccionar todos los otros botones
-    deselect_buttons();
+    deselect_tool_buttons();
     let button = document.querySelector("#pencil_btn");
     button.classList.add("selected");
 }
 
 function select_rubber() {
     selected_tool = 'rubber';
-    deselect_buttons();
+    deselect_tool_buttons();
     let button = document.querySelector("#rubber_btn");
     button.classList.add("selected");
 }
 
 function select_no_tool() {
     selected_tool = 'none';
-    deselect_buttons();
+    deselect_tool_buttons();
     let button = document.querySelector("#deselect_btn");
+    button.classList.add("selected");
+}
+
+function select_no_filter_btn() {
+    deselect_filter_buttons();
+    let button = document.querySelector("#clear_filter_btn");
     button.classList.add("selected");
 }
 
@@ -187,6 +202,7 @@ async function setImage() {
     
     disable_toolbar(false);
     select_no_tool();
+    select_no_filter_btn();
 
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(true,true,false,false);
@@ -219,10 +235,15 @@ function bkpImageData(current_image_data) {
 
 }
 
+function clearFilter() {
+    select_no_filter_btn();
+    ctx.putImageData(current_image_data, 0, 0);
+}
+
 function filterNeg(){
     
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#neg_filter_btn");
     button.classList.add("selected");
@@ -262,8 +283,8 @@ function get_binary_color(color) {
 
 function filterBinary() {
 
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#bin_filter_btn");
     button.classList.add("selected");
@@ -287,8 +308,8 @@ function filterBinary() {
 
 function filterSepia() {
 
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#sepia_filter_btn");
     button.classList.add("selected");
@@ -426,8 +447,8 @@ function HSLToRGB(h,s,l) {
 
 function filterBrightness() {
     
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#bright_filter_btn");
     button.classList.add("selected");
@@ -468,7 +489,7 @@ function filterBrightness() {
         }
     }
 
-    deselect_buttons();
+    // deselect_buttons();
 
     ctx.putImageData(current_image_data, 0, 0);
 
@@ -478,8 +499,8 @@ function filterBrightness() {
 
 function filterSaturation() {
     
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#saturation_filter_btn");
     button.classList.add("selected");
@@ -520,7 +541,7 @@ function filterSaturation() {
         }
     }
 
-    deselect_buttons();
+    // deselect_buttons();
 
     ctx.putImageData(current_image_data, 0, 0);
 
@@ -529,8 +550,8 @@ function filterSaturation() {
 
 function filterEdge() {
 
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#edge_filter_btn");
     button.classList.add("selected");
@@ -644,8 +665,8 @@ function promedioVecinos(image_data,pix_x,pix_y) {
 
 function filterSmooth() {
 
-    deselect_buttons();
-    selected_tool = 'none';
+    deselect_filter_buttons();
+    // selected_tool = 'none';
 
     let button = document.querySelector("#smooth_filter_btn");
     button.classList.add("selected");
@@ -695,7 +716,8 @@ function downloadImage() {
 
 function reset_app() {
     // white_canvas();
-    deselect_buttons();
+    deselect_tool_buttons();
+    deselect_filter_buttons();
     initPaint();
 }
 
@@ -719,6 +741,7 @@ function stop_using_mouse(e) {
         using_rubber = false;
         ctx.closePath();
         current_image_data = ctx.getImageData(0,0,canvas.width,canvas.height);
+        select_no_filter_btn();
     }
 }
 
@@ -802,12 +825,12 @@ function initPaint() {
 document.addEventListener("DOMContentLoaded", initPaint);
 
 
-// tamanio de imagen importada
-// guardar image width and height para no aplicar los filtros a todo el canvas
+
+
 
 // Bug: cuando dibuja fuera del canvas y vuelve a entrar.
 
 
 
-// extraer sobel del filter edge (?? comen)
+// extraer sobel del filter edge (??)
 // hacer filtro suavizar usando sobel (hecho sin sobel)

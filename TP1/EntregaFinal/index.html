@@ -9,69 +9,83 @@
 		<div class="main">
 			<div class="paint_main">
 				<div class="toolbar">
-					<button class="btn btn-tool"
-						id="pencil_btn"
-						onclick="select_pencil()">Lápiz</button>
-					<button class="btn btn-tool"
-						id="rubber_btn"
-						onclick="select_rubber()">Goma</button>
-					<button class="btn btn-tool"
-						id="deselect_btn"
-						onclick="select_no_tool()">Ninguno</button>
+					<div class="tools">
+
+						<button class="btn btn-tool"
+							id="pencil_btn"
+							onclick="select_pencil()">Lápiz</button>
+						<button class="btn btn-tool"
+							id="rubber_btn"
+							onclick="select_rubber()">Goma</button>
+						<button class="btn btn-tool"
+							id="deselect_btn"
+							onclick="select_no_tool()">Ninguno</button>
+
+					</div>
 					
 					<br>
 					
-					<button class="btn btn-tool"
+					<div class="filters">
+
+						<button class="btn btn-tool btn-filter"
 						id="neg_filter_btn"
 						onclick="filterNeg()">Negativo</button>
 					
-					<div class="filter">
-						<div class="filter_controls">
-							<label for="brightness_range">Brillo</label>
-							<input type="range" 
-								id="brightness_range"
-								class="filter_range"
-								name="brightness_range" 
+						<div class="filter">
+							<div class="filter_controls">
+								<label for="brightness_range">Brillo</label>
+								<input type="range" 
+									id="brightness_range"
+									class="filter_range"
+									name="brightness_range" 
+									min="0" 
+									max="200"
+									value="100">
+									<button class="btn btn-tool btn-filter"
+										id="bright_filter_btn"
+										onclick="filterBrightness()">Aplicar</button>
+								</div>
+						</div>
+					
+						<button class="btn btn-tool btn-filter"
+							id="bin_filter_btn"
+							onclick="filterBinary()">Binarización</button>
+						
+						<button class="btn btn-tool btn-filter"
+							id="sepia_filter_btn"
+							onclick="filterSepia()">Sepia</button>
+					
+						<div class="filter">
+							<div class="filter_controls">
+								<label for="saturation_range">Saturación</label>
+								<input type="range" 
+								id="saturation_range"
+								class="filter_range" 
+								name="saturation_range" 
 								min="0" 
 								max="200"
 								value="100">
 								<button class="btn btn-tool"
-									id="bright_filter_btn"
-									onclick="filterBrightness()">Aplicar</button>
+									id="saturation_filter_btn"
+									onclick="filterSaturation()">Aplicar</button>
 							</div>
-					</div>
-					
-					<button class="btn btn-tool"
-						id="bin_filter_btn"
-						onclick="filterBinary()">Binarización</button>
-					
-					<button class="btn btn-tool"
-						id="sepia_filter_btn"
-						onclick="filterSepia()">Sepia</button>
-					
-					<div class="filter">
-						<div class="filter_controls">
-							<label for="saturation_range">Saturación</label>
-							<input type="range" 
-							id="saturation_range"
-							class="filter_range" 
-							name="saturation_range" 
-							min="0" 
-							max="200"
-							value="100">
-							<button class="btn btn-tool"
-								id="saturation_filter_btn"
-								onclick="filterSaturation()">Aplicar</button>
 						</div>
+						<button class="btn btn-tool"
+							id="smooth_filter_btn"
+							onclick="filterSmooth()">Suavizado</button>
+						<button class="btn btn-tool"
+							id="edge_filter_btn"
+							onclick="filterEdge()">Detección de Bordes</button>
+						<!-- <button class="btn btn-tool">Blur</button> -->
+						
+						<button class="btn btn-tool"
+							id="clear_filter_btn"
+							onclick="clearFilter()">Sin Filtro</button>
+							
 					</div>
-					<button class="btn btn-tool"
-						id="smooth_filter_btn"
-						onclick="filterSmooth()">Suavizado</button>
-					<button class="btn btn-tool"
-						id="edge_filter_btn"
-						onclick="filterEdge()">Detección de Bordes</button>
-					<!-- <button class="btn btn-tool">Blur</button> -->
+
 				</div>
+
 				<div class="canvas_container">
 	
 					<div class="top_functions">
