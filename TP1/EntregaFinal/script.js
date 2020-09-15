@@ -795,7 +795,7 @@ function initCanvas() {
     // canvas.width = 640;
     // canvas.height = 480;
     canvas.width = 800;
-    canvas.height = 552;
+    canvas.height = 600;
 }
 
 function initPaint() {
