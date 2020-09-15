@@ -83,10 +83,18 @@ function select_pencil() {
     let button = document.querySelector("#pencil_btn");
     button.classList.add("selected");
 }
+
 function select_rubber() {
     selected_tool = 'rubber';
     deselect_buttons();
     let button = document.querySelector("#rubber_btn");
+    button.classList.add("selected");
+}
+
+function select_no_tool() {
+    selected_tool = 'none';
+    deselect_buttons();
+    let button = document.querySelector("#deselect_btn");
     button.classList.add("selected");
 }
 
@@ -769,7 +777,8 @@ function initPaint() {
 
     current_image_data = null;
 
-    selected_tool = 'none';
+    select_no_tool();
+
     
     using_pencil = false;
     using_rubber = false;
