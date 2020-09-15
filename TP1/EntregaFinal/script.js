@@ -207,6 +207,8 @@ async function setImage() {
     // white_canvas, upload_img, download_img, reset
     disable_function_buttons(true,true,false,false);
 
+    fileChooser.value = '';
+
 }
 
 function set_pixel(image_data,x,y,r,g,b,a) {
