@@ -68,7 +68,7 @@ function showFileChooser() {
 
 async function openFile() {
     let fileData = await loadFile(this.files[0]);
-    let imageData = await loadImage(fileData);
+    let image = await loadImage(fileData);
     // currentImage = imageData;
     
     // let figure = newRandomFigure();
@@ -80,7 +80,7 @@ async function openFile() {
     
     // let figure = new Rectangle(posX,posY,width,height,null,context);
     let figure = new Circle(posX,posY,height,null,context);
-    figure.setImageFill(imageData);
+    figure.setFill(image);
     figure.draw();
 
 }
