@@ -10,7 +10,21 @@ class Circle extends Figure {
         this.context.beginPath();
         this.context.arc(this.posX,this.posY,this.radius, 0, 2 * Math.PI);
         this.context.fill();
+        
+        if ( this.fill instanceof Image ){
+            // clip
+            this.context.clip();
+            // insert the image
+            this.context.drawImage(
+                this.fill,
+                this.posX - this.radius,
+                this.posY - this.radius,
+                this.radius * 2,
+                this.radius * 2);
+        }
+
         this.context.closePath();
+
     }
 
     setLinearGragientFill(color1,color2){
@@ -20,14 +34,12 @@ class Circle extends Figure {
         super.setFill(gradient);
     }
 
-    setImageFill(imageData){
+    // setImageFill(image){
+
+        
+
         // console.log(imageData);
-        this.context.drawImage(
-            imageData,
-            this.posX - this.radius,
-            this.posY - this.radius,
-            this.radius * 2,
-            this.radius * 2);
+        
         // let scaledImage = this.context.getImageData(this.posY,this.posY,this.width,this.height);
         
         // super.setSingleImageFill(scaledImage);
@@ -35,7 +47,7 @@ class Circle extends Figure {
         // 
         // this.context.fillStyle = "#ffffff";
         // this.context.fillRect(this.posY,this.posY,this.width,this.height);
-    }
+    // }
 
     getRadius(){
         return this.radius;

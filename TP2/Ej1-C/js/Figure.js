@@ -35,11 +35,6 @@ class Figure {
         this.setFill(pattern);
     }
 
-    setSingleImageFill(img){
-        let fillImage = this.context.createPattern(img,'no-repeat');
-        this.setFill(fillImage);
-    }
-
     draw(){
         this.context.fillStyle = this.fill;
     }
