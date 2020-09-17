@@ -10,7 +10,7 @@ async function mainFunction() {
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
     
-    let fillImage = await Utils.loadImage('../../images/texture1.png');
+    let fillImage = await Utils.loadImage('images/texture1.png');
 
     let posX = Utils.randomInteger(0,canvas.width);
     let posY = Utils.randomInteger(0,canvas.height);
