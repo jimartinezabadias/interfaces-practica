@@ -12,9 +12,16 @@ async function mainFunction() {
     
     let chipImage = await Utils.loadImage('images/texture1.png');
 
+    let board = new Board(context);
+
+    board.draw();
+    
     let chip = new Chip(chipImage,context);
     
     chip.draw();
+
+    
+    
 
 }
 
