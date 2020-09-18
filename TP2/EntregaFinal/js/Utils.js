@@ -14,4 +14,10 @@ class Utils {
         });
     }
 
+    static clearCanvas() {
+        context.rect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "white";
+        context.fill();
+    }
+
 }

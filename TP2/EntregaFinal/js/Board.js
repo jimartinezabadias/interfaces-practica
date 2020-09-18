@@ -1,7 +1,7 @@
 
 const BOARD_WIDTH = 480;
 const BOARD_HEIGHT = 320;
-const BOARD_COLOR = `rgba(0,0,0,255)`;
+const BOARD_COLOR = `#2F4073`;
 
 class Board extends Rectangle {
 
@@ -14,7 +14,7 @@ class Board extends Rectangle {
     }
 
     areFourConnected(){
-        
+
     }
 
 }
