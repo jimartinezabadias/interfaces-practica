@@ -21,8 +21,12 @@ class Rectangle extends Figure {
 
     draw(){
         
+        
         super.draw();
-
+        
+        
+        this.context.save();
+        
         this.context.beginPath();
         
         this.context.moveTo (this.posX, this.posY);
@@ -46,6 +50,8 @@ class Rectangle extends Figure {
         }
 
         this.context.closePath();
+        
+        this.context.restore();
 
     }
 

@@ -23,6 +23,8 @@ class Circle extends Figure {
         
         super.draw();
 
+        this.context.save();
+
         this.context.beginPath();
         this.context.arc(this.posX,this.posY,this.radius, 0, 2 * Math.PI);
         this.context.fill();
@@ -38,8 +40,10 @@ class Circle extends Figure {
                 this.radius * 2,
                 this.radius * 2);
         }
-
+            
         this.context.closePath();
+
+        this.context.restore();
 
     }
     
