@@ -9,4 +9,12 @@ class Board extends Rectangle {
         super(50,50,BOARD_WIDTH,BOARD_HEIGHT,BOARD_COLOR,context);
     }
 
+    putChip(column){
+
+    }
+
+    areFourConnected(){
+        
+    }
+
 }
