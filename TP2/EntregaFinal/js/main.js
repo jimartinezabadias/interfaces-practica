@@ -14,49 +14,6 @@ const PLAYER_COLORS = {
     PLAYER_2: 'red'
 }
 
-function clearCanvas() {
-    context.rect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = "white";
-    context.fill();
-}
-
-function getMousePos(e) {
-    let bx = e.target.getBoundingClientRect();
-
-    return {
-        x: e.clientX - bx.left,
-        y: e.clientY - bx.top
-    };
-
-}
-
-function handleMouseDown(mouseEvent) {
-    let mousePos = getMousePos(mouseEvent);
-    // arrayFigures.forEach(fig => {
-        if (chip.isPointInside(mousePos)){
-            selectedChip = chip;
-            canvas.addEventListener("mousemove",handleMouseMove);
-        }
-    // });
-}
-
-function handleMouseMove(mouseEvent) {
-    if (selectedChip){
-        let mousePos = getMousePos(mouseEvent);
-        selectedChip.moveTo(mousePos);
-        clearCanvas();
-        board.draw();
-        selectedChip.draw();
-    }
-}
-
-function handleMouseUp() {
-    if (selectedChip){
-        selectedChip = null;
-        canvas.removeEventListener("mousemove",handleMouseMove);
-    }
-}
-
 async function mainFunction() {
     
     canvas = document.querySelector("#myCanvas");
@@ -73,8 +30,8 @@ async function mainFunction() {
     chip.draw();
 
 
-    canvas.addEventListener("mousedown",handleMouseDown);
-    canvas.addEventListener("mouseup",handleMouseUp);
+    canvas.addEventListener("mousedown",Mouse.handleMouseDown);
+    canvas.addEventListener("mouseup",Mouse.handleMouseUp);
     
 
 }
