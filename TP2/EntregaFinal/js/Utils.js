@@ -17,7 +17,6 @@ class Utils {
         return Utils.loadImage(imageURL);
 
     }
-
     
     static loadImage(src){
         return new Promise((resolve, reject) => {
@@ -35,9 +34,19 @@ class Utils {
     }
 
     static newGameMatrix(){
-        // console.log(BOARD_COLUMNS);
-        // console.log(BOARD_ROWS);
-        return new Array();
+
+        let matrix =  new Array();
+
+        for (let i = 1; i <= BOARD_COLUMNS; i++){
+            let column = new Array();
+            for (let j = 1; j <= BOARD_ROWS; j++){
+                column.push(BOARD_SLOT.EMPTY);
+            }
+            matrix.push(column);
+        }
+        
+        return matrix;
+
     }
 
 }
