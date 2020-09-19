@@ -24,6 +24,17 @@ class Board {
     putToken(color,column){
         // set token in board matrix
         // return position
+
+        let targetSlot = this.firstEmptySlot(column);
+
+        if (targetSlot != -1) {
+            this.gameMatix[column][targetSlot] = color;
+        } else {
+            // reject play
+        }
+
+        console.table(this.gameMatix);
+
     }
 
     areFourConnected(){
@@ -31,7 +42,7 @@ class Board {
     }
 
     firstEmptySlot(column){
-        for (let i = 1; i <= BOARD_ROWS; i++){
+        for (let i = 0; i <= BOARD_ROWS - 1; i++){
             if (this.gameMatix[column][i] == BOARD_SLOT.EMPTY){
                 return i;
             }

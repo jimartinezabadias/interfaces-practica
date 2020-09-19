@@ -37,9 +37,9 @@ class Utils {
 
         let matrix =  new Array();
 
-        for (let i = 1; i <= BOARD_COLUMNS; i++){
+        for (let i = 0; i <= BOARD_COLUMNS - 1; i++){
             let column = new Array();
-            for (let j = 1; j <= BOARD_ROWS; j++){
+            for (let j = 0; j <= BOARD_ROWS - 1; j++){
                 column.push(BOARD_SLOT.EMPTY);
             }
             matrix.push(column);
