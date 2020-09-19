@@ -14,12 +14,14 @@ const BOARD_SLOT = {
 class Board {
 
     constructor (context){
+        
         this.figure = new Rectangle(50,50,BOARD_WIDTH,BOARD_HEIGHT,BOARD_COLOR,context);
-
         this.gameMatix = Utils.newGameMatrix();
+        // console.table(this.gameMatix);
+
     }
 
-    putToken(column){
+    putToken(color,column){
         // set token in board matrix
         // return position
     }
@@ -29,7 +31,7 @@ class Board {
     }
 
     firstEmptySlot(column){
-        for (let i = 0; i <= 6; i++){
+        for (let i = 1; i <= BOARD_ROWS; i++){
             if (this.gameMatix[column][i] == BOARD_SLOT.EMPTY){
                 return i;
             }

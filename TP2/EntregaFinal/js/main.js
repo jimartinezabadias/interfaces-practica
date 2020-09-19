@@ -22,6 +22,8 @@ async function mainFunction() {
     board = new Board(context);
 
     board.draw();
+
+    console.log(board.firstEmptySlot(6));
     
     let tokenImage_P2 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_2); 
     let tokenImage_P1 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_1); 
