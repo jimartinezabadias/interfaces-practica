@@ -18,14 +18,15 @@ async function mainFunction() {
     
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
-    
-    let chipImage = await Utils.loadImage('images/texture1.png');
 
     board = new Board(context);
 
     board.draw();
     
-    chip = new Chip(PLAYER_COLORS.PLAYER_1,chipImage,context);
+    let chipImage = await Utils.getChipImage(PLAYER_COLORS.PLAYER_2); 
+    // let chipImage_P2 = await Utils.getChipImage(PLAYER_COLORS.PLAYER_2); 
+    
+    chip = new Chip(PLAYER_COLORS.PLAYER_2,chipImage,context);
     
     chip.draw();
 
