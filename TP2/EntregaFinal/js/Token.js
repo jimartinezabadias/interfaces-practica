@@ -8,11 +8,16 @@ class Token {
         this.figure = new Circle(50,50,TOKEN_SIZE,tokenImage,context);
         
         this.color = color;
+        this.inBoard = false;
 
     }
 
     getColor() {
         return this.color;
+    }
+
+    isInBoard(){
+        return this.inBoard;
     }
 
     isDraggable(){
