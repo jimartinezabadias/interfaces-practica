@@ -9,7 +9,7 @@ class Utils {
 
         let imageURL = '';
 
-        if (color == PLAYER_COLORS.PLAYER_1)
+        if (color == PLAYER_1.COLOR)
             imageURL = 'images/Yellow_token_1.jpg';
         else 
             imageURL = 'images/Red_token_1.jpg';
