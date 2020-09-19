@@ -34,4 +34,10 @@ class Utils {
         context.fill();
     }
 
+    static newGameMatrix(){
+        // console.log(BOARD_COLUMNS);
+        // console.log(BOARD_ROWS);
+        return new Array();
+    }
+
 }
