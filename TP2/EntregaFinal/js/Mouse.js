@@ -13,26 +13,26 @@ class Mouse {
     static handleMouseDown(mouseEvent) {
         let mousePos = Mouse.getMousePos(mouseEvent);
         // arrayFigures.forEach(fig => {
-            if (chip.isPointInside(mousePos)){
-                selectedChip = chip;
+            if (token.isPointInside(mousePos)){
+                selectedToken = token;
                 canvas.addEventListener("mousemove",Mouse.handleMouseMove);
             }
         // });
     }
     
     static handleMouseMove(mouseEvent) {
-        if (selectedChip){
+        if (selectedToken){
             let mousePos = Mouse.getMousePos(mouseEvent);
-            selectedChip.moveTo(mousePos);
+            selectedToken.moveTo(mousePos);
             Utils.clearCanvas();
             board.draw();
-            selectedChip.draw();
+            selectedToken.draw();
         }
     }
     
     static handleMouseUp() {
-        if (selectedChip){
-            selectedChip = null;
+        if (selectedToken){
+            selectedToken = null;
             canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
         }
     }
