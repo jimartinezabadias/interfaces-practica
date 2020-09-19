@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: #c1c1c1;
+    font-family: sans-serif;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.game_main{
+    padding: 16px;  
+    display: flex;
+}
