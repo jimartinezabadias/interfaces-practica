@@ -7,8 +7,8 @@ const BOARD_ROWS = 6;
 
 const BOARD_SLOT = {
     EMPTY: null,
-    PLAYER_1: PLAYER_COLORS.PLAYER_1,
-    PLAYER_2: PLAYER_COLORS.PLAYER_2
+    PLAYER_1: PLAYER_1.COLOR,
+    PLAYER_2: PLAYER_2.COLOR
 }
 
 class Board {

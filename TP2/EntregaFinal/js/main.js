@@ -9,9 +9,12 @@ let board;
 let token;
 let selectedToken = null;
 
-const PLAYER_COLORS = {
-    PLAYER_1: 'yellow',
-    PLAYER_2: 'red'
+const PLAYER_1 = {
+    COLOR: 'yellow'
+}
+
+const PLAYER_2 = {
+    COLOR: 'red'
 }
 
 async function mainFunction() {
@@ -24,14 +27,14 @@ async function mainFunction() {
     board.draw();
 
     // console.log(board.firstEmptySlot(1));
-    board.putToken(PLAYER_COLORS.PLAYER_1,0);
-    board.putToken(PLAYER_COLORS.PLAYER_2,0);
-    board.putToken(PLAYER_COLORS.PLAYER_1,1);
+    board.putToken(PLAYER_1.COLOR,0);
+    board.putToken(PLAYER_2.COLOR,0);
+    board.putToken(PLAYER_1.COLOR,1);
     
-    let tokenImage_P2 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_2); 
-    let tokenImage_P1 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_1); 
+    let tokenImage_P2 = await Utils.getTokenImage(PLAYER_2.COLOR); 
+    let tokenImage_P1 = await Utils.getTokenImage(PLAYER_1.COLOR); 
     
-    token = new Token(PLAYER_COLORS.PLAYER_1,tokenImage_P1,context);
+    token = new Token(PLAYER_1.COLOR,tokenImage_P1,context);
     
     token.draw();
 
