@@ -23,7 +23,10 @@ async function mainFunction() {
 
     board.draw();
 
-    console.log(board.firstEmptySlot(6));
+    // console.log(board.firstEmptySlot(1));
+    board.putToken(PLAYER_COLORS.PLAYER_1,0);
+    board.putToken(PLAYER_COLORS.PLAYER_2,0);
+    board.putToken(PLAYER_COLORS.PLAYER_1,1);
     
     let tokenImage_P2 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_2); 
     let tokenImage_P1 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_1); 
