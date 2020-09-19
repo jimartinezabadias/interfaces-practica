@@ -6,8 +6,8 @@ let canvas = null;
 let context = null;
 
 let board;
-let chip;
-let selectedChip = null;
+let token;
+let selectedToken = null;
 
 const PLAYER_COLORS = {
     PLAYER_1: 'yellow',
@@ -23,12 +23,12 @@ async function mainFunction() {
 
     board.draw();
     
-    let chipImage = await Utils.getChipImage(PLAYER_COLORS.PLAYER_2); 
-    // let chipImage_P2 = await Utils.getChipImage(PLAYER_COLORS.PLAYER_2); 
+    let tokenImage_P2 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_2); 
+    let tokenImage_P1 = await Utils.getTokenImage(PLAYER_COLORS.PLAYER_1); 
     
-    chip = new Chip(PLAYER_COLORS.PLAYER_2,chipImage,context);
+    token = new Token(PLAYER_COLORS.PLAYER_1,tokenImage_P1,context);
     
-    chip.draw();
+    token.draw();
 
 
     canvas.addEventListener("mousedown",Mouse.handleMouseDown);

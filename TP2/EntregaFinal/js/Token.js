@@ -1,11 +1,11 @@
 
-const CHIP_SIZE = 25;
+const TOKEN_SIZE = 25;
 
-class Chip extends Circle {
+class Token extends Circle {
     
-    constructor (color,chipImage,context){
+    constructor (color,tokenImage,context){
         
-        super(50,50,CHIP_SIZE,chipImage,context);
+        super(50,50,TOKEN_SIZE,tokenImage,context);
         
         this.color = color;
 
