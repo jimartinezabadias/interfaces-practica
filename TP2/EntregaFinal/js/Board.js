@@ -1,6 +1,6 @@
 
-const BOARD_WIDTH = 480;
-const BOARD_HEIGHT = 320;
+const BOARD_WIDTH = 640;
+const BOARD_HEIGHT = 480;
 const BOARD_COLOR = `#2F4073`;
 const BOARD_COLUMNS = 7;
 const BOARD_ROWS = 6;
@@ -15,7 +15,14 @@ class Board {
 
     constructor (context){
         
-        this.figure = new Rectangle(50,50,BOARD_WIDTH,BOARD_HEIGHT,BOARD_COLOR,context);
+        this.figure = new Rectangle(
+            192,
+            110,
+            BOARD_WIDTH,
+            BOARD_HEIGHT,
+            BOARD_COLOR,
+            context);
+        
         this.gameMatix = Utils.newGameMatrix();
         // console.table(this.gameMatix);
 
