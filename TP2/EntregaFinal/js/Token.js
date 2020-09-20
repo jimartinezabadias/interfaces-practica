@@ -5,7 +5,7 @@ class Token {
     
     constructor (color,tokenImage,context){
         
-        this.figure = new Circle(50,50,TOKEN_SIZE,tokenImage,context);
+        this.figure = new Circle(512,50,TOKEN_SIZE,tokenImage,context);
         
         this.color = color;
         this.inBoard = false;

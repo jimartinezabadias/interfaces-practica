@@ -24,11 +24,12 @@ async function mainFunction() {
 
     let game = new Game(context);
 
-    game.initGame();
-
-    game.drawBoard();
-
-    game.drawTokens();
+    if (await game.initGame()){
+       
+        game.drawBoard();
+        game.drawTokens();
+    
+    }
 
     // board = new Board(context);
 
@@ -47,8 +48,8 @@ async function mainFunction() {
     // token.draw();
 
 
-    canvas.addEventListener("mousedown",Mouse.handleMouseDown);
-    canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+    // canvas.addEventListener("mousedown",Mouse.handleMouseDown);
+    // canvas.addEventListener("mouseup",Mouse.handleMouseUp);
     
 
 }
