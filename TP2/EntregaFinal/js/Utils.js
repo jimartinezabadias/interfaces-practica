@@ -5,7 +5,7 @@ class Utils {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    static getTokenImage (color) {
+    static async getTokenImage(color) {
 
         let imageURL = '';
 
@@ -14,7 +14,9 @@ class Utils {
         else 
             imageURL = 'images/Red_token_1.jpg';
 
-        return Utils.loadImage(imageURL);
+        let image = Utils.loadImage(imageURL);
+        
+        return image;
 
     }
     
@@ -47,6 +49,18 @@ class Utils {
         
         return matrix;
 
+    }
+
+    static getTokenArray(color,tokenImage,context){
+
+        let array = new Array();
+
+        for (let i = 0; i < TOKEN_NUMBER - 1; i++) {
+            let newToken = new Token(color,tokenImage,context);
+            array[i] = newToken;
+        }
+
+        return array;
     }
 
 }
