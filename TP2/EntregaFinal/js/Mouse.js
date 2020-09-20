@@ -20,7 +20,7 @@ class Mouse {
         
         tokens_P1.forEach( token => {
             if (token.isPointInside(mousePos)){
-                selectedToken = token;
+                game.setSelectedToken(token);
             }
         });
         
@@ -28,11 +28,11 @@ class Mouse {
         
         tokens_P2.forEach( token => {
             if (token.isPointInside(mousePos)){
-                selectedToken = token;
+                game.setSelectedToken(token);
             }
         });
 
-        if (selectedToken){
+        if (game.getSelectedToken()){
             canvas.addEventListener("mousemove",Mouse.handleMouseMove);
             canvas.addEventListener("mouseup",Mouse.handleMouseUp);
         }
@@ -40,20 +40,22 @@ class Mouse {
     }
     
     static handleMouseMove(mouseEvent) {
+        let selectedToken = game.getSelectedToken();
         if (selectedToken){
             let mousePos = Mouse.getMousePos(mouseEvent);
             selectedToken.moveTo(mousePos);
             Utils.clearCanvas();
-            board.draw();
-            selectedToken.draw();
+            game.drawBoard();
+            game.drawTokens();
         }
     }
     
     static handleMouseUp() {
-        // if (selectedToken){
-            // selectedToken = null;
+        let selectedToken = game.getSelectedToken();
+        if (selectedToken){
+            game.setSelectedToken(null);
             canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
-        // }
+        }
     }
 
 }

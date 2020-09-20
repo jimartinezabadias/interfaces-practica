@@ -18,6 +18,7 @@ class Game {
         this.turn = null;
         this.tokens_P1 = null;
         this.tokens_P2 = null;
+        this.selectedToken = null;
 
     }
 
@@ -40,6 +41,10 @@ class Game {
         return true;
 
     }
+
+    getContext(){
+        return this.context;
+    }
     
     getTokens_P1(){
         return this.tokens_P1;
@@ -47,6 +52,14 @@ class Game {
 
     getTokens_P2(){
         return this.tokens_P2;
+    }
+    
+    getSelectedToken(){
+        return this.selectedToken;
+    }
+
+    setSelectedToken(token){
+        this.selectedToken = token;
     }
 
     drawBoard(){

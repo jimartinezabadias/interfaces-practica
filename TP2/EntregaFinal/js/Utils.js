@@ -30,6 +30,7 @@ class Utils {
     }
 
     static clearCanvas() {
+        let context = game.getContext();
         context.rect(0, 0, canvas.width, canvas.height);
         context.fillStyle = "white";
         context.fill();
