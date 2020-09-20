@@ -56,7 +56,7 @@ class Utils {
 
         let array = new Array();
 
-        for (let i = 0; i < TOKEN_NUMBER - 1; i++) {
+        for (let i = 0; i < TOKEN_NUMBER; i++) {
             let newToken = new Token(color,tokenImage,context);
             array[i] = newToken;
         }
