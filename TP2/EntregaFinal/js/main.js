@@ -2,7 +2,9 @@
 
 "use strict"
 
-// let canvas = null;
+let game = null;
+let canvas = null;
+
 // let context = null;
 
 // let board;
@@ -11,10 +13,10 @@
 
 async function mainFunction() {
     
-    let canvas = document.querySelector("#myCanvas");
+    canvas = document.querySelector("#myCanvas");
     let context = canvas.getContext("2d");
 
-    let game = new Game(canvas,context);
+    game = new Game(context);
 
     if (await game.initGame()){
        
