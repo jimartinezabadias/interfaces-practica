@@ -12,11 +12,14 @@ class Mouse {
     
     static handleMouseDown(mouseEvent) {
         let mousePos = Mouse.getMousePos(mouseEvent);
+        
+        // console.log('mouse down');
+
         // arrayFigures.forEach(fig => {
-            if (token.isPointInside(mousePos)){
-                selectedToken = token;
-                canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            }
+            // if (token.isPointInside(mousePos)){
+            //     selectedToken = token;
+            //     canvas.addEventListener("mousemove",Mouse.handleMouseMove);
+            // }
         // });
     }
     

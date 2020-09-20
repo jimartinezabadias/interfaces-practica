@@ -40,7 +40,7 @@ class Board {
             // reject play
         }
 
-        console.table(this.gameMatix);
+        // console.table(this.gameMatix);
 
     }
 
@@ -59,6 +59,7 @@ class Board {
 
     draw(){
         this.figure.draw();
+        console.table(this.gameMatix);
     }
 
 }
