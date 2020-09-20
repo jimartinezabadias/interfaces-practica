@@ -12,8 +12,6 @@ class Mouse {
     
     static handleMouseDown(mouseEvent) {
         let mousePos = Mouse.getMousePos(mouseEvent);
-        
-        // console.log('mouse down');
 
         // arrayFigures.forEach(fig => {
             // if (token.isPointInside(mousePos)){
