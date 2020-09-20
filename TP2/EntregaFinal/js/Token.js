@@ -16,12 +16,12 @@ class Token {
         return this.color;
     }
 
-    isInBoard(){
-        return this.inBoard;
+    setUsed(){
+        this.inBoard = true;
     }
-
+    
     isDraggable(){
-        // if in players turn
+        return !this.inBoard;
     }
 
     isPointInside(point){

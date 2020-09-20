@@ -43,7 +43,7 @@ class Utils {
         for (let i = 1; i <= BOARD_COLUMNS; i++){
             let column = new Array();
             let slotX = ( (canvas.width - BOARD_WIDTH) / 2 ) + 
-                            ( ((2 * i) - 1) * ((BOARD_WIDTH / BOARD_COLUMNS) / 2) );
+                        ( ((2 * i) - 1) * ((BOARD_WIDTH / BOARD_COLUMNS) / 2) );
 
             for (let j = 1; j <= BOARD_ROWS; j++){
                 
