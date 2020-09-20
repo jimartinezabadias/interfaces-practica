@@ -14,25 +14,37 @@ class Mouse {
         
         let mousePos = Mouse.getMousePos(mouseEvent);
         
-        // let tokens_P1 = game.getTokens_P1();
+        let tokens_P1 = game.getTokens_P1();
         
-        // tokens_P1.forEach( token => {
-        //     if (token.isPointInside(mousePos)){
-        //         game.setSelectedToken(token);
-        //     }
-        // });
+        tokens_P1.forEach( token => {
+            if (token.isPointInside(mousePos) && token.isDraggable()){
+                game.setSelectedToken(token);
+            }
+        });
         
-        // let tokens_P2 = game.getTokens_P2();
+        let tokens_P2 = game.getTokens_P2();
         
-        // tokens_P2.forEach( token => {
-        //     if (token.isPointInside(mousePos)){
-        //         game.setSelectedToken(token);
-        //     }
+        tokens_P2.forEach( token => {
+            if (token.isPointInside(mousePos) && token.isDraggable()){
+                game.setSelectedToken(token);
+            }
+        });
+
+        if (game.getSelectedToken()){
+            canvas.addEventListener("mousemove",Mouse.handleMouseMove);
+            canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+        }
+
+        // arrayFigures.forEach(fig => {
+            // if (token.isPointInside(mousePos)){
+            //     selectedToken = token;
+            //     canvas.addEventListener("mousemove",Mouse.handleMouseMove);
+            // }
         // });
 
         // if (game.getSelectedToken()){
-            canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+            // canvas.addEventListener("mousemove",Mouse.handleMouseMove);
+            // canvas.addEventListener("mouseup",Mouse.handleMouseUp);
         // }
 
     }
@@ -57,26 +69,26 @@ class Mouse {
         
         if (selectedToken){
 
-            // let mousePos = Mouse.getMousePos(mouseEvent);
-            
-            // let newTokenPosition = null;
-            
-            // let columsDrops = game.getColumsDrop();
-            
-            // columsDrops.forEach( drop => {
-            //     if (drop.isPointInside(mousePos)){
-            //         let color = game.getTurn();
-            //         newTokenPosition = game.getBoard().putToken(color,drop.columnNumber);
-            //     } else {
-            //         newTokenPosition = {
-            //             x: Utils.randomInteger(50,150),
-            //             y: Utils.randomInteger(250,450)
-            //         };
-            //     }
-            // });
+            let mousePos = Mouse.getMousePos(mouseEvent);
 
-            // game.drawBoard();
-            // game.drawTokens();
+            let color = game.getTurn();
+        
+            let board = game.getBoard();
+            let targetColumn = board.getColumnIn(mousePos);
+            let newTokenPosition = null;
+
+            if (targetColumn != -1){
+                newTokenPosition = board.putToken(color,targetColumn);
+                selectedToken.moveTo(newTokenPosition);
+                selectedToken.setUsed();
+            } else {
+                // reset token position
+            }
+            
+            Utils.clearCanvas();
+            game.drawBoard();
+            game.drawTokens();
+            
             // process board
             // next turn
             
@@ -85,16 +97,6 @@ class Mouse {
 
         canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
 
-        let turn = game.getTurn();
-        let mousePos = Mouse.getMousePos(mouseEvent);
-        
-        let board = game.getBoard();
-        let targetColumn = board.getColumnIn(mousePos);
-
-        if (targetColumn != -1){
-            console.log(targetColumn);
-            board.putToken(turn,targetColumn);
-        }
     }
 
 }

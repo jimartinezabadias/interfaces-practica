@@ -47,7 +47,8 @@ class Board {
         let targetSlot = this.firstEmptySlot(column);
 
         if (targetSlot != -1) {
-            this.gameMatix[column][targetSlot] = color;
+            this.gameMatix[column][targetSlot].state = color;
+            return this.gameMatix[column][targetSlot].tokenPosition;
         } else {
             console.log('no empty slot');
         }
@@ -61,7 +62,7 @@ class Board {
     }
 
     firstEmptySlot(column){
-        for (let i = 0; i < BOARD_ROWS; i++){
+        for (let i = BOARD_ROWS - 1; i => 0; i--){
             if (this.gameMatix[column][i].state == BOARD_SLOT.EMPTY){
                 return i;
             }
