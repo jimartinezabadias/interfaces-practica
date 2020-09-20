@@ -59,7 +59,7 @@ class Board {
 
     draw(){
         this.figure.draw();
-        console.table(this.gameMatix);
+        // console.table(this.gameMatix);
     }
 
 }

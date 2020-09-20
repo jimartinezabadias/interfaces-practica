@@ -20,7 +20,6 @@ async function mainFunction() {
 
     if (await game.initGame()){
        
-        // game.update ?
         game.drawBoard();
         game.drawTokens();
     
