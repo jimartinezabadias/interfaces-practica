@@ -22,21 +22,29 @@ async function mainFunction() {
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
 
-    board = new Board(context);
+    let game = new Game(context);
 
-    board.draw();
+    game.initGame();
 
-    // console.log(board.firstEmptySlot(1));
-    board.putToken(PLAYER_1.COLOR,0);
-    board.putToken(PLAYER_2.COLOR,0);
-    board.putToken(PLAYER_1.COLOR,1);
+    game.drawBoard();
+
+    game.drawTokens();
+
+    // board = new Board(context);
+
+    // board.draw();
+
     
-    let tokenImage_P2 = await Utils.getTokenImage(PLAYER_2.COLOR); 
-    let tokenImage_P1 = await Utils.getTokenImage(PLAYER_1.COLOR); 
+    // board.putToken(PLAYER_1.COLOR,0);
+    // board.putToken(PLAYER_2.COLOR,0);
+    // board.putToken(PLAYER_1.COLOR,1);
     
-    token = new Token(PLAYER_1.COLOR,tokenImage_P1,context);
+    // let tokenImage_P2 = await Utils.getTokenImage(PLAYER_2.COLOR); 
+    // let tokenImage_P1 = await Utils.getTokenImage(PLAYER_1.COLOR); 
     
-    token.draw();
+    // token = new Token(PLAYER_1.COLOR,tokenImage_P1,context);
+    
+    // token.draw();
 
 
     canvas.addEventListener("mousedown",Mouse.handleMouseDown);
