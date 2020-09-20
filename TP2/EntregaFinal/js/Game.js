@@ -11,9 +11,8 @@ const TOKEN_NUMBER = 21;
 
 class Game {
 
-    constructor (canvas,context){
+    constructor (context){
 
-        this.canvas = canvas;
         this.context = context;
         this.board = null;
         this.turn = null;
@@ -36,11 +35,18 @@ class Game {
         
         this.turn = PLAYER_1.COLOR;
 
-        // this.canvas.addEventListener("mousedown",Mouse.handleMouseDown);
-        // this.canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+        canvas.addEventListener("mousedown", Mouse.handleMouseDown);
 
         return true;
 
+    }
+    
+    getTokens_P1(){
+        return this.tokens_P1;
+    }
+
+    getTokens_P2(){
+        return this.tokens_P2;
     }
 
     drawBoard(){

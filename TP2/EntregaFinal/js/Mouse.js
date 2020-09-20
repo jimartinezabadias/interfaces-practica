@@ -11,16 +11,32 @@ class Mouse {
     }
     
     static handleMouseDown(mouseEvent) {
+
+        let selectedToken = null;
+        
         let mousePos = Mouse.getMousePos(mouseEvent);
         
-        // console.log('mouse down');
+        let tokens_P1 = game.getTokens_P1();
+        
+        tokens_P1.forEach( token => {
+            if (token.isPointInside(mousePos)){
+                selectedToken = token;
+            }
+        });
+        
+        let tokens_P2 = game.getTokens_P2();
+        
+        tokens_P2.forEach( token => {
+            if (token.isPointInside(mousePos)){
+                selectedToken = token;
+            }
+        });
 
-        // arrayFigures.forEach(fig => {
-            // if (token.isPointInside(mousePos)){
-            //     selectedToken = token;
-            //     canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            // }
-        // });
+        if (selectedToken){
+            canvas.addEventListener("mousemove",Mouse.handleMouseMove);
+            canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+        }
+
     }
     
     static handleMouseMove(mouseEvent) {
@@ -34,10 +50,10 @@ class Mouse {
     }
     
     static handleMouseUp() {
-        if (selectedToken){
-            selectedToken = null;
+        // if (selectedToken){
+            // selectedToken = null;
             canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
-        }
+        // }
     }
 
 }
