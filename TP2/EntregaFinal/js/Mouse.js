@@ -85,14 +85,15 @@ class Mouse {
 
         canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
 
-        console.log(game.getTurn());
+        let turn = game.getTurn();
         let mousePos = Mouse.getMousePos(mouseEvent);
         
-        let targetColumn = game.getBoard().getColumnIn(mousePos);
+        let board = game.getBoard();
+        let targetColumn = board.getColumnIn(mousePos);
 
         if (targetColumn != -1){
             console.log(targetColumn);
-            // game.putToken(targetColumn...);
+            board.putToken(turn,targetColumn);
         }
     }
 
