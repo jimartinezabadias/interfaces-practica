@@ -58,6 +58,10 @@ class Game {
         return this.selectedToken;
     }
 
+    getBoard(){
+        return this.board;
+    }
+
     setSelectedToken(token){
         this.selectedToken = token;
     }

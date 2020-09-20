@@ -40,16 +40,72 @@ class Utils {
 
         let matrix =  new Array();
 
-        for (let i = 0; i <= BOARD_COLUMNS - 1; i++){
+        for (let i = 1; i <= BOARD_COLUMNS; i++){
             let column = new Array();
-            for (let j = 0; j <= BOARD_ROWS - 1; j++){
-                column.push(BOARD_SLOT.EMPTY);
+            let slotX = ( (canvas.width - BOARD_WIDTH) / 2 ) + 
+                            ( ((2 * i) - 1) * ((BOARD_WIDTH / BOARD_COLUMNS) / 2) );
+
+            for (let j = 1; j <= BOARD_ROWS; j++){
+                
+                let newSlot = Utils.getNewBoardSlot();
+                
+                let slotY = ( (canvas.height - BOARD_HEIGHT) / 2 ) + 
+                            ( ((2 * j) - 1) * ((BOARD_HEIGHT / BOARD_ROWS) / 2) );
+
+                newSlot.state = BOARD_SLOT.EMPTY;
+                newSlot.tokenPosition.x = slotX;
+                newSlot.tokenPosition.y = slotY;
+                column.push(newSlot);
             }
             matrix.push(column);
         }
         
         return matrix;
 
+    }
+
+    static newDropArea(context){
+        
+        // this.dropArea = new Rectangle(
+        //     (canvas.width - BOARD_WIDTH) / 2,
+        //     0,
+        //     BOARD_WIDTH,
+        //     (canvas.height - BOARD_HEIGHT) / 2,
+        //     `rgba(0,0,0,50)`,
+        //     context);
+
+        let dropArea = new Array();
+
+        for (let i = 1; i <= BOARD_COLUMNS; i++){
+            let dropSlot = new Rectangle(
+                (canvas.width - BOARD_WIDTH) / 2 + (BOARD_WIDTH / BOARD_COLUMNS) * (i - 1),
+                0,
+                (BOARD_WIDTH / BOARD_COLUMNS),
+                (canvas.height - BOARD_HEIGHT) / 2,
+                `rgba(0,0,0,50)`,
+                context
+            );
+            dropArea.push(dropSlot);
+            dropSlot.draw();
+        }
+
+        return dropArea;
+
+    }
+
+
+    static getNewBoardSlot(){
+        
+        let slot = {
+            state: null,
+            tokenPosition : {
+                x: null,
+                y: null
+            }
+        };
+
+        return slot;
+        
     }
 
     static getTokenArray(color,tokenImage,context){

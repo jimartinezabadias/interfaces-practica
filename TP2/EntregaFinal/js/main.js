@@ -32,4 +32,5 @@ document.addEventListener("DOMContentLoaded", mainFunction);
 
 
 
-// initGame: subscribe events
+// Move game matrix to game class
+// Create array of slots in board.

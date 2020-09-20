@@ -6,7 +6,7 @@ const BOARD_COLUMNS = 7;
 const BOARD_ROWS = 6;
 
 const BOARD_SLOT = {
-    EMPTY: null,
+    EMPTY: 'empty',
     PLAYER_1: PLAYER_1.COLOR,
     PLAYER_2: PLAYER_2.COLOR
 }
@@ -16,15 +16,27 @@ class Board {
     constructor (context){
         
         this.figure = new Rectangle(
-            192,
-            110,
+            (canvas.width - BOARD_WIDTH) / 2,
+            (canvas.height - BOARD_HEIGHT) / 2,
             BOARD_WIDTH,
             BOARD_HEIGHT,
             BOARD_COLOR,
             context);
+
+        // this.dropArea = new Rectangle(
+        //     (canvas.width - BOARD_WIDTH) / 2,
+        //     0,
+        //     BOARD_WIDTH,
+        //     (canvas.height - BOARD_HEIGHT) / 2,
+        //     `rgba(0,0,0,50)`,
+        //     context);
         
+        this.dropArea = Utils.newDropArea(context);
+
         this.gameMatix = Utils.newGameMatrix();
-        // console.table(this.gameMatix);
+
+        console.table(this.gameMatix);
+        console.table(this.dropArea);
 
     }
 
@@ -60,6 +72,18 @@ class Board {
     draw(){
         this.figure.draw();
         // console.table(this.gameMatix);
+    }
+
+    getColumnIn(mousePos) {
+
+        for (let i = 0; i < BOARD_COLUMNS; i++) {
+            if (this.dropArea[i].isPointInside(mousePos)){
+                return i;
+            }
+        }
+
+        return -1;
+
     }
 
 }

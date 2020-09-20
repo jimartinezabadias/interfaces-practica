@@ -88,6 +88,12 @@ class Mouse {
         console.log(game.getTurn());
         let mousePos = Mouse.getMousePos(mouseEvent);
         
+        let targetColumn = game.getBoard().getColumnIn(mousePos);
+
+        if (targetColumn != -1){
+            console.log(targetColumn);
+            // game.putToken(targetColumn...);
+        }
     }
 
 }
