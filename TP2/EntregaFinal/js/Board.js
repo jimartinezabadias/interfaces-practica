@@ -31,12 +31,12 @@ class Board {
         //     `rgba(0,0,0,50)`,
         //     context);
         
-        this.dropArea = Utils.newDropArea(context);
+        this.dropTokenArea = Utils.newDropTokenArea(context);
 
         this.gameMatix = Utils.newGameMatrix();
 
         console.table(this.gameMatix);
-        console.table(this.dropArea);
+        // console.table(this.dropTokenArea);
 
     }
 
@@ -49,10 +49,10 @@ class Board {
         if (targetSlot != -1) {
             this.gameMatix[column][targetSlot] = color;
         } else {
-            // reject play
+            console.log('no empty slot');
         }
 
-        // console.table(this.gameMatix);
+        console.table(this.gameMatix);
 
     }
 
@@ -61,8 +61,8 @@ class Board {
     }
 
     firstEmptySlot(column){
-        for (let i = 0; i <= BOARD_ROWS - 1; i++){
-            if (this.gameMatix[column][i] == BOARD_SLOT.EMPTY){
+        for (let i = 0; i < BOARD_ROWS; i++){
+            if (this.gameMatix[column][i].state == BOARD_SLOT.EMPTY){
                 return i;
             }
         }
@@ -77,7 +77,7 @@ class Board {
     getColumnIn(mousePos) {
 
         for (let i = 0; i < BOARD_COLUMNS; i++) {
-            if (this.dropArea[i].isPointInside(mousePos)){
+            if (this.dropTokenArea[i].isPointInside(mousePos)){
                 return i;
             }
         }

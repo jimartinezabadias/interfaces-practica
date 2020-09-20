@@ -64,19 +64,12 @@ class Utils {
 
     }
 
-    static newDropArea(context){
-        
-        // this.dropArea = new Rectangle(
-        //     (canvas.width - BOARD_WIDTH) / 2,
-        //     0,
-        //     BOARD_WIDTH,
-        //     (canvas.height - BOARD_HEIGHT) / 2,
-        //     `rgba(0,0,0,50)`,
-        //     context);
+    static newDropTokenArea(context){
 
         let dropArea = new Array();
 
         for (let i = 1; i <= BOARD_COLUMNS; i++){
+            
             let dropSlot = new Rectangle(
                 (canvas.width - BOARD_WIDTH) / 2 + (BOARD_WIDTH / BOARD_COLUMNS) * (i - 1),
                 0,
@@ -85,8 +78,9 @@ class Utils {
                 `rgba(0,0,0,50)`,
                 context
             );
+            
             dropArea.push(dropSlot);
-            dropSlot.draw();
+
         }
 
         return dropArea;
