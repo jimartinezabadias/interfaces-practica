@@ -30,5 +30,5 @@ async function mainFunction() {
 document.addEventListener("DOMContentLoaded", mainFunction);
 
 
-// initGame: initial position of tokens
+
 // initGame: subscribe events

@@ -32,10 +32,12 @@ class Game {
         this.tokens_P1 = Utils.getTokenArray(PLAYER_1.COLOR,tokenImage_P1,this.context);
         this.tokens_P2 = Utils.getTokenArray(PLAYER_2.COLOR,tokenImage_P2,this.context);
 
+        Utils.placeTokens(this.tokens_P1,this.tokens_P2);
+        
         this.turn = PLAYER_1.COLOR;
 
-        this.canvas.addEventListener("mousedown",Mouse.handleMouseDown);
-        // canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+        // this.canvas.addEventListener("mousedown",Mouse.handleMouseDown);
+        // this.canvas.addEventListener("mouseup",Mouse.handleMouseUp);
 
         return true;
 

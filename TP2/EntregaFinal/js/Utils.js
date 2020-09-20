@@ -63,4 +63,23 @@ class Utils {
         return array;
     }
 
+    static placeTokens(tokens_P1,tokens_P2){
+        
+        tokens_P1.forEach(token => {
+            let randomPoint = {
+                x: Utils.randomInteger(50,150),
+                y: Utils.randomInteger(250,450)
+            };
+            token.moveTo(randomPoint);
+        });
+        
+        tokens_P2.forEach(token => {
+            let randomPoint = {
+                x: Utils.randomInteger(874,974),
+                y: Utils.randomInteger(250,450)
+            };
+            token.moveTo(randomPoint);
+        });
+    }
+
 }
