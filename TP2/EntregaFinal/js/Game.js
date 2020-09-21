@@ -7,7 +7,6 @@ const PLAYER_2 = {
     COLOR: 'red'
 }
 
-const TOKEN_NUMBER = 21;
 
 class Game {
 

@@ -32,5 +32,10 @@ document.addEventListener("DOMContentLoaded", mainFunction);
 
 
 
+// reject if column is full
+// pass turns
+// verify board
+
+
 // Move game matrix to game class
 // Create array of slots in board.
