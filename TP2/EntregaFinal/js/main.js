@@ -31,8 +31,6 @@ async function mainFunction() {
 document.addEventListener("DOMContentLoaded", mainFunction);
 
 
-
-// reject if column is full
 // pass turns
 // verify board
 
