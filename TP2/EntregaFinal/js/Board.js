@@ -18,27 +18,19 @@ class Board {
     constructor (context){
         
         this.figure = new Rectangle(
-            (canvas.width - BOARD_WIDTH) / 2,
-            (canvas.height - BOARD_HEIGHT) / 2,
-            BOARD_WIDTH,
-            BOARD_HEIGHT,
+            (canvas.width - BOARD_WIDTH) / 2 - 10,
+            (canvas.height - BOARD_HEIGHT) / 2 - 10,
+            BOARD_WIDTH + 20,
+            BOARD_HEIGHT + 20,
             BOARD_COLOR,
             context);
-
-        // this.dropArea = new Rectangle(
-        //     (canvas.width - BOARD_WIDTH) / 2,
-        //     0,
-        //     BOARD_WIDTH,
-        //     (canvas.height - BOARD_HEIGHT) / 2,
-        //     `rgba(0,0,0,50)`,
-        //     context);
         
         this.dropTokenArea = Utils.newDropTokenArea(context);
 
         this.gameMatix = Utils.newGameMatrix();
 
         console.table(this.gameMatix);
-        // console.table(this.dropTokenArea);
+
 
     }
 
@@ -55,8 +47,6 @@ class Board {
             console.log('no empty slot');
         }
 
-        console.table(this.gameMatix);
-
     }
 
     areFourConnected(){
@@ -64,7 +54,7 @@ class Board {
     }
 
     firstEmptySlot(column){
-        for (let i = BOARD_ROWS - 1; i => 0; i--){
+        for (let i = BOARD_ROWS - 1; i >= 0; i--){
             if (this.gameMatix[column][i].state == BOARD_SLOT.EMPTY){
                 return i;
             }

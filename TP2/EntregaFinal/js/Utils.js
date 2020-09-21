@@ -116,29 +116,10 @@ class Utils {
 
     static placeTokens(tokens_P1,tokens_P2){
         
-        tokens_P1.forEach(token => {
-            let randomPoint = {
-                x: Utils.randomInteger(
-                    50,
-                    (canvas.width - BOARD_WIDTH) / 2 - 50),
-                y: Utils.randomInteger(
-                    canvas.height / 2 - 50 ,
-                    canvas.height / 2 + 50)
-            };
-            token.moveTo(randomPoint);
-        });
+        tokens_P1.forEach(token => { token.setInitialPosition(); });
         
-        tokens_P2.forEach(token => {
-            let randomPoint = {
-                x: Utils.randomInteger(
-                    BOARD_WIDTH + (canvas.width - BOARD_WIDTH) / 2 + 50,
-                    canvas.width - 50),
-                y: Utils.randomInteger(
-                    canvas.height / 2 - 50,
-                    canvas.height / 2 + 50)
-            };
-            token.moveTo(randomPoint);
-        });
+        tokens_P2.forEach(token => {token.setInitialPosition(); });
+        
     }
 
 }

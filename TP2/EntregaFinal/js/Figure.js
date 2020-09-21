@@ -34,7 +34,7 @@ class Figure {
         this.context.fillStyle = this.fill;
     }
 
-    moveTo(point){
+    setPosition(point){
         this.posX = point.x;
         this.posY = point.y;
     }

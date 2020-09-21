@@ -27,8 +27,39 @@ class Token {
         return this.figure.isPointInside(point);
     }
 
-    moveTo(point){
-        this.figure.moveTo(point);
+    setPosition(point){
+        this.figure.setPosition(point);
+    }
+
+    setInitialPosition(){
+        
+        let randomPoint;
+
+        switch (this.color) {
+            case PLAYER_1.COLOR:
+                randomPoint = {
+                    x: Utils.randomInteger(
+                        50,
+                        (canvas.width - BOARD_WIDTH) / 2 - 50),
+                    y: Utils.randomInteger(
+                        canvas.height / 2 - 50 ,
+                        canvas.height / 2 + 50)
+                };    
+                break;
+            case PLAYER_2.COLOR:
+                randomPoint = {
+                    x: Utils.randomInteger(
+                        BOARD_WIDTH + (canvas.width - BOARD_WIDTH) / 2 + 50,
+                        canvas.width - 50),
+                    y: Utils.randomInteger(
+                        canvas.height / 2 - 50,
+                        canvas.height / 2 + 50)
+                };
+                break;
+        }
+
+        this.figure.setPosition(randomPoint);
+    
     }
 
     draw(){

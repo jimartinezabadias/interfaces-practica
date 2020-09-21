@@ -35,18 +35,6 @@ class Mouse {
             canvas.addEventListener("mouseup",Mouse.handleMouseUp);
         }
 
-        // arrayFigures.forEach(fig => {
-            // if (token.isPointInside(mousePos)){
-            //     selectedToken = token;
-            //     canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            // }
-        // });
-
-        // if (game.getSelectedToken()){
-            // canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            // canvas.addEventListener("mouseup",Mouse.handleMouseUp);
-        // }
-
     }
     
     static handleMouseMove(mouseEvent) {
@@ -54,7 +42,7 @@ class Mouse {
         if (selectedToken){
             
             let mousePos = Mouse.getMousePos(mouseEvent);
-            selectedToken.moveTo(mousePos);
+            selectedToken.setPosition(mousePos);
             
             Utils.clearCanvas();
             game.drawBoard();
@@ -78,11 +66,16 @@ class Mouse {
             let newTokenPosition = null;
 
             if (targetColumn != -1){
-                newTokenPosition = board.putToken(color,targetColumn);
-                selectedToken.moveTo(newTokenPosition);
-                selectedToken.setUsed();
+                if ( board.firstEmptySlot(targetColumn) != -1 ){
+                    newTokenPosition = board.putToken(color,targetColumn);
+                    selectedToken.setPosition(newTokenPosition);
+                    selectedToken.setUsed();
+                } else {
+                    selectedToken.setInitialPosition();    
+                }
             } else {
                 // reset token position
+                selectedToken.setInitialPosition();
             }
             
             Utils.clearCanvas();
