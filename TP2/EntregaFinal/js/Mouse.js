@@ -75,7 +75,9 @@ class Mouse {
                 }
             } else {
                 // reset token position
-                selectedToken.setInitialPosition();
+                if (board.figure.isPointInside(mousePos)){
+                    selectedToken.setInitialPosition();
+                }
             }
             
             Utils.clearCanvas();
