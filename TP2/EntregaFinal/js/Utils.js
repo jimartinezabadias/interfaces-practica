@@ -118,16 +118,24 @@ class Utils {
         
         tokens_P1.forEach(token => {
             let randomPoint = {
-                x: Utils.randomInteger(50,150),
-                y: Utils.randomInteger(250,450)
+                x: Utils.randomInteger(
+                    50,
+                    (canvas.width - BOARD_WIDTH) / 2 - 50),
+                y: Utils.randomInteger(
+                    canvas.height / 2 - 50 ,
+                    canvas.height / 2 + 50)
             };
             token.moveTo(randomPoint);
         });
         
         tokens_P2.forEach(token => {
             let randomPoint = {
-                x: Utils.randomInteger(874,974),
-                y: Utils.randomInteger(250,450)
+                x: Utils.randomInteger(
+                    BOARD_WIDTH + (canvas.width - BOARD_WIDTH) / 2 + 50,
+                    canvas.width - 50),
+                y: Utils.randomInteger(
+                    canvas.height / 2 - 50,
+                    canvas.height / 2 + 50)
             };
             token.moveTo(randomPoint);
         });

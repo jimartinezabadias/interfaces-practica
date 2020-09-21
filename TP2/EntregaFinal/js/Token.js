@@ -1,5 +1,4 @@
 
-const TOKEN_SIZE = 25;
 
 class Token {
     
