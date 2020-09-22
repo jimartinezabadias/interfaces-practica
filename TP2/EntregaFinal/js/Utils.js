@@ -122,4 +122,21 @@ class Utils {
         
     }
 
+    static isValidColumn(index){
+        return 0 <= index && index < BOARD_COLUMNS;
+    }
+
+    static isValidRow(index){
+        return 0 <= index && index < BOARD_ROWS;
+    }
+
+    static sameTokenColor(gameMatrix,posToken1,posToken2){
+        return (gameMatrix[posToken1.i][posToken1.j].state == gameMatrix[posToken2.i][posToken2.j].state);
+    }
+
+    static sameSlot(token1,token2){
+        return (token1.i == token2.i) && (token1.j == token2.j); 
+    }
+
+
 }

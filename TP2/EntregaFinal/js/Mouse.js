@@ -66,10 +66,14 @@ class Mouse {
             let newTokenPosition = null;
 
             if (targetColumn != -1){
-                if ( board.firstEmptySlot(targetColumn) != -1 ){
-                    newTokenPosition = board.putToken(color,targetColumn);
+                let targetRow = board.firstEmptySlot(targetColumn);
+                if ( targetRow != -1 ){
+                    newTokenPosition = board.putToken(color,targetColumn,targetRow);
                     selectedToken.setPosition(newTokenPosition);
                     selectedToken.setUsed();
+                    // console.log(selectedToken);
+                    // console.log(board.getNearTokens(targetColumn,targetRow));
+                    board.areFourConnected();
                 } else {
                     selectedToken.setInitialPosition();    
                 }
@@ -91,6 +95,7 @@ class Mouse {
         }
 
         canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
+        canvas.removeEventListener("mouseup",Mouse.handleMouseUp);
 
     }
 
