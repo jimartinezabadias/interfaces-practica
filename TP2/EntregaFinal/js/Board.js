@@ -55,12 +55,20 @@ class Board {
         
         let row = this.arrayRow(this.lastInsertedToken.j);
         let col = this.arrayColumn(this.lastInsertedToken.i);
-        
+        let diagA = this.arrayDiagA(this.lastInsertedToken);
+        let diagB = this.arrayDiagB(this.lastInsertedToken);
+
 
         console.log('rows:');
         console.log(this.bfs(row));
         console.log('columns:');
         console.log(this.bfs(col));
+        console.log('diagA:');
+        console.log(this.bfs(diagA));
+        console.log('diagB:');
+        console.log(this.bfs(diagB));
+        console.log('-------------');
+
 
     }
 
@@ -79,6 +87,53 @@ class Board {
         }
         return arr;
     }
+
+    arrayDiagA(currentToken){
+        
+        let arr = new Array();
+        
+        let col = currentToken.i;
+        let row = currentToken.j;
+        
+        while ((col > 0) && (row > 0)){
+            col--;
+            row--;
+        }
+
+        while ((col < BOARD_COLUMNS) && (row < BOARD_ROWS)) {
+            arr.push({i: col, j: row});
+            col++;
+            row++;
+
+        }
+
+        return arr;
+    
+    }
+
+    arrayDiagB(currentToken){
+        
+        let arr = new Array();
+        
+        let col = currentToken.i;
+        let row = currentToken.j;
+        
+        while ( (col + 1 < BOARD_COLUMNS) && (row > 0)){
+            col++;
+            row--;
+        }
+
+        while ((col >= 0) && (row < BOARD_ROWS)) {
+            arr.push({i: col, j: row});
+            col--;
+            row++;
+
+        }
+
+        return arr;
+    
+    }
+
 
     bfs(array){
 
