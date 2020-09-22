@@ -29,29 +29,123 @@ class Board {
 
         this.gameMatix = Utils.newGameMatrix();
 
-        console.table(this.gameMatix);
+        this.lastInsertedToken = null;
 
+        // console.table(this.gameMatix);
 
     }
 
-    putToken(color,column){
+    putToken(color,targetColumn,targetRow){
         // set token in board matrix
-        // return position
+        // returns new token position
+        // sets lastInsertedToken
 
-        let targetSlot = this.firstEmptySlot(column);
-
-        if (targetSlot != -1) {
-            this.gameMatix[column][targetSlot].state = color;
-            return this.gameMatix[column][targetSlot].tokenPosition;
+        if (targetRow != -1) {
+            this.gameMatix[targetColumn][targetRow].state = color;
+            this.lastInsertedToken = {i: targetColumn, j: targetRow };
+            return this.gameMatix[targetColumn][targetRow].tokenPosition;
         } else {
             console.log('no empty slot');
         }
 
     }
 
+    
     areFourConnected(){
-        // process board
+        
+        let row = this.arrayRow(this.lastInsertedToken.j);
+        let col = this.arrayColumn(this.lastInsertedToken.i);
+        
+
+        console.log('rows:');
+        console.log(this.bfs(row));
+        console.log('columns:');
+        console.log(this.bfs(col));
+
     }
+
+    arrayRow(row){
+        let arr = new Array();
+        for (let col = 0; col < BOARD_COLUMNS; col++){
+            arr.push({i: col, j: row})
+        }
+        return arr;
+    }
+    
+    arrayColumn(col){
+        let arr = new Array();
+        for (let row = 0; row < BOARD_ROWS; row++){
+            arr.push({i: col, j: row})
+        }
+        return arr;
+    }
+
+    bfs(array){
+
+        let currentToken = this.lastInsertedToken;
+        let visited = new Array();
+        
+        visited.push(currentToken);
+        
+        // console.log('visito');
+        // console.log(currentToken);
+        
+        let neighbors = this.arrayNeighbors(array,currentToken);
+        
+        let queue = new Array();
+
+        neighbors.forEach(n => {
+            if (Utils.sameTokenColor(this.gameMatix,currentToken,n)){
+                queue.push(n);
+            }
+        });
+
+        while (queue.length > 0) {
+            
+            currentToken = queue.pop();
+            
+            if ( ! visited.some(token => Utils.sameSlot(token,currentToken)) ){
+                
+                visited.push(currentToken);
+                
+                // console.log('visito');
+                // console.log(currentToken);
+        
+                // neighbors = this.getNearTokens(currentToken.i,currentToken.j);
+                neighbors = this.arrayNeighbors(array,currentToken);
+        
+                neighbors.forEach(n => {
+                    if (Utils.sameTokenColor(this.gameMatix,currentToken,n)){
+                        queue.push(n);
+                    }
+                });
+            }
+
+        }
+     
+        return visited.length;
+    }
+
+    arrayNeighbors(array,currentToken) {
+        let tokenPos = this.getPosInArray(array,currentToken); 
+        let neighbors = new Array();
+        for (let i = 0; i < array.length; i++){
+            if ( (i == tokenPos - 1) || (i == tokenPos + 1)){
+                neighbors.push(array[i]);
+            }
+        }
+        return neighbors;
+    }
+
+    getPosInArray(array,token){
+        for (let i = 0; i < array.length; i++){
+            if ( (array[i].i == token.i) && (array[i].j == token.j) ){
+                return i;
+            }
+        }
+    }
+
+
 
     firstEmptySlot(column){
         for (let i = BOARD_ROWS - 1; i >= 0; i--){
