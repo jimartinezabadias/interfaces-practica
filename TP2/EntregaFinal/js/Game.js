@@ -84,6 +84,19 @@ class Game {
     getTurn(){
         return this.turn;
     }
+    
+    setTurn(turn){
+        this.turn = turn;
+    }
+
+    nextTurn(){
+        if (this.turn == PLAYER_1.COLOR){
+            
+            this.setTurn(PLAYER_2.COLOR);
+        } else {
+            this.setTurn(PLAYER_1.COLOR);
+        }
+    }
 
 
 }

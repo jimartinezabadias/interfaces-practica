@@ -14,21 +14,30 @@ class Mouse {
         
         let mousePos = Mouse.getMousePos(mouseEvent);
         
-        let tokens_P1 = game.getTokens_P1();
-        
-        tokens_P1.forEach( token => {
-            if (token.isPointInside(mousePos) && token.isDraggable()){
-                game.setSelectedToken(token);
-            }
-        });
-        
-        let tokens_P2 = game.getTokens_P2();
-        
-        tokens_P2.forEach( token => {
-            if (token.isPointInside(mousePos) && token.isDraggable()){
-                game.setSelectedToken(token);
-            }
-        });
+        let turn = game.getTurn();
+
+        switch (turn) {
+            
+            case PLAYER_1.COLOR:
+                let tokens_P1 = game.getTokens_P1();
+                
+                tokens_P1.forEach( token => {
+                    if (token.isPointInside(mousePos) && token.notInBoard()){
+                        game.setSelectedToken(token);
+                    }
+                });
+                break;
+            
+            case PLAYER_2.COLOR:
+                let tokens_P2 = game.getTokens_P2();
+                
+                tokens_P2.forEach( token => {
+                    if (token.isPointInside(mousePos) && token.notInBoard()){
+                        game.setSelectedToken(token);
+                    }
+                });
+                break;
+        }
 
         if (game.getSelectedToken()){
             canvas.addEventListener("mousemove",Mouse.handleMouseMove);
@@ -70,10 +79,11 @@ class Mouse {
                 if ( targetRow != -1 ){
                     newTokenPosition = board.putToken(color,targetColumn,targetRow);
                     selectedToken.setPosition(newTokenPosition);
-                    selectedToken.setUsed();
+                    selectedToken.setInBoard();
                     // console.log(selectedToken);
                     // console.log(board.getNearTokens(targetColumn,targetRow));
                     board.areFourConnected();
+                    game.nextTurn();
                 } else {
                     selectedToken.setInitialPosition();    
                 }

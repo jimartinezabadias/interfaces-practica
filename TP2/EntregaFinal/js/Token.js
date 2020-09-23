@@ -15,12 +15,16 @@ class Token {
         return this.color;
     }
 
-    setUsed(){
+    setInBoard(){
         this.inBoard = true;
     }
     
-    isDraggable(){
+    notInBoard(){
         return !this.inBoard;
+    }
+    
+    isDraggable(){
+        // return !this.inBoard;
     }
 
     isPointInside(point){
