@@ -1,18 +1,8 @@
-class Mouse {
-
-    static getMousePos(e) {
-        let bx = e.target.getBoundingClientRect();
-    
-        return {
-            x: e.clientX - bx.left,
-            y: e.clientY - bx.top
-        };
-    
-    }
+class User {
     
     static handleMouseDown(mouseEvent) {
         
-        let mousePos = Mouse.getMousePos(mouseEvent);
+        let mousePos = Utils.getMousePos(mouseEvent);
         
         let turn = game.getTurn();
 
@@ -40,8 +30,8 @@ class Mouse {
         }
 
         if (game.getSelectedToken()){
-            canvas.addEventListener("mousemove",Mouse.handleMouseMove);
-            canvas.addEventListener("mouseup",Mouse.handleMouseUp);
+            canvas.addEventListener("mousemove", User.handleMouseMove);
+            canvas.addEventListener("mouseup", User.handleMouseUp);
         }
 
     }
@@ -50,7 +40,7 @@ class Mouse {
         let selectedToken = game.getSelectedToken();
         if (selectedToken){
             
-            let mousePos = Mouse.getMousePos(mouseEvent);
+            let mousePos = Utils.getMousePos(mouseEvent);
             selectedToken.setPosition(mousePos);
             
             Utils.clearCanvas();
@@ -66,7 +56,7 @@ class Mouse {
         
         if (selectedToken){
 
-            let mousePos = Mouse.getMousePos(mouseEvent);
+            let mousePos = Utils.getMousePos(mouseEvent);
 
             let color = game.getTurn();
         
@@ -107,8 +97,8 @@ class Mouse {
             game.setSelectedToken(null);
         }
 
-        canvas.removeEventListener("mousemove",Mouse.handleMouseMove);
-        canvas.removeEventListener("mouseup",Mouse.handleMouseUp);
+        canvas.removeEventListener("mousemove", User.handleMouseMove);
+        canvas.removeEventListener("mouseup", User.handleMouseUp);
 
     }
 

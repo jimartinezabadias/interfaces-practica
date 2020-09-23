@@ -138,5 +138,14 @@ class Utils {
         return (token1.i == token2.i) && (token1.j == token2.j); 
     }
 
+    static getMousePos(e) {
+        let bx = e.target.getBoundingClientRect();
+    
+        return {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top
+        };
+    
+    }
 
 }
