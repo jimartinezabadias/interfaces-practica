@@ -59,15 +59,25 @@ class Board {
         let diagB = this.arrayDiagB(this.lastInsertedToken);
 
 
+        let maxInRow = this.bfs(row);
+        let maxInColumn = this.bfs(col);
+        let maxInDiagA = this.bfs(diagA);
+        let maxInDiagB = this.bfs(diagB);
+        
         console.log('rows:');
-        console.log(this.bfs(row));
+        console.log(maxInRow);
+        
         console.log('columns:');
-        console.log(this.bfs(col));
+        console.log(maxInColumn);
+
         console.log('diagA:');
-        console.log(this.bfs(diagA));
+        console.log(maxInDiagA);
+
         console.log('diagB:');
-        console.log(this.bfs(diagB));
+        console.log(maxInDiagB);
         console.log('-------------');
+
+        return maxInRow == 4 || maxInColumn == 4 || maxInDiagA == 4 || maxInDiagB == 4; 
 
 
     }

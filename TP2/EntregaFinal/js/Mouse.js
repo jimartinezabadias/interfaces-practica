@@ -82,8 +82,11 @@ class Mouse {
                     selectedToken.setInBoard();
                     // console.log(selectedToken);
                     // console.log(board.getNearTokens(targetColumn,targetRow));
-                    board.areFourConnected();
-                    game.nextTurn();
+                    if ( ! board.areFourConnected() ){
+                        game.nextTurn();
+                    } else {
+                        game.setTurn(null);
+                    }
                 } else {
                     selectedToken.setInitialPosition();    
                 }
