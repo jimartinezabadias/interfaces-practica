@@ -28,10 +28,10 @@ class Game {
         let tokenImage_P2 = await Utils.getTokenImage(PLAYER_2.COLOR); 
         let tokenImage_P1 = await Utils.getTokenImage(PLAYER_1.COLOR); 
         
-        this.tokens_P1 = Utils.getTokenArray(PLAYER_1.COLOR,tokenImage_P1,this.context);
-        this.tokens_P2 = Utils.getTokenArray(PLAYER_2.COLOR,tokenImage_P2,this.context);
+        this.tokens_P1 = this.newTokenArray(PLAYER_1.COLOR,tokenImage_P1,this.context);
+        this.tokens_P2 = this.newTokenArray(PLAYER_2.COLOR,tokenImage_P2,this.context);
 
-        Utils.placeTokens(this.tokens_P1,this.tokens_P2);
+        this.placeTokens(this.tokens_P1,this.tokens_P2);
         
         this.turn = PLAYER_1.COLOR;
 
@@ -40,6 +40,8 @@ class Game {
         return true;
 
     }
+
+    //#region Getters
 
     getContext(){
         return this.context;
@@ -61,10 +63,21 @@ class Game {
         return this.board;
     }
 
+    getTurn(){
+        return this.turn;
+    }
+
+    //#endregion
+
     setSelectedToken(token){
         this.selectedToken = token;
     }
 
+    setTurn(turn){
+        this.turn = turn;
+    }
+
+    
     drawBoard(){
         this.board.draw();
     }
@@ -81,14 +94,6 @@ class Game {
 
     }
 
-    getTurn(){
-        return this.turn;
-    }
-    
-    setTurn(turn){
-        this.turn = turn;
-    }
-
     nextTurn(){
         if (this.turn == PLAYER_1.COLOR){
             
@@ -97,6 +102,26 @@ class Game {
             this.setTurn(PLAYER_1.COLOR);
         }
     }
+
+    newTokenArray(color,tokenImage,context){
+
+        let array = new Array();
+
+        for (let i = 0; i < TOKEN_NUMBER; i++) {
+            let newToken = new Token(color,tokenImage,context);
+            array[i] = newToken;
+        }
+
+        return array;
+    }
+
+    placeTokens(tokens_P1,tokens_P2){
+        
+        tokens_P1.forEach(token => { token.setInitialPosition(); });
+        
+        tokens_P2.forEach(token => {token.setInitialPosition(); });
+    }
+        
 
 
 }
