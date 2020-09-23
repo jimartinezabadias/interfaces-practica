@@ -5,6 +5,16 @@ class Utils {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    static clearCanvas() {
+        let context = game.getContext();
+        context.rect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "white";
+        context.fill();
+    }
+
+    //#region Token Images 
+    
+    // returns token image of the given color.
     static async getTokenImage(color) {
 
         let imageURL = '';
@@ -19,7 +29,7 @@ class Utils {
         return image;
 
     }
-    
+
     static loadImage(src){
         return new Promise((resolve, reject) => {
             let img = new Image();
@@ -29,13 +39,9 @@ class Utils {
         });
     }
 
-    static clearCanvas() {
-        let context = game.getContext();
-        context.rect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = "white";
-        context.fill();
-    }
+    //#endregion
 
+    
     static newGameMatrix(){
 
         let matrix =  new Array();
@@ -99,26 +105,6 @@ class Utils {
         };
 
         return slot;
-        
-    }
-
-    static getTokenArray(color,tokenImage,context){
-
-        let array = new Array();
-
-        for (let i = 0; i < TOKEN_NUMBER; i++) {
-            let newToken = new Token(color,tokenImage,context);
-            array[i] = newToken;
-        }
-
-        return array;
-    }
-
-    static placeTokens(tokens_P1,tokens_P2){
-        
-        tokens_P1.forEach(token => { token.setInitialPosition(); });
-        
-        tokens_P2.forEach(token => {token.setInitialPosition(); });
         
     }
 
