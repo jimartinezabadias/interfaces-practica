@@ -35,7 +35,7 @@ class Game {
         
         this.turn = PLAYER_1.COLOR;
 
-        canvas.addEventListener("mousedown", Mouse.handleMouseDown);
+        canvas.addEventListener("mousedown", User.handleMouseDown);
 
         return true;
 
