@@ -23,7 +23,7 @@ class Game {
 
     async initGame(){
 
-        this.board = new Board();
+        this.board = new Board(this.context);
 
         await this.board.initBoard(this.context);
         
