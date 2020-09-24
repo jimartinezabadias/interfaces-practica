@@ -17,6 +17,20 @@ class Board {
 
     constructor (context){
         
+        this.figure = null;
+        
+        this.dropTokenArea = null;
+
+        this.gameMatix = null;
+
+        this.lastInsertedToken = null;
+
+        // console.table(this.gameMatix);
+
+    }
+
+    async initBoard(context){
+
         this.figure = new Rectangle(
             (canvas.width - BOARD_WIDTH) / 2 - 10,
             (canvas.height - BOARD_HEIGHT) / 2 - 10,
@@ -24,15 +38,9 @@ class Board {
             BOARD_HEIGHT + 20,
             BOARD_COLOR,
             context);
-        
-        this.dropTokenArea = Utils.newDropTokenArea(context);
 
+        this.dropTokenArea = await Utils.newDropTokenArea(context);
         this.gameMatix = Utils.newGameMatrix();
-
-        this.lastInsertedToken = null;
-
-        // console.table(this.gameMatix);
-
     }
 
     putToken(color,targetColumn,targetRow){
@@ -222,6 +230,9 @@ class Board {
     }
 
     draw(){
+        this.dropTokenArea.forEach( drop => {
+            drop.draw();
+        }),
         this.figure.draw();
         // console.table(this.gameMatix);
     }
