@@ -23,7 +23,9 @@ class Game {
 
     async initGame(){
 
-        this.board = new Board(this.context);
+        this.board = new Board();
+
+        await this.board.initBoard(this.context);
         
         let tokenImage_P2 = await Utils.getTokenImage(PLAYER_2.COLOR); 
         let tokenImage_P1 = await Utils.getTokenImage(PLAYER_1.COLOR); 

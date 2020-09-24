@@ -15,7 +15,7 @@ class Utils {
     //#region Token Images 
     
     // returns token image of the given color.
-    static async getTokenImage(color) {
+    static getTokenImage(color) {
 
         let imageURL = '';
 
@@ -70,9 +70,11 @@ class Utils {
 
     }
 
-    static newDropTokenArea(context){
+    static async newDropTokenArea(context){
 
         let dropArea = new Array();
+
+        let image = await Utils.loadImage('images/Untitled2.jpg');
 
         for (let i = 1; i <= BOARD_COLUMNS; i++){
             
@@ -80,8 +82,8 @@ class Utils {
                 (canvas.width - BOARD_WIDTH) / 2 + (BOARD_WIDTH / BOARD_COLUMNS) * (i - 1),
                 0,
                 (BOARD_WIDTH / BOARD_COLUMNS),
-                (canvas.height - BOARD_HEIGHT) / 2,
-                `rgba(0,0,0,50)`,
+                (canvas.height - BOARD_HEIGHT) / 2 - 20,
+                image,
                 context
             );
             
