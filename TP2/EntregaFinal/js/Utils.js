@@ -136,4 +136,66 @@ class Utils {
     
     }
 
+    static arrayNeighbors(array,currentToken) {
+        let tokenPos = Utils.getPosInArray(array,currentToken); 
+        let neighbors = new Array();
+        for (let i = 0; i < array.length; i++){
+            if ( (i == tokenPos - 1) || (i == tokenPos + 1)){
+                neighbors.push(array[i]);
+            }
+        }
+        return neighbors;
+    }
+
+    static getPosInArray(array,token){
+        for (let i = 0; i < array.length; i++){
+            if ( (array[i].i == token.i) && (array[i].j == token.j) ){
+                return i;
+            }
+        }
+    }
+
+    static sumTokens(gameMatrix,array){
+
+        let currentToken = game.getBoard().getLastInsertedToken();
+        let visited = new Array();
+        
+        visited.push(currentToken);
+        
+        let neighbors = Utils.arrayNeighbors(array,currentToken);
+        
+        let queue = new Array();
+
+        neighbors.forEach(n => {
+            if (Utils.sameTokenColor(gameMatrix,currentToken,n)){
+                queue.push(n);
+            }
+        });
+
+        while (queue.length > 0) {
+            
+            currentToken = queue.pop();
+            
+            if ( ! visited.some(token => Utils.sameSlot(token,currentToken)) ){
+                
+                visited.push(currentToken);
+                
+                // console.log('visito');
+                // console.log(currentToken);
+        
+                // neighbors = this.getNearTokens(currentToken.i,currentToken.j);
+                neighbors = Utils.arrayNeighbors(array,currentToken);
+        
+                neighbors.forEach(n => {
+                    if (Utils.sameTokenColor(gameMatrix,currentToken,n)){
+                        queue.push(n);
+                    }
+                });
+            }
+
+        }
+     
+        return visited.length;
+    }
+
 }

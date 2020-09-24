@@ -25,22 +25,26 @@ class Board {
 
         this.lastInsertedToken = null;
 
+        this.context = context;
+
         // console.table(this.gameMatix);
 
     }
 
-    async initBoard(context){
+    async initBoard(){
 
+        this.gameMatix = Utils.newGameMatrix();
+        
+        this.dropTokenArea = await Utils.newDropTokenArea(this.context);
+        
         this.figure = new Rectangle(
             (canvas.width - BOARD_WIDTH) / 2 - 10,
             (canvas.height - BOARD_HEIGHT) / 2 - 10,
             BOARD_WIDTH + 20,
             BOARD_HEIGHT + 20,
             BOARD_COLOR,
-            context);
+            this.context);
 
-        this.dropTokenArea = await Utils.newDropTokenArea(context);
-        this.gameMatix = Utils.newGameMatrix();
     }
 
     putToken(color,targetColumn,targetRow){
@@ -67,29 +71,32 @@ class Board {
         let diagB = this.arrayDiagB(this.lastInsertedToken);
 
 
-        let maxInRow = this.bfs(row);
-        let maxInColumn = this.bfs(col);
-        let maxInDiagA = this.bfs(diagA);
-        let maxInDiagB = this.bfs(diagB);
+        let maxInRow = Utils.sumTokens(this.gameMatix,row);
+        let maxInColumn = Utils.sumTokens(this.gameMatix,col);
+        let maxInDiagA = Utils.sumTokens(this.gameMatix,diagA);
+        let maxInDiagB = Utils.sumTokens(this.gameMatix,diagB);
         
-        console.log('rows:');
-        console.log(maxInRow);
+        //#region console log 
+        // console.log('rows:');
+        // console.log(maxInRow);
         
-        console.log('columns:');
-        console.log(maxInColumn);
+        // console.log('columns:');
+        // console.log(maxInColumn);
 
-        console.log('diagA:');
-        console.log(maxInDiagA);
+        // console.log('diagA:');
+        // console.log(maxInDiagA);
 
-        console.log('diagB:');
-        console.log(maxInDiagB);
-        console.log('-------------');
+        // console.log('diagB:');
+        // console.log(maxInDiagB);
+        // console.log('-------------');
+        //#endregion
 
         return maxInRow == 4 || maxInColumn == 4 || maxInDiagA == 4 || maxInDiagB == 4; 
 
 
     }
 
+    //#region Get Neighbors 
     arrayRow(row){
         let arr = new Array();
         for (let col = 0; col < BOARD_COLUMNS; col++){
@@ -151,73 +158,7 @@ class Board {
         return arr;
     
     }
-
-
-    bfs(array){
-
-        let currentToken = this.lastInsertedToken;
-        let visited = new Array();
-        
-        visited.push(currentToken);
-        
-        // console.log('visito');
-        // console.log(currentToken);
-        
-        let neighbors = this.arrayNeighbors(array,currentToken);
-        
-        let queue = new Array();
-
-        neighbors.forEach(n => {
-            if (Utils.sameTokenColor(this.gameMatix,currentToken,n)){
-                queue.push(n);
-            }
-        });
-
-        while (queue.length > 0) {
-            
-            currentToken = queue.pop();
-            
-            if ( ! visited.some(token => Utils.sameSlot(token,currentToken)) ){
-                
-                visited.push(currentToken);
-                
-                // console.log('visito');
-                // console.log(currentToken);
-        
-                // neighbors = this.getNearTokens(currentToken.i,currentToken.j);
-                neighbors = this.arrayNeighbors(array,currentToken);
-        
-                neighbors.forEach(n => {
-                    if (Utils.sameTokenColor(this.gameMatix,currentToken,n)){
-                        queue.push(n);
-                    }
-                });
-            }
-
-        }
-     
-        return visited.length;
-    }
-
-    arrayNeighbors(array,currentToken) {
-        let tokenPos = this.getPosInArray(array,currentToken); 
-        let neighbors = new Array();
-        for (let i = 0; i < array.length; i++){
-            if ( (i == tokenPos - 1) || (i == tokenPos + 1)){
-                neighbors.push(array[i]);
-            }
-        }
-        return neighbors;
-    }
-
-    getPosInArray(array,token){
-        for (let i = 0; i < array.length; i++){
-            if ( (array[i].i == token.i) && (array[i].j == token.j) ){
-                return i;
-            }
-        }
-    }
-
+    //#endregion
 
 
     firstEmptySlot(column){
@@ -234,6 +175,8 @@ class Board {
             drop.draw();
         }),
         this.figure.draw();
+
+        this.drawBoardFront();
         // console.table(this.gameMatix);
     }
 
@@ -247,6 +190,26 @@ class Board {
 
         return -1;
 
+    }
+
+    getLastInsertedToken(){
+        return this.lastInsertedToken;
+    }
+
+    drawBoardFront(){
+        for (let i = 0; i < BOARD_COLUMNS; i++){
+            for (let j = 0; j < BOARD_ROWS; j++){
+                let circle = new Circle(
+                    this.gameMatix[i][j].tokenPosition.x,
+                    this.gameMatix[i][j].tokenPosition.y,
+                    TOKEN_SIZE + 1,
+                    `#FFFFFF`,
+                    this.context
+                );
+                circle.draw();
+
+            }
+        }
     }
 
 }
