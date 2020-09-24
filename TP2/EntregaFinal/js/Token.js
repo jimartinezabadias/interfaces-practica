@@ -69,5 +69,9 @@ class Token {
     draw(){
         this.figure.draw();
     }
+    
+    drawDisabled(){
+        this.figure.drawDisabled();
+    }
 
 }

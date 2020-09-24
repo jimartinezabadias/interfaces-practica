@@ -21,6 +21,8 @@ class Board {
         
         this.dropTokenArea = null;
 
+        this.selectedDropArea = null;
+
         this.gameMatix = null;
 
         this.lastInsertedToken = null;
@@ -171,12 +173,24 @@ class Board {
     }
 
     draw(){
-        this.dropTokenArea.forEach( drop => {
-            drop.draw();
-        }),
+
+        for (let i = 0; i < BOARD_COLUMNS; i++) {
+            if ( i == this.selectedDropArea){
+                this.dropTokenArea[i].draw();
+            } else {
+                this.dropTokenArea[i].drawDisabled();
+            }
+        }
+
+        // this.dropTokenArea.forEach( drop => {
+        //     drop.drawDisabled();
+        // });
+
         this.figure.draw();
 
         this.drawBoardFront();
+
+        this.selectedDropArea = null;
         // console.table(this.gameMatix);
     }
 
@@ -210,6 +224,14 @@ class Board {
 
             }
         }
+    }
+
+    setSelectedDropArea(column){
+        this.selectedDropArea = column;
+    }
+
+    getSelectedDropArea(){
+        return this.selectedDropArea;
     }
 
 }
