@@ -46,5 +46,13 @@ class Circle extends Figure {
         this.context.restore();
 
     }
+
+    drawDisabled(){
+        this.draw();
+        let currentFill = this.getFill();
+        this.setFill(`rgba(255,255,255,0.3)`);
+        this.draw();
+        this.setFill(currentFill);
+    }
     
 }

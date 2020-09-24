@@ -72,6 +72,9 @@ class Game {
     //#endregion
 
     setSelectedToken(token){
+        if (this.selectedToken){
+            this.selectedToken.draw();
+        }
         this.selectedToken = token;
     }
 
@@ -87,11 +90,19 @@ class Game {
     drawTokens(){
 
         this.tokens_P1.forEach( token => {
-            token.draw();
+            if (token == this.selectedToken){
+                token.drawDisabled();
+            } else {
+                token.draw();
+            }
         });
         
         this.tokens_P2.forEach( token => {
-            token.draw();
+            if (token == this.selectedToken){
+                token.drawDisabled();
+            } else {
+                token.draw();
+            }
         });
 
     }

@@ -42,6 +42,15 @@ class User {
             
             let mousePos = Utils.getMousePos(mouseEvent);
             selectedToken.setPosition(mousePos);
+
+            let board = game.getBoard();
+
+            let targetColumn = board.getColumnIn(mousePos);
+            
+            if (targetColumn != -1){
+                board.setSelectedDropArea(targetColumn);
+            }
+
             
             Utils.clearCanvas();
             game.drawBoard();
