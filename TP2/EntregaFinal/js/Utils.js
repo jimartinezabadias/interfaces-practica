@@ -74,7 +74,7 @@ class Utils {
 
         let dropArea = new Array();
 
-        let image = await Utils.loadImage('images/Untitled2.jpg');
+        let image = await Utils.loadImage('images/Untitled3.jpg');
 
         for (let i = 1; i <= BOARD_COLUMNS; i++){
             
