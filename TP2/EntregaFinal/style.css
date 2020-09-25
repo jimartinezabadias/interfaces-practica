@@ -1,12 +1,20 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Finger Paint', cursive;
+}
+
+h1{
+    font-size: 40px;
 }
 
 .main {
     display: flex;
     justify-content: center;
+}
+
+.header{
+    width: 100%;
 }
 
 .game_main{

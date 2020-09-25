@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+@keyframes spinit {
+    0% {transform: rotate(0deg);
+        opacity: 40%;}
+    50% {transform: rotate(180deg);
+        opacity: 100%;}
+    100% {transform: rotate(360deg);
+        opacity: 40%;}
+}
+
+.main {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.spinner{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    /* border: 5px solid black; */
+    /* visibility: hidden; */
+    transform-origin: left 15px;
+    animation: spinit 1.5s linear infinite;
+}
+
+
+/* #spin2{
+    transform: translate(30px,30px);
+} */
+
+.spin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+    /* visibility: hidden; */
+}
+
+.spin:nth-child(1){
+    transform: translate(30px,-30px) scale(2);
+    /* transform: ; */
+}
+.spin:nth-child(2){
+    transform: translate(30px,30px) scale(1.5);
+    /* transform: ; */
+}
+.spin:nth-child(3){
+    transform: translate(-30px,30px);
+    /* transform: scale(2); */
+}
+.spin:nth-child(4){
+    transform: translate(-30px,-30px) scale(0.75);
+    /* transform: ; */
+}
+
+
+/* 
+.wrap{
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+}
+
+.minute,
+.hour,
+.second{
+    position: absolute;
+    left: 49%;
+    transform-origin: bottom center;
+    background-color: black;
+    z-index: 1;
+}
+
+.hour{
+    top: 38%;
+    height: 100px;
+    width: 6px;
+}
+
+.minute{
+    top: 34%;
+    height: 130px;
+    width: 4px;
+
+}
+
+.second{
+    top: 39%;
+    height: 90px;
+    width: 2px;
+} */
