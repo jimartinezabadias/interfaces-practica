@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #c1c1c1;
+    font-family: sans-serif;
+}
+
+.main {
+    height: 100vh;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+    display: grid;
+    place-items: center;
+}
+
+@keyframes clockHandRotation{
+    0% {transform: rotateZ(0deg);}
+    50% {transform: rotateZ(180deg);}
+    100% {transform: rotateZ(360deg);}
+}
+
+.clock{
+    border-radius: 100%;
+    background-color: #ffffff;
+    border: 5px solid #ffffff;
+}
+
+.wrap{
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+}
+
+.minute,
+.hour,
+.second{
+    position: absolute;
+    left: 49%;
+    transform-origin: bottom center;
+    background-color: black;
+    z-index: 1;
+}
+
+.hour{
+    top: 38%;
+    height: 100px;
+    width: 6px;
+    animation: clockHandRotation 432s linear infinite;
+}
+
+.minute{
+    top: 34%;
+    height: 130px;
+    width: 4px;
+    animation: clockHandRotation 36s linear infinite;
+
+}
+
+.second{
+    top: 39%;
+    height: 90px;
+    width: 2px;
+    animation: clockHandRotation 0.6s linear infinite;
+}
