@@ -6,6 +6,14 @@ let game = null;
 let canvas = null;
 let context = null;
 let menu = null;
+let gameStats = null;
+let statMessage = null;
+let turnMessage = null;
+
+function displayGame() {
+    canvas.style.display = 'block';
+    gameStats.style.display = 'block';
+}
 
 async function newGame() {
     
@@ -15,8 +23,8 @@ async function newGame() {
 
     if (await game.initGame()){
         
-        canvas.style.display = 'block';
-        
+        displayGame();
+
         game.drawBoard();
         game.drawTokens();
     
@@ -38,7 +46,11 @@ function mainFunction() {
     
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
+    gameStats = document.querySelector('#game_stats');
+    statMessage = document.querySelector('#stat_message');
+    turnMessage = document.querySelector('#turn_stat');
     
+
     displayMenu();
 
 }

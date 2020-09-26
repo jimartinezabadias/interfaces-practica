@@ -17,15 +17,16 @@
 						En cada turno cada jugador coloca una ficha de su color en una columna y esta 
 						cae hasta la primera casilla disponible. 
 						El que consigue ubicar 4 fichas del mismo color seguidas en horizontal, 
-						vertical u oblicuo gana. Si nadie lo consigue la partida termina en empate.</p>
+						vertical u oblicuo gana. Si nadie lo consigue la partida termina en empate.
+					</p>
 					<button class="btn btn-play"
 							id="play_btn">Jugar</button>
 					<!-- <button class="btn btn-play"
 							id="play_btn">Desafio</button> -->
 				</div>
-				<div class="game_stats">
-					<h2>
-						4 en Linea
+				<div id="game_stats">
+					<h2 id="stat_message">
+						Turno <span id="turn_stat"></span>
 					</h2>
 				</div>
 				<canvas id="myCanvas" width="800" height="600"></canvas>
