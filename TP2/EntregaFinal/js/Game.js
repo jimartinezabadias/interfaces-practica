@@ -1,10 +1,12 @@
 
 const PLAYER_1 = {
-    COLOR: 'yellow'
+    COLOR: 'Yellow',
+    NAME: 'Amarillo'
 }
 
 const PLAYER_2 = {
-    COLOR: 'red'
+    COLOR: 'Red',
+    NAME: 'Rojo'
 }
 
 
@@ -35,7 +37,7 @@ class Game {
 
         this.placeTokens(this.tokens_P1,this.tokens_P2);
         
-        this.turn = PLAYER_1.COLOR;
+        this.setTurn(PLAYER_1.COLOR);
 
         canvas.addEventListener("mousedown", User.handleMouseDown);
 
@@ -79,6 +81,19 @@ class Game {
     }
 
     setTurn(turn){
+    
+        switch (turn) {
+            case PLAYER_1.COLOR:
+                turnMessage.textContent = PLAYER_1.NAME;
+                statMessage.style.color = PLAYER_1.COLOR;
+                statMessage.style.background = 'LightSeaGreen';
+                break;
+            case PLAYER_2.COLOR:
+                turnMessage.textContent = PLAYER_2.NAME;
+                statMessage.style.color = PLAYER_2.COLOR;
+                statMessage.style.background = 'LightGreen';
+                break;
+        }
         this.turn = turn;
     }
 
@@ -109,7 +124,6 @@ class Game {
 
     nextTurn(){
         if (this.turn == PLAYER_1.COLOR){
-            
             this.setTurn(PLAYER_2.COLOR);
         } else {
             this.setTurn(PLAYER_1.COLOR);

@@ -16,8 +16,9 @@ p{
 }
 
 h1{
-    font-size: 40px;
-    color: #2952cb;
+    font-size: 45px;
+    /* color: #2952cb; */
+    color: LightSeaGreen;
 }
 
 h2{
@@ -31,9 +32,9 @@ h2{
 }
 
 .game_main{
+    display: flex;
     flex-flow: column;
     padding: 16px;  
-    display: flex;
 }
 
 #game_menu{
@@ -43,15 +44,15 @@ h2{
 }
 
 button {
-    color: #dcdcdc;
+    color: #f7f7f7;
     display: inline-block;
     /* border: 1px solid #323232; */
     border: none;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     padding: 16px 32px;
     margin: 0;
     text-decoration: none;
-    background-color: #2952cb;
+    background-color: LightSeaGreen;
     font-size: 25px;
     cursor: pointer;
     text-align: center;
@@ -63,17 +64,27 @@ button {
 }
 
 button:hover {
-    background: #3364f7;
+    background: rgb(52, 205, 197);
     color: #ffffff;
 }
 
 .btn-play{
-    margin-top: 8px;
+    margin-top: 16px;
 }
 
-.game_stats{
+#game_stats{
     display: none;
+    text-align: center;
+    /* border-radius: 32px; */
+    /* background-color: mediumseagreen; */
 }
+
+#stat_message{
+    padding: 10px;
+    /* border-radius: 32px; */
+    /* width: 300px; */
+}
+
 
 #myCanvas{
     display: none;

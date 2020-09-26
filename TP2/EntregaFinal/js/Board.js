@@ -216,7 +216,7 @@ class Board {
                 let circle = new Circle(
                     this.gameMatix[i][j].tokenPosition.x,
                     this.gameMatix[i][j].tokenPosition.y,
-                    TOKEN_SIZE + 1,
+                    TOKEN_SIZE,
                     `#FFFFFF`,
                     this.context
                 );
