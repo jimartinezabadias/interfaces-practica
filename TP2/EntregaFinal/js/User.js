@@ -83,8 +83,8 @@ class User {
                     // console.log(board.getNearTokens(targetColumn,targetRow));
                     if ( ! board.areFourConnected() ){
                         game.nextTurn();
-                    } else {
-                        game.setTurn(null);
+                    } else { // agregar empate
+                        game.setWin();
                     }
                 } else {
                     selectedToken.setInitialPosition();    

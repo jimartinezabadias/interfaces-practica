@@ -97,6 +97,23 @@ class Game {
         this.turn = turn;
     }
 
+    setWin(){
+        switch (this.turn) {
+            case PLAYER_1.COLOR:
+                turnMessage.textContent = '';
+                statMessage.textContent = PLAYER_1.NAME + ' Gana la partida';
+                statMessage.style.color = PLAYER_1.COLOR;
+                statMessage.style.background = 'LightSeaGreen';
+                break;
+            case PLAYER_2.COLOR:
+                turnMessage.textContent = '';
+                statMessage.textContent = PLAYER_2.NAME + ' Gana la partida';
+                statMessage.style.color = PLAYER_2.COLOR;
+                statMessage.style.background = 'LightGreen';
+                break;
+        }
+        this.setTurn(null);
+    }
     
     drawBoard(){
         this.board.draw();
