@@ -74,7 +74,8 @@ button:hover {
     margin-top: 16px;
 }
 
-#game_stats{
+#game_stats,
+#game_functions{
     display: none;
     text-align: center;
     /* border-radius: 32px; */
@@ -101,3 +102,8 @@ input{
     font-size: 22px;
     padding: 8px;
 }
+
+/* #game_functions{
+    display: flex;
+    align-items: flex-end;
+} */

@@ -7,6 +7,7 @@ let canvas = null;
 let context = null;
 let menu = null;
 let gameStats = null;
+let gameFunctions = null;
 let statMessage = null;
 let turnMessage = null;
 let columnsInput = null;
@@ -24,7 +25,16 @@ const TOKEN_SIZE = 25;
 function displayGame() {
     canvas.style.display = 'block';
     gameStats.style.display = 'block';
+    gameFunctions.style.display = 'block';
 }
+
+function hideGame() {
+    canvas.style.display = 'none';
+    gameStats.style.display = 'none';
+    gameFunctions.style.display = 'none';
+}
+
+
 
 async function newGame() {
     
@@ -52,6 +62,8 @@ async function newGame() {
 
 function displayMenu() {
 
+    hideGame();
+
     menu = document.querySelector('#game_menu');
     menu.style.display = 'block';
     
@@ -65,6 +77,7 @@ function mainFunction() {
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
     gameStats = document.querySelector('#game_stats');
+    gameFunctions = document.querySelector('#game_functions');
     statMessage = document.querySelector('#stat_message');
     turnMessage = document.querySelector('#turn_stat');
     columnsInput = document.querySelector('#columns');
