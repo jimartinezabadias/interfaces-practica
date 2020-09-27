@@ -86,14 +86,19 @@ class Game {
     
         switch (turn) {
             case PLAYER_1.COLOR:
+                turnMessage.textContent = '';
                 turnMessage.textContent = PLAYER_1.NAME;
                 statMessage.style.color = PLAYER_1.COLOR;
                 statMessage.style.background = 'LightSeaGreen';
                 break;
             case PLAYER_2.COLOR:
+                turnMessage.textContent = '';
                 turnMessage.textContent = PLAYER_2.NAME;
                 statMessage.style.color = PLAYER_2.COLOR;
                 statMessage.style.background = 'LightGreen';
+                break;
+            default:
+                this.turn = turn;        
                 break;
         }
         this.turn = turn;
@@ -104,13 +109,13 @@ class Game {
         switch (this.turn) {
             case PLAYER_1.COLOR:
                 turnMessage.textContent = '';
-                statMessage.textContent = PLAYER_1.NAME + ' Gana la partida';
+                statMessage.textContent = PLAYER_1.NAME + ' gana la partida';
                 statMessage.style.color = PLAYER_1.COLOR;
                 statMessage.style.background = 'LightSeaGreen';
                 break;
             case PLAYER_2.COLOR:
                 turnMessage.textContent = '';
-                statMessage.textContent = PLAYER_2.NAME + ' Gana la partida';
+                statMessage.textContent = PLAYER_2.NAME + ' gana la partida';
                 statMessage.style.color = PLAYER_2.COLOR;
                 statMessage.style.background = 'LightGreen';
                 break;

@@ -24,7 +24,7 @@ h1{
 }
 
 h2{
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .main {
@@ -74,16 +74,19 @@ button:hover {
     margin-top: 16px;
 }
 
-#game_stats,
-#game_functions{
+#game_stats{
     display: none;
+    /* flex-direction: row;
+    flex-flow: nowrap; */
+    max-width: 800px;
+    width: 100%;
     text-align: center;
-    /* border-radius: 32px; */
-    /* background-color: mediumseagreen; */
+    /* grid-template-columns: 8fr 4fr;
+    column-gap: 8px; */
 }
 
 #stat_message{
-    padding: 10px;
+    padding: 16px;
     /* border-radius: 32px; */
     /* width: 300px; */
 }
@@ -102,8 +105,3 @@ input{
     font-size: 22px;
     padding: 8px;
 }
-
-/* #game_functions{
-    display: flex;
-    align-items: flex-end;
-} */
