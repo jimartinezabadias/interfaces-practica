@@ -25,6 +25,8 @@ class Game {
 
     async initGame(){
 
+        Utils.clearCanvas();
+
         this.board = new Board(this.context);
 
         await this.board.initBoard(this.context);
