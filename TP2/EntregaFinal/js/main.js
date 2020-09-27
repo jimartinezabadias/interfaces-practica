@@ -9,6 +9,17 @@ let menu = null;
 let gameStats = null;
 let statMessage = null;
 let turnMessage = null;
+let columnsInput = null;
+let rowsInput = null;
+
+let BOARD_COLUMNS = 0;
+let BOARD_ROWS = 0;
+
+let BOARD_WIDTH = 0;
+let BOARD_HEIGHT = 0;
+let TOKEN_NUMBER = 0;
+
+const TOKEN_SIZE = 25;
 
 function displayGame() {
     canvas.style.display = 'block';
@@ -18,6 +29,13 @@ function displayGame() {
 async function newGame() {
     
     menu.style.display = 'none';
+
+    BOARD_COLUMNS = columnsInput.value;
+    BOARD_ROWS = rowsInput.value;
+    
+    BOARD_WIDTH = (TOKEN_SIZE * 2) * BOARD_COLUMNS + 10 * BOARD_COLUMNS;
+    BOARD_HEIGHT = (TOKEN_SIZE * 2) * BOARD_ROWS + 10 * BOARD_ROWS;
+    TOKEN_NUMBER = (BOARD_COLUMNS * BOARD_ROWS) / 2;
     
     game = new Game(context);
 
@@ -49,6 +67,8 @@ function mainFunction() {
     gameStats = document.querySelector('#game_stats');
     statMessage = document.querySelector('#stat_message');
     turnMessage = document.querySelector('#turn_stat');
+    columnsInput = document.querySelector('#columns');
+    rowsInput = document.querySelector('#rows');
     
 
     displayMenu();

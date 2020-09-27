@@ -13,12 +13,25 @@
 					<h1>
 						4 en Linea
 					</h1>
-					<p>Se juega siempre entre 2 jugadores y sobre un tablero de 7x6 casillas. 
+					<p>Se juega siempre entre 2 jugadores y sobre un <b>tablero personalizable</b> (típicamente de 7x6 casillas). 
 						En cada turno cada jugador coloca una ficha de su color en una columna y esta 
 						cae hasta la primera casilla disponible. 
 						El que consigue ubicar 4 fichas del mismo color seguidas en horizontal, 
 						vertical u oblicuo gana. Si nadie lo consigue la partida termina en empate.
 					</p>
+
+					<div class="board_settings">
+						
+						<label for="columns">Columnas: </label>
+						<input type="number" id="columns" name="columns"
+							min="4" max="10" value="7">
+						
+						<label for="rows">Filas: </label>
+						<input type="number" id="rows" name="rows"
+							min="3" max="7" value="6">
+
+					</div>
+
 					<button class="btn btn-play"
 							id="play_btn">Jugar</button>
 					<!-- <button class="btn btn-play"
