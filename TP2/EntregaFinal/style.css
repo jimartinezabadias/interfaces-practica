@@ -17,6 +17,8 @@ p{
 
 h1{
     font-size: 45px;
+    /* line-height: 80px; */
+    padding: 8px;
     /* color: #2952cb; */
     color: LightSeaGreen;
 }
@@ -88,4 +90,14 @@ button:hover {
 
 #myCanvas{
     display: none;
+}
+
+.board_settings{
+    padding: 16px;
+}
+
+label,
+input{
+    font-size: 22px;
+    padding: 8px;
 }
