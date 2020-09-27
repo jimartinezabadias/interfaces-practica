@@ -98,6 +98,7 @@ class Game {
     }
 
     setWin(){
+
         switch (this.turn) {
             case PLAYER_1.COLOR:
                 turnMessage.textContent = '';
@@ -112,6 +113,15 @@ class Game {
                 statMessage.style.background = 'LightGreen';
                 break;
         }
+        
+        this.setTurn(null);
+    }
+
+    setDraw(){
+        turnMessage.textContent = '';
+        statMessage.textContent = 'Empate';
+        statMessage.style.color = PLAYER_1.COLOR;
+        statMessage.style.background = 'LightSeaGreen';
         this.setTurn(null);
     }
     

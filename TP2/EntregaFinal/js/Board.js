@@ -29,6 +29,8 @@ class Board {
 
         this.context = context;
 
+        this.bussySlots = null;
+
         // console.table(this.gameMatix);
 
     }
@@ -47,6 +49,8 @@ class Board {
             BOARD_COLOR,
             this.context);
 
+        this.bussySlots = 0;
+
     }
 
     putToken(color,targetColumn,targetRow){
@@ -57,6 +61,7 @@ class Board {
         if (targetRow != -1) {
             this.gameMatix[targetColumn][targetRow].state = color;
             this.lastInsertedToken = {i: targetColumn, j: targetRow };
+            this.bussySlots++;
             return this.gameMatix[targetColumn][targetRow].tokenPosition;
         } else {
             console.log('no empty slot');
@@ -232,6 +237,10 @@ class Board {
 
     getSelectedDropArea(){
         return this.selectedDropArea;
+    }
+
+    isBoardFull(){
+        return this.bussySlots >= BOARD_COLUMNS * BOARD_ROWS; 
     }
 
 }
