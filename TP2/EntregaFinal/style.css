@@ -81,14 +81,21 @@ button:hover {
     max-width: 800px;
     width: 100%;
     text-align: center;
-    /* grid-template-columns: 8fr 4fr;
-    column-gap: 8px; */
+    grid-template-columns: 8fr 4fr;
+    /* column-gap: 8px; */
+}
+
+#stat_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #stat_message{
-    padding: 16px;
+    /* padding: 16px; */
     /* border-radius: 32px; */
     /* width: 300px; */
+    margin: 0;
 }
 
 

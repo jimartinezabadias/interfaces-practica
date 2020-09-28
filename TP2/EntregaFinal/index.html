@@ -13,11 +13,17 @@
 					<h1>
 						4 en Linea
 					</h1>
-					<p>Se juega siempre entre 2 jugadores y sobre un <b>tablero personalizable</b> (típicamente de 7x6 casillas). 
-						En cada turno cada jugador coloca una ficha de su color en una columna y esta 
-						cae hasta la primera casilla disponible. 
-						El que consigue ubicar 4 fichas del mismo color seguidas en horizontal, 
-						vertical u oblicuo gana. Si nadie lo consigue la partida termina en empate.
+					<h4>Drag and drop</h4>
+					<p>
+						Las fichas se pueden arrastrar y soltar sobre la parte superior
+						del tablero.
+					</p>
+					<h4>Redimensionar el tablero</h4>
+					<p>
+						El tablero, la cantidad de fichas y las posiciones donde se dibujan 
+						los elementos se calculan al iniciar el juego. 
+						Usando la interfaz se puede elegir la cantidad de filas y columnas 
+						(los inputs están limitados para evitar redimensionar el canvas).
 					</p>
 
 					<div class="board_settings">
@@ -28,7 +34,7 @@
 						
 						<label for="rows">Filas: </label>
 						<input type="number" id="rows" name="rows"
-							min="3" max="7" value="6">
+							min="4" max="7" value="6">
 
 					</div>
 
@@ -36,19 +42,19 @@
 							id="play_btn">Jugar</button>
 					<!-- <button class="btn btn-play"
 							id="play_btn">Desafio</button> -->
+					
 				</div>
 				<div id="game_stats">
-					<div>
+					<div id="stat_container">
 						<h2 id="stat_message">
-							Turno <span id="turn_stat"></span>
 						</h2>
 					</div>
-					<!-- <div>
+					<div>
 						<button class="btn"
-							onclick="displayMenu()">Menu Principal</button>
-						<button class="btn"
-							id="play_btn">Reiniciar</button>
-					</div> -->
+							onclick="displayMenu()">Menú Principal</button>
+						<!-- <button class="btn"
+							id="play_btn">Reiniciar</button> -->
+					</div>
 				</div>
 				<canvas id="myCanvas" width="800" height="600"></canvas>
 			</div>

@@ -8,7 +8,7 @@ let context = null;
 let menu = null;
 let gameStats = null;
 let statMessage = null;
-let turnMessage = null;
+let statContainer = null;
 let columnsInput = null;
 let rowsInput = null;
 
@@ -73,9 +73,11 @@ function mainFunction() {
     
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
+    
     gameStats = document.querySelector('#game_stats');
+    statContainer = document.querySelector('#stat_container');
     statMessage = document.querySelector('#stat_message');
-    turnMessage = document.querySelector('#turn_stat');
+    
     columnsInput = document.querySelector('#columns');
     rowsInput = document.querySelector('#rows');
     
