@@ -86,16 +86,16 @@ class Game {
     
         switch (turn) {
             case PLAYER_1.COLOR:
-                turnMessage.textContent = '';
-                turnMessage.textContent = PLAYER_1.NAME;
-                statMessage.style.color = PLAYER_1.COLOR;
-                statMessage.style.background = 'LightSeaGreen';
+                // turnMessage.textContent = '';
+                statMessage.textContent = 'Turno ' + PLAYER_1.NAME;
+                statContainer.style.color = PLAYER_1.COLOR;
+                statContainer.style.background = 'lightgreen';
                 break;
             case PLAYER_2.COLOR:
-                turnMessage.textContent = '';
-                turnMessage.textContent = PLAYER_2.NAME;
-                statMessage.style.color = PLAYER_2.COLOR;
-                statMessage.style.background = 'LightGreen';
+                // statMessage.textContent = '';
+                statMessage.textContent = 'Turno ' + PLAYER_2.NAME;
+                statContainer.style.color = PLAYER_2.COLOR;
+                statContainer.style.background = 'lightgreen';
                 break;
             default:
                 this.turn = turn;        
@@ -108,16 +108,14 @@ class Game {
 
         switch (this.turn) {
             case PLAYER_1.COLOR:
-                turnMessage.textContent = '';
                 statMessage.textContent = PLAYER_1.NAME + ' gana la partida';
-                statMessage.style.color = PLAYER_1.COLOR;
-                statMessage.style.background = 'LightSeaGreen';
+                statContainer.style.color = PLAYER_1.COLOR;
+                statContainer.style.background = 'lightgreen';
                 break;
             case PLAYER_2.COLOR:
-                turnMessage.textContent = '';
                 statMessage.textContent = PLAYER_2.NAME + ' gana la partida';
-                statMessage.style.color = PLAYER_2.COLOR;
-                statMessage.style.background = 'LightGreen';
+                statContainer.style.color = PLAYER_2.COLOR;
+                statContainer.style.background = 'lightgreen';
                 break;
         }
         
@@ -125,10 +123,9 @@ class Game {
     }
 
     setDraw(){
-        turnMessage.textContent = '';
         statMessage.textContent = 'Empate';
-        statMessage.style.color = PLAYER_1.COLOR;
-        statMessage.style.background = 'LightSeaGreen';
+        statContainer.style.color = PLAYER_1.COLOR;
+        statContainer.style.background = 'LightSeaGreen';
         this.setTurn(null);
     }
     
