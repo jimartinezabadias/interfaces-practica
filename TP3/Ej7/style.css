@@ -23,12 +23,16 @@ h2{
     transition: 0.4s;
 }
 
-.active .acord-title:hover{
+.acord-title:hover{
     background-color: #ccc;
 }
 
+.acord-content > img {
+    max-width: 100%;
+}
+
 .acord-content{
-    padding: 0px 16px;
+    /* padding: 0px 8px 8px 8px; */
     background-color: white;
     max-height: 0;
     overflow: hidden;
@@ -36,5 +40,5 @@ h2{
 }
 
 .acord-content :first-child {
-    padding: 16px;
+    padding: 8px 8px 16px 8px;
 }
