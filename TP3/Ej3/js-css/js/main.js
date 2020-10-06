@@ -11,9 +11,9 @@ function update() {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
 
-    hoursHand.style.transform = `rotate( ${360 * (hours % 12) / 12 }deg)`;
-    minutesHand.style.transform = `rotate( ${360 * minutes / 60 }deg)`;
-    secondsHand.style.transform = `rotate( ${360 * seconds / 60 }deg)`;
+    hoursHand.style.transform = `rotate( ${360 * ((hours - 6) % 12) / 12 }deg)`;
+    minutesHand.style.transform = `rotate( ${360 * (minutes - 30) / 60 }deg)`;
+    secondsHand.style.transform = `rotate( ${360 * (seconds - 30) / 60 }deg)`;
 
 }
 

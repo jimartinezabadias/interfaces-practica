@@ -6,21 +6,19 @@ body{
 }
 
 .main {
-    height: 100vh;
-    /* display: flex; */
-    /* align-items: center;
-    justify-content: center; */
     display: grid;
     place-items: center;
+    padding: 32px;
 }
 
 .clock{
     border-radius: 100%;
     background-color: #ffffff;
-    border: 5px solid #ffffff;
+    border: 5px solid #e4e4e4;
 }
 
 .wrap{
+    position: relative;
     width: 350px;
     height: 350px;
     border-radius: 100%;
@@ -30,27 +28,24 @@ body{
 .hour,
 .second{
     position: absolute;
-    left: 49%;
-    transform-origin: bottom center;
+    top: 50%;
+    left: 50%;
+    transform-origin: top center;
     background-color: black;
     z-index: 1;
 }
 
 .hour{
-    top: 38%;
     height: 100px;
     width: 6px;
 }
 
 .minute{
-    top: 34%;
     height: 130px;
     width: 4px;
-
 }
 
 .second{
-    top: 39%;
     height: 90px;
     width: 2px;
 }
