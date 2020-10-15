@@ -8,12 +8,13 @@
 #menu-button {
     color: rgb(255, 255, 255);
     /* color: rgb(222, 200, 76); */
-    background-color: rgb(38, 80, 158);
+    background-color: rgb(17, 62, 147);
     display: flex;
     align-items: center;
     letter-spacing: 2px;
     font-family: serif;
     font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
     border: none;
@@ -24,38 +25,86 @@
     text-align: center;
 }
 
-.menu-active{
+#menu-container{
     position: absolute;
-    left: -68vw;
+    left: -69vw;
     top: 0vh;
     width: 67vw;
-    height: 80vh;
+    height: 88vh;
     
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     
-    background-color: #ffffff;
+    /* background-color: wheat; */
 
-    overflow: hidden;
+    /* overflow: hidden; */
+
+    /* border: 10px solid #ffffff;
+    box-shadow:inset 0px 0px 0px 10px rgb(17, 62, 147); */
 
     border-radius: 30px;
+
+    visibility: hidden;
 }
 
 .menu-item{
     font-family: sans-serif;
-    color: rgb(17, 62, 147);;
+    font-weight: bold;
+
+    color: rgb(17, 62, 147);
     font-size: 33px;
     padding: 16px;
+
+    z-index: 2;
 }
 
 #menu-mantel{
     position: absolute;
-    top: -120px;
-    right: -160px;
-    transform: rotate(-25deg);
-    width: 500px;
-    height: 700px;
+    /* top: -120px;
+    right: -160px; */
+    top: center;
+    left: center;
+    transform: rotate(2deg);
+    width: 1000px;
+    height: 600px;
     background: url(images/mantel-rojo.jpg);
+    filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70))
+}
+
+#menu-fork{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 200px;
+    height: 600px;
+    background: url(images/fork.png) no-repeat;
+    background-size: 50%;
+    transform:scaleX(-1) rotate(-5deg);
+    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80))
+}
+
+#menu-knife{
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    width: 200px;
+    height: 700px;
+    background: url(images/knife.png) no-repeat;
+    background-size: 50%;
+    transform:scaleX(-1) rotate(18deg);
+    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80))
+}
+
+#menu-plate{
+    position: absolute;
+    top: center;
+    right: center;
+    width: 750px;
+    height: 750px;
+    background: url(images/plate.png) no-repeat;
+    background-size: 100%;
+    transform: rotate(150deg);
+    filter: drop-shadow(15px -10px 10px rgb(99, 93, 91))
 }
