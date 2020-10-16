@@ -27,26 +27,29 @@ function handleScroll() {
         ling.style.backgroundPosition = `200px ${335 - value * 0.4}px`;
         col.style.backgroundPosition = `1070px ${430 - value * 0.4}px`;
     }
-        
-
 
 }
 
 function handleMenuBtn() {
     if (menu_btn.classList.contains("visible")){
         menu_btn.classList.remove("visible");
-        menu.style.visibility = "hidden";
+        // menu.style.visibility = "hidden";
+        
+        mantel.classList.remove("mantel_active");
+        plate.classList.remove("plate_active");
+        knife.classList.remove("knife_active");
+        fork.classList.remove("fork_active");
+        menu_items.classList.remove("menu_items_active");
 
-        mantel.style.animation = "animate_mantel 0.3s steps(3)";
     } else {
         menu_btn.classList.add("visible");
-        menu.style.visibility = "visible";
+        // menu.style.visibility = "visible";
 
-        mantel.style.animation = "animate_mantel 0.3s steps(3)";
-        plate.style.animation = "animate_plate 0.3s steps(3) 0.1s forwards";
-        knife.style.animation = "animate_knife 0.3s steps(3) 0.2s forwards";
-        fork.style.animation = "animate_fork 0.3s steps(3) 0.2s forwards";
-        menu_items.style.animation = "animate_menu-items 0.3s ease-in 0.3s forwards";
+        mantel.classList.add("mantel_active");
+        plate.classList.add("plate_active");
+        knife.classList.add("knife_active");
+        fork.classList.add("fork_active");
+        menu_items.classList.add("menu_items_active");
     }
 }
 
@@ -69,6 +72,7 @@ function mainFunction() {
     fork = document.querySelector("#menu-fork");
     menu_items = document.querySelector("#menu-items");
 
+    // Events
     menu_btn.addEventListener("click", handleMenuBtn);
     window.addEventListener("scroll", handleScroll);
     

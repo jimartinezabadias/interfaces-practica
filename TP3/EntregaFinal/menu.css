@@ -46,16 +46,7 @@
 
     border-radius: 30px;
 
-    visibility: hidden;
-}
-
-@keyframes animate_menu-items{
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 100%;
-    }
+    /* visibility: hidden; */
 }
 
 #menu-items{
@@ -65,6 +56,12 @@
     text-align: center;
     
     opacity: 0;
+    transition: opacity 0.3s ease-in 0.5s;
+}
+
+.menu_items_active{
+    opacity: 100% !important;
+    transition: opacity 0.3s ease-out;
 }
 
 .menu-item{
@@ -78,41 +75,20 @@
     z-index: 2;
 }
 
-@keyframes animate_mantel{
-    from {
-        transform: translateY(-500px) rotate(-30deg);
-    }
-    to {
-        transform: translateY(0px) rotate(2deg);
-    }
-}
-
 #menu-mantel{
     position: absolute;
-    /* top: -120px;
-    right: -160px; */
-    top: center;
-    left: center;
-    /* transform: translateY(-500px) rotate(-30deg); */
-    transform: rotate(2deg);
     width: 1000px;
-    height: 600px;
+    height: 500px;
     background: url(images/mantel-rojo.jpg);
     filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70));
+    
+    transform: translateY(-900px) rotate(-30deg);
+    transition: transform 0.3s steps(3);
 }
 
-@keyframes animate_fork{
-    0% {
-        opacity: 0;
-        transform: translateY(-500px) scaleX(-1) rotate(90deg);
-    }
-    1%{
-        opacity: 100%;
-    }
-    100%{
-        opacity: 100%;
-        transform: translateY(0px) scaleX(-1) rotate(-5deg);
-    }
+.mantel_active{
+    transform: translateY(0px) rotate(-2deg) !important;
+    transition: transform 0.3s steps(3) 0.3s;
 }
 
 #menu-fork{
@@ -121,27 +97,20 @@
     left: 30px;
     width: 200px;
     height: 600px;
+    
     background: url(images/fork.png) no-repeat;
     background-size: contain;
-    transform:scaleX(-1) rotate(-5deg);
     filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
-
-    opacity: 0;
+    
+    transform: scaleX(-1) translateY(-500px) rotate(90deg);
+    transition: transform 0.3s steps(3) 0.2s;
 }
 
-@keyframes animate_knife{
-    from {
-        opacity: 0;
-        transform: translateY(-500px) scaleX(-1) rotate(-30deg);
-    }
-    1%{
-        opacity: 100%;
-    }
-    100%{
-        opacity: 100%;
-        transform: translateY(0px) scaleX(-1) rotate(18deg);
-    }
+.fork_active{
+    transform: scaleX(-1) translateY(0px) rotate(-5deg) !important;
+    transition: transform 0.3s steps(3) 0.2s;
 }
+
 
 #menu-knife{
     position: absolute;
@@ -149,38 +118,36 @@
     right: 50px;
     width: 200px;
     height: 600px;
+
     background: url(images/knife.png) no-repeat;
     background-size: contain;
-    transform: scaleX(-1) rotate(18deg);
-    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
     
-    opacity: 0;
+    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
+ 
+    transform: scaleX(-1) translateY(-900px) rotate(-30deg);
+    transition: transform 0.3s steps(3) 0.2s;
 }
 
-@keyframes animate_plate{
-    from {
-        opacity: 0;
-        transform: translateY(-500px) rotate(150deg);
-    }
-    1%{
-        opacity: 100%;
-    }
-    100%{
-        opacity: 100%;
-        transform: translateY(0px) rotate(150deg);
-    }
+.knife_active{
+    transform: scaleX(-1) translateY(0px) rotate(18deg) !important;
+    transition: transform 0.3s steps(3);
+
 }
 
 #menu-plate{
     position: absolute;
-    top: center;
-    right: center;
     width: 750px;
     height: 750px;
+
     background: url(images/plate.png) no-repeat;
     background-size: 100%;
-    transform: rotate(150deg);
     filter: drop-shadow(15px -10px 10px rgb(99, 93, 91));
+    
+    transform: translateY(-800px) rotate(150deg);
+    transition: transform 0.3s steps(3) 0.1s;
+}
 
-    opacity: 0;
+.plate_active{
+    transform: translateY(0px) rotate(150deg) !important;
+    transition: transform 0.3s steps(3);
 }
