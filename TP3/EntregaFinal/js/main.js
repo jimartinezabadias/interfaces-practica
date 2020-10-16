@@ -1,12 +1,21 @@
 
 "use strict"
 
+// header
 let paris;
 let remy;
 let ling;
 let col;
+
+// menu
 let menu_btn;
 let menu;
+let mantel;
+let plate;
+let knife;
+let fork;
+let menu_items;
+
 
 function handleScroll() {
     let value = window.scrollY;
@@ -24,12 +33,20 @@ function handleScroll() {
 }
 
 function handleMenuBtn() {
-    if (menu_btn.classList.contains("active")){
-        menu_btn.classList.remove("active");
+    if (menu_btn.classList.contains("visible")){
+        menu_btn.classList.remove("visible");
         menu.style.visibility = "hidden";
+
+        mantel.style.animation = "animate_mantel 0.3s steps(3)";
     } else {
-        menu_btn.classList.add("active");
+        menu_btn.classList.add("visible");
         menu.style.visibility = "visible";
+
+        mantel.style.animation = "animate_mantel 0.3s steps(3)";
+        plate.style.animation = "animate_plate 0.3s steps(3) 0.1s forwards";
+        knife.style.animation = "animate_knife 0.3s steps(3) 0.2s forwards";
+        fork.style.animation = "animate_fork 0.3s steps(3) 0.2s forwards";
+        menu_items.style.animation = "animate_menu-items 0.3s ease-in 0.3s forwards";
     }
 }
 
@@ -38,7 +55,6 @@ function handleMenuBtn() {
 function mainFunction() {
     
     // Header elements
-
     paris = document.querySelector("#paris");
     remy = document.querySelector("#header_remy");
     ling = document.querySelector("#header_linguini");
@@ -47,6 +63,11 @@ function mainFunction() {
     // Menu
     menu_btn = document.querySelector("#menu-button");
     menu = document.querySelector("#menu-container");
+    mantel = document.querySelector("#menu-mantel");
+    plate = document.querySelector("#menu-plate");
+    knife = document.querySelector("#menu-knife");
+    fork = document.querySelector("#menu-fork");
+    menu_items = document.querySelector("#menu-items");
 
     menu_btn.addEventListener("click", handleMenuBtn);
     window.addEventListener("scroll", handleScroll);

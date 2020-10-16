@@ -12,9 +12,9 @@
     display: flex;
     align-items: center;
     letter-spacing: 2px;
-    font-family: serif;
+    font-family: sans-serif;
     font-size: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
     cursor: pointer;
     text-align: center;
     border: none;
@@ -49,6 +49,24 @@
     visibility: hidden;
 }
 
+@keyframes animate_menu-items{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+#menu-items{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    opacity: 0;
+}
+
 .menu-item{
     font-family: sans-serif;
     font-weight: bold;
@@ -60,17 +78,41 @@
     z-index: 2;
 }
 
+@keyframes animate_mantel{
+    from {
+        transform: translateY(-500px) rotate(-30deg);
+    }
+    to {
+        transform: translateY(0px) rotate(2deg);
+    }
+}
+
 #menu-mantel{
     position: absolute;
     /* top: -120px;
     right: -160px; */
     top: center;
     left: center;
+    /* transform: translateY(-500px) rotate(-30deg); */
     transform: rotate(2deg);
     width: 1000px;
     height: 600px;
     background: url(images/mantel-rojo.jpg);
-    filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70))
+    filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70));
+}
+
+@keyframes animate_fork{
+    0% {
+        opacity: 0;
+        transform: translateY(-500px) scaleX(-1) rotate(90deg);
+    }
+    1%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0px) scaleX(-1) rotate(-5deg);
+    }
 }
 
 #menu-fork{
@@ -80,9 +122,25 @@
     width: 200px;
     height: 600px;
     background: url(images/fork.png) no-repeat;
-    background-size: 50%;
+    background-size: contain;
     transform:scaleX(-1) rotate(-5deg);
-    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80))
+    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
+
+    opacity: 0;
+}
+
+@keyframes animate_knife{
+    from {
+        opacity: 0;
+        transform: translateY(-500px) scaleX(-1) rotate(-30deg);
+    }
+    1%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0px) scaleX(-1) rotate(18deg);
+    }
 }
 
 #menu-knife{
@@ -90,11 +148,27 @@
     top: 150px;
     right: 50px;
     width: 200px;
-    height: 700px;
+    height: 600px;
     background: url(images/knife.png) no-repeat;
-    background-size: 50%;
-    transform:scaleX(-1) rotate(18deg);
-    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80))
+    background-size: contain;
+    transform: scaleX(-1) rotate(18deg);
+    filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
+    
+    opacity: 0;
+}
+
+@keyframes animate_plate{
+    from {
+        opacity: 0;
+        transform: translateY(-500px) rotate(150deg);
+    }
+    1%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0px) rotate(150deg);
+    }
 }
 
 #menu-plate{
@@ -106,5 +180,7 @@
     background: url(images/plate.png) no-repeat;
     background-size: 100%;
     transform: rotate(150deg);
-    filter: drop-shadow(15px -10px 10px rgb(99, 93, 91))
+    filter: drop-shadow(15px -10px 10px rgb(99, 93, 91));
+
+    opacity: 0;
 }
