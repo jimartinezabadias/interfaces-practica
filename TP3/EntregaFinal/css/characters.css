@@ -3,8 +3,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 96px;
-    grid-row-gap: 48px;
-    padding: 0px 128px;
+    grid-row-gap: 64px;
+    padding: 32px 128px;
 
     background-color: bisque;
 
@@ -13,11 +13,9 @@
 }
 
 .characters > h1 {
-    color:  rgb(17, 62, 147);
     grid-column: span 3;
     display: flex;
     justify-content: center;
-    padding: 32px;
 }
 
 .card{
@@ -25,12 +23,11 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    
+
     transform-style: preserve-3d;
     
-    perspective: 800px;
-    perspective-origin: 50%;
-
+    perspective: 300px;
+    perspective-origin: 50% 0%;
 }
 
 /* #ling_card:hover{
@@ -76,6 +73,6 @@
 
 .card_info{
     font-size: 20px;
-    padding: 32px;
+    padding: 48px 32px;
     text-align: center;
 }

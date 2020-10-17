@@ -23,6 +23,9 @@ let colette_card;
 let cardX;
 let cardY;
 
+// slider
+let selected = 1;
+
 
 function handleScroll() {
     let value = window.scrollY;
@@ -79,15 +82,39 @@ function mouseMove(e) {
     
     let transform = "";
 
-    transform += `rotateX(${ -dY * 0.07 }deg) rotateY(${ dX * 0.07 }deg)`; 
+    transform += `rotateX(${ -dY * 0.03 }deg) rotateY(${ dX * 0.03 }deg)`; 
 
     current_card.style.transform = transform;
 
 }
 
-function mouseLeave(e) {
-    console.log("out");
-    // ling_card.style.transition = "transform 0.3 ease-in";
+// function mouseLeave(e) {
+//     ling_card.style.transition = "transform 0.3 ease-in";
+// }
+
+
+function showPrevSlide() {
+    let actual_slide = document.querySelector(`#slide-${selected}`);
+    selected--;
+    if (selected < 1) {
+        selected = 6;
+    }
+    let next_slide = document.querySelector(`#slide-${selected}`);
+    
+    actual_slide.classList.remove("selected");
+    next_slide.classList.add("selected");
+}
+
+function showNextSlide() {
+    let actual_slide = document.querySelector(`#slide-${selected}`);
+    selected++;
+    if (selected > 6) {
+        selected = 1;
+    }
+    let next_slide = document.querySelector(`#slide-${selected}`);
+    
+    actual_slide.classList.remove("selected");
+    next_slide.classList.add("selected");
 }
 
 
@@ -99,6 +126,9 @@ function mainFunction() {
     ling = document.querySelector("#header_linguini");
     col = document.querySelector("#header_colete");
 
+    // Header events
+    window.addEventListener("scroll", handleScroll);
+
     // Menu
     menu_btn = document.querySelector("#menu-button");
     menu = document.querySelector("#menu-container");
@@ -108,19 +138,28 @@ function mainFunction() {
     fork = document.querySelector("#menu-fork");
     menu_items = document.querySelector("#menu-items");
 
+    // Menu events
+    menu_btn.addEventListener("click", handleMenuBtn);
+    
     // Cards
     ling_card = document.querySelector("#ling_card");
     remy_card = document.querySelector("#remy_card");
     colette_card = document.querySelector("#colette_card");
 
-    // Events
-    menu_btn.addEventListener("click", handleMenuBtn);
-    window.addEventListener("scroll", handleScroll);
-    
+    // Cards events
     ling_card.addEventListener("mousemove", mouseMove);
     remy_card.addEventListener("mousemove", mouseMove);
     colette_card.addEventListener("mousemove", mouseMove);
-    // ling_card.addEventListener("mouseout", mouseLeave);
+    
+    // Slider
+    let prev = document.querySelector("[data-slide=prev]");
+    let next = document.querySelector("[data-slide=next]");
+    
+    let first_slide = document.querySelector(`#slide-${selected}`);
+    first_slide.classList.add("selected");
+
+    prev.addEventListener("click", showPrevSlide);
+    next.addEventListener("click", showNextSlide);
     
 }
 

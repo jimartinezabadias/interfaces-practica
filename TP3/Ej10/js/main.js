@@ -32,7 +32,7 @@ function mainFunction() {
     let prev = document.querySelector("[data-slide=prev]");
     let next = document.querySelector("[data-slide=next]");
 
-    let first_slide = document.querySelector(`#slide-${selected}`)
+    let first_slide = document.querySelector(`#slide-${selected}`);
     first_slide.classList.add("selected");
 
     prev.addEventListener("click", showPrevSlide);

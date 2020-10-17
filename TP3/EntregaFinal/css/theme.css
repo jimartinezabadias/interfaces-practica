@@ -9,7 +9,10 @@ a{
 }
 
 h1{
+    margin: 0;
     font-size: 40px;
+    color:  rgb(17, 62, 147);
+    padding: 32px;
 }
 
 .main {

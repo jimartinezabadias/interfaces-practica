@@ -1,0 +1,50 @@
+
+.escenas_destacadas{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 128px;
+}
+
+#slider{
+    display: flex;
+
+    margin-top: 32px;
+    width: 100%;
+    min-height: 70vh;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.slide{
+    position: absolute;
+    width: 70%;
+    /* visibility: hidden; */
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    /* right: 100%; */
+}
+
+.slider-control{
+    position: absolute;
+    color: white;
+    z-index: 1;
+    padding: 0px 16px;
+    width: 100px;
+}
+
+.slider-control-left{
+    left: 14%;
+}
+
+.slider-control-right{
+    right: 14%;
+}
+
+.selected{
+    opacity: 1 !important;
+    /* visibility: visible; */
+    transition: opacity 0.4s ease-in;
+}
