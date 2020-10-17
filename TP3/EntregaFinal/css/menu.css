@@ -56,12 +56,12 @@
     text-align: center;
     
     opacity: 0;
-    transition: opacity 0.3s ease-in 0.5s;
+    transition: opacity 0.3s ease-in 0.3s;
 }
 
 .menu_items_active{
     opacity: 100% !important;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out 0s;
 }
 
 .menu-item{
@@ -79,16 +79,16 @@
     position: absolute;
     width: 1000px;
     height: 500px;
-    background: url(images/mantel-rojo.jpg);
+    background: url(../images/mantel-rojo.jpg);
     filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70));
     
     transform: translateY(-900px) rotate(-30deg);
-    transition: transform 0.3s steps(3);
+    transition: transform 0.3s ease-in 0s;
 }
 
 .mantel_active{
     transform: translateY(0px) rotate(-2deg) !important;
-    transition: transform 0.3s steps(3) 0.3s;
+    transition: transform 0.3s ease-out 1s;
 }
 
 #menu-fork{
@@ -98,17 +98,17 @@
     width: 200px;
     height: 600px;
     
-    background: url(images/fork.png) no-repeat;
+    background: url(../images/fork.png) no-repeat;
     background-size: contain;
     filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
     
     transform: scaleX(-1) translateY(-500px) rotate(90deg);
-    transition: transform 0.3s steps(3) 0.2s;
+    transition: transform 0.3s ease-in 0.1s;
 }
 
 .fork_active{
     transform: scaleX(-1) translateY(0px) rotate(-5deg) !important;
-    transition: transform 0.3s steps(3) 0.2s;
+    transition: transform 0.3s ease-out 0.1s;
 }
 
 
@@ -119,18 +119,18 @@
     width: 200px;
     height: 600px;
 
-    background: url(images/knife.png) no-repeat;
+    background: url(../images/knife.png) no-repeat;
     background-size: contain;
     
     filter: drop-shadow(5px 5px 3px rgb(98, 99, 80));
  
     transform: scaleX(-1) translateY(-900px) rotate(-30deg);
-    transition: transform 0.3s steps(3) 0.2s;
+    transition: transform 0.3s ease-in 0.1s;
 }
 
 .knife_active{
     transform: scaleX(-1) translateY(0px) rotate(18deg) !important;
-    transition: transform 0.3s steps(3);
+    transition: transform 0.3s ease-out 0.1s;
 
 }
 
@@ -139,15 +139,15 @@
     width: 750px;
     height: 750px;
 
-    background: url(images/plate.png) no-repeat;
+    background: url(../images/plate.png) no-repeat;
     background-size: 100%;
     filter: drop-shadow(15px -10px 10px rgb(99, 93, 91));
     
     transform: translateY(-800px) rotate(150deg);
-    transition: transform 0.3s steps(3) 0.1s;
+    transition: transform 0.3s ease-in 0.1s;
 }
 
 .plate_active{
     transform: translateY(0px) rotate(150deg) !important;
-    transition: transform 0.3s steps(3);
+    transition: transform 0.3s ease-out 0.6s;
 }
