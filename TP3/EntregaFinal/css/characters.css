@@ -1,18 +1,23 @@
 
 .characters{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 64px;
-    padding: 32px 128px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 96px;
+    grid-row-gap: 48px;
+    padding: 0px 128px;
 
     background-color: bisque;
+
+    /* transform-style: preserve-3d; */
+
 }
 
 .characters > h1 {
-    grid-column: span 2;
+    color:  rgb(17, 62, 147);
+    grid-column: span 3;
     display: flex;
     justify-content: center;
-    padding: 16px;
+    padding: 32px;
 }
 
 .card{
@@ -20,11 +25,12 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
-    perspective: 800px;
-    perspective-origin: center;
-
+    
     transform-style: preserve-3d;
+    
+    perspective: 800px;
+    perspective-origin: 50%;
+
 }
 
 /* #ling_card:hover{
@@ -36,8 +42,8 @@
     justify-content: center;
     align-items: flex-end;
 
-    border-radius: 50%;
-    width: 500px;
+    /* border-radius: 50%; */
+    width: 70%;
     height: 500px;
 
     /* background-color: aqua; */
@@ -47,25 +53,29 @@
 
     filter: drop-shadow(-5px 5px 10px rgb(63, 52, 60)) ;
 
+    /* transform-origin: center; */
+
     /* transform: rotateX(0deg) rotateY(0deg); */
 }
 
-.card_image > * {
-    position: absolute;
-} 
-
 .card_image > img{
-    /* transform: translateZ(1em); */
+    position: absolute;
+    transform: translateZ(1em);
+    pointer-events: none;
 }
 
 .card_image > h2{
+    color: rgb(222, 200, 76);
+    position: absolute;
     pointer-events: none;
-    /* transform: translateZ(2em); */
+    transform: translateZ(2em);
 
     font-size: 40px;
+    filter: drop-shadow(-3px 3px 3px rgb(64, 65, 75)) ;
 }
 
 .card_info{
     font-size: 20px;
     padding: 32px;
+    text-align: center;
 }

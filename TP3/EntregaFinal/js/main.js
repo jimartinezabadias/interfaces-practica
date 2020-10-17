@@ -18,8 +18,10 @@ let menu_items;
 
 // cards
 let ling_card;
-let cX;
-let cY;
+let remy_card;
+let colette_card;
+let cardX;
+let cardY;
 
 
 function handleScroll() {
@@ -62,26 +64,30 @@ async function handleMenuBtn() {
 }
 
 function mouseMove(e) {
-    // console.log(e.layerX);
-    // e.relatedTarget	Returns the element related to the element that triggered the mouse event
+    // console.log(e.target.id);
+
+    let current_card = document.querySelector(`#${e.target.id}`);
+
+    cardX = current_card.clientWidth / 2 ;
+    cardY = current_card.clientHeight / 2 ;
 
     let mouseX = e.layerX;
     let mouseY = e.layerY;
 
-    let dX = mouseX - cX;
-    let dY = mouseY - cY;
+    let dX = mouseX - cardX;
+    let dY = mouseY - cardY;
     
     let transform = "";
 
-    transform += `rotateX(${ -dY * 0.1 }deg) rotateY(${ dX * 0.1 }deg)`; 
+    transform += `rotateX(${ -dY * 0.07 }deg) rotateY(${ dX * 0.07 }deg)`; 
 
-    ling_card.style.transform = transform;
+    current_card.style.transform = transform;
 
 }
 
 function mouseLeave(e) {
     console.log("out");
-    ling_card.style.transition = "transform 0.3 ease-in";
+    // ling_card.style.transition = "transform 0.3 ease-in";
 }
 
 
@@ -104,14 +110,17 @@ function mainFunction() {
 
     // Cards
     ling_card = document.querySelector("#ling_card");
-    cX = ling_card.clientWidth / 2 ;
-    cY = ling_card.clientHeight / 2 ;
+    remy_card = document.querySelector("#remy_card");
+    colette_card = document.querySelector("#colette_card");
 
     // Events
     menu_btn.addEventListener("click", handleMenuBtn);
     window.addEventListener("scroll", handleScroll);
+    
     ling_card.addEventListener("mousemove", mouseMove);
-    ling_card.addEventListener("mouseout", mouseLeave);
+    remy_card.addEventListener("mousemove", mouseMove);
+    colette_card.addEventListener("mousemove", mouseMove);
+    // ling_card.addEventListener("mouseout", mouseLeave);
     
 }
 
