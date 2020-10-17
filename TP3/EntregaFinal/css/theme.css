@@ -8,6 +8,10 @@ a{
     text-decoration: none;
 }
 
+h1{
+    font-size: 40px;
+}
+
 .main {
     position: relative;
     min-height: 100vh;
