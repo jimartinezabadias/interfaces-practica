@@ -164,26 +164,37 @@
 				
 				<img id="slide-6" class="slide"
 					src="images/escenas/escena6.png" alt="">
-
-				<!-- Left and right controls -->
-				<a 	class="slider-control slider-control-left" 
-					href="#myCarousel" data-slide="prev">
-
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-					</svg>
+	
+			</div>
 			
-				</a>
-				
-				<a 	class="slider-control slider-control-right" 
-					href="#myCarousel" data-slide="next">
+			<!-- Left and right controls -->
+			<span class="slider-control slider-control-left" 
+				onclick="nextSlide(-1)"
+				href="#" data-slide="prev">
 
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-					</svg>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+				</svg>
+		
+			</span>
+			
+			<span class="slider-control slider-control-right" 
+				onclick="nextSlide(1)"
+				data-slide="next">
 
-				</a>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+				</svg>
 
+			</span>
+			
+			<div class="dots">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+				<span class="dot" onclick="currentSlide(4)"></span>
+				<span class="dot" onclick="currentSlide(5)"></span> 
+				<span class="dot" onclick="currentSlide(6)"></span>
 			</div>
 
 		</section>

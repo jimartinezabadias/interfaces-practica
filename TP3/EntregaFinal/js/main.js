@@ -24,7 +24,7 @@ let cardX;
 let cardY;
 
 // slider
-let selected = 1;
+let slideIndex = 1;
 
 
 function handleScroll() {
@@ -93,28 +93,57 @@ function mouseMove(e) {
 // }
 
 
-function showPrevSlide() {
-    let actual_slide = document.querySelector(`#slide-${selected}`);
-    selected--;
-    if (selected < 1) {
-        selected = 6;
-    }
-    let next_slide = document.querySelector(`#slide-${selected}`);
+// function showPrevSlide() {
+//     let actual_slide = document.querySelector(`#slide-${selected}`);
+//     selected--;
+//     if (selected < 1) {
+//         selected = 6;
+//     }
+//     let next_slide = document.querySelector(`#slide-${selected}`);
     
-    actual_slide.classList.remove("selected");
-    next_slide.classList.add("selected");
+//     actual_slide.classList.remove("selected");
+//     next_slide.classList.add("selected");
+// }
+
+// function showNextSlide() {
+//     let actual_slide = document.querySelector(`#slide-${selected}`);
+//     selected++;
+//     if (selected > 6) {
+//         selected = 1;
+//     }
+//     let next_slide = document.querySelector(`#slide-${selected}`);
+    
+//     actual_slide.classList.remove("selected");
+//     next_slide.classList.add("selected");
+// }
+
+// Next/previous controls
+function nextSlide(n) {
+    showSlides(slideIndex += n);
 }
 
-function showNextSlide() {
-    let actual_slide = document.querySelector(`#slide-${selected}`);
-    selected++;
-    if (selected > 6) {
-        selected = 1;
-    }
-    let next_slide = document.querySelector(`#slide-${selected}`);
+// Thumbnail image controls
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.querySelectorAll(".slide");
+    let dots = document.querySelectorAll(".dot");
     
-    actual_slide.classList.remove("selected");
-    next_slide.classList.add("selected");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    
+    for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("selected");
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("selected");
+    }
+
+    slides[slideIndex-1].classList.add("selected");
+    dots[slideIndex-1].classList.add("selected");
 }
 
 
@@ -152,14 +181,16 @@ function mainFunction() {
     colette_card.addEventListener("mousemove", mouseMove);
     
     // Slider
-    let prev = document.querySelector("[data-slide=prev]");
-    let next = document.querySelector("[data-slide=next]");
+    // let prev = document.querySelector("[data-slide=prev]");
+    // let next = document.querySelector("[data-slide=next]");
     
-    let first_slide = document.querySelector(`#slide-${selected}`);
-    first_slide.classList.add("selected");
+    currentSlide(slideIndex);
 
-    prev.addEventListener("click", showPrevSlide);
-    next.addEventListener("click", showNextSlide);
+    // let first_slide = document.querySelector(`#slide-${slideIndex}`);
+    // first_slide.classList.add("selected");
+
+    // prev.addEventListener("click", nextSlide(-1));
+    // next.addEventListener("click", nextSlide(1));
     
 }
 
