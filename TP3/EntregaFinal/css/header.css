@@ -14,6 +14,145 @@
     background: url(../images/paris-backgorund.jpg) right top / 135%;
 }
 
+.header_cloud_1{
+    position: absolute;
+    right: -25%;
+    
+    width: 200px;
+    height: 200px;
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/Clouds_1.png);
+}
+
+@keyframes clouds_2{
+    0% {
+        opacity: 0;
+        right: 35%;
+    }
+    4%{
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    75% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        right: 75%;
+    }
+}
+
+@keyframes clouds_1{
+    0% {
+        opacity: 0;
+        right: 0;
+    }
+    4%{
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    75% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        right: 40%;
+    }
+}
+
+.header_cloud_2{
+    position: absolute;
+    right: -25%;
+    
+    width: 200px;
+    height: 30px;
+    
+    filter: blur(3px);
+    background-size: cover;
+    background-image: linear-gradient(to bottom,rgba(243, 238, 189, 0.5) 0%,rgba(193, 105, 252, 0.308) 25%,rgba(255, 252, 227, 0.836) 100%);
+    -webkit-mask-box-image: url(../images/Clouds_2.png);
+
+}
+
+#cloud_1{
+    bottom: 40%;
+    animation: clouds_1 40s linear infinite 10s;
+}
+#cloud_2{
+    bottom: 55%;
+    animation: clouds_1 45s linear infinite 2s;
+}
+#cloud_3{
+    bottom: 90%;
+    transform: scaleY(-1);
+    animation: clouds_1 37s linear infinite 8s;
+}
+#cloud_4{
+    bottom: 30%;
+    transform: scaleX(-1);
+    animation: clouds_1 42s linear infinite 16s;
+}
+#cloud_5{
+    bottom: 50%;
+    animation: clouds_1 36s linear infinite 32s;
+}
+#cloud_6{
+    bottom: 35%;
+    animation: clouds_1 41s linear infinite 37s;
+}
+#cloud_7{
+    bottom: 30%;
+    transform: scaleX(-1);
+    animation: clouds_1 38s linear infinite 44s;
+}
+#cloud_8{
+    bottom: 50%;
+    animation: clouds_1 45s linear infinite 51s;
+}
+#cloud_9{
+    bottom: 60%;
+    transform: scaleY(-1);
+    animation: clouds_1 34s linear infinite 54s;
+}
+#cloud_10{
+    bottom: 30%;
+    animation: clouds_1 42s linear infinite 58s;
+}
+
+#cloud_11{
+    bottom: 90%;
+    transform: scaleY(-1);
+    animation: clouds_2 37s linear infinite 58s;
+}
+#cloud_12{
+    bottom: 30%;
+    transform: scaleX(-1);
+    animation: clouds_2 42s linear infinite 46s;
+}
+#cloud_12{
+    bottom: 50%;
+    animation: clouds_2 36s linear infinite 32s;
+}
+#cloud_14{
+    bottom: 35%;
+    animation: clouds_2 41s linear infinite 27s;
+}
+#cloud_15{
+    bottom: 30%;
+    transform: scaleX(-1);
+    animation: clouds_2 38s linear infinite 14s;
+}
+#cloud_16{
+    bottom: 50%;
+    animation: clouds_2 45s linear infinite 1s;
+}
+
 #header_remy {
     position: absolute;
     top: -30%;
