@@ -29,7 +29,7 @@ let slideIndex = 1;
 
 function handleScroll() {
     let value = window.scrollY;
-    console.log(value);
+    // console.log(value);
 
     // Animate Header
     if ( value < 290 ){
@@ -69,7 +69,7 @@ async function handleMenuBtn() {
 function mouseMove(e) {
     // console.log(e.target.id);
 
-    let current_card = document.querySelector(`#${e.target.id}`);
+    let current_card = document.querySelector(`#${e.currentTarget.id}`);
 
     cardX = current_card.clientWidth / 2 ;
     cardY = current_card.clientHeight / 2 ;
@@ -80,11 +80,16 @@ function mouseMove(e) {
     let dX = mouseX - cardX;
     let dY = mouseY - cardY;
     
-    let transform = "";
+    
 
-    transform += `rotateX(${ -dY * 0.03 }deg) rotateY(${ dX * 0.03 }deg)`; 
+    let transform_1 = `rotateX(${ -dY * 0.09 }deg) rotateY(${ dX * 0.09 }deg) translateZ(1em)`;
+    let transform_dot5 = `rotateX(${ -dY * 0.04 }deg) rotateY(${ dX * 0.04 }deg) translateZ(-3em)`;
+    let transform_x2 = `rotateX(${ -dY * 0.12 }deg) rotateY(${ dX * 0.12 }deg) translateZ(2em)`;
+    
 
-    current_card.style.transform = transform;
+    current_card.childNodes[1].style.transform = transform_dot5;
+    current_card.childNodes[3].style.transform = transform_1;
+    current_card.childNodes[5].style.transform = transform_x2;
 
 }
 

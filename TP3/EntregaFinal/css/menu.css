@@ -8,6 +8,8 @@
     width: 100%;
     min-height: 100vh;
     z-index: 2;
+
+    pointer-events: none;
 }
 
 #menu-button {
@@ -23,6 +25,7 @@
     font-family: sans-serif;
     font-size: 17px;
     cursor: pointer;
+    pointer-events: all;
     border: none;
     border-radius: 30px;
     padding: 14px 22px;
@@ -78,6 +81,12 @@
     padding: 12px;
 
     z-index: 2;
+
+    pointer-events: all;
+}
+
+.menu-item:hover{
+    color: rgb(65, 119, 226);
 }
 
 #menu-mantel{

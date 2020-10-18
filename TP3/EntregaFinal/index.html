@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/characters.css">
 	<link rel="stylesheet" href="css/escenas.css">
+	<link rel="stylesheet" href="css/eventos.css">
 
 </head>
 <body>
@@ -37,7 +38,7 @@
 
 				<div id="menu-items">
 					<a href="#" class="menu-item">Home</a>
-					<a href="#" class="menu-item">Personajes</a>
+					<a href="#characters" class="menu-item">Personajes</a>
 					<a href="#" class="menu-item">Escenas destacadas</a>
 					<a href="#" class="menu-item">Eventos</a>
 					<a href="#" class="menu-item">Saluda a los Protagonistas</a>
@@ -65,7 +66,7 @@
 			
 		</section>
 
-		<section class="characters">
+		<section id="characters">
 
 			<h1>Personajes</h1>
 
@@ -74,6 +75,9 @@
 			<div class="card">
 	
 				<div id="ling_card" class="card_image">
+
+					<img class="card_background"
+						src="images/mantel-azul.jpg" alt="">
 
 					<img id="ling_card_img"
 						src="images/linguini_card_img.png" alt="">
@@ -98,6 +102,9 @@
 
 				<div id="remy_card" class="card_image">
 
+					<img class="card_background"
+						src="images/mantel-azul.jpg" alt="">
+					
 					<img id="remy_card_img"
 						src="images/remy_card_img.png" alt="">
 
@@ -122,14 +129,13 @@
 	
 				<div id="colette_card" class="card_image">
 
+					<img class="card_background"
+						src="images/mantel-azul.jpg" alt="">
+
 					<img id="colette_card_img"
 						src="images/colete_card_img.png" alt="">
-
-					<!-- <div class="card_overlay"> -->
 	
 					<h2>Colette</h2>
-	
-					<!-- </div> -->
 
 				</div>
 
@@ -204,9 +210,69 @@
 
 		</section>
 
-		<section class="eventos">
+		<section id="eventos">
+			
 			<h1>Calendario de eventos</h1>
 
+			<div class="acordeon">
+
+				<div class="acord-item">
+					
+					<div class="acord-title">
+						<h2>Item con texto</h2>
+					</div>
+
+					<div class="acord-content">
+						<p>
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo rem ad accusantium obcaecati velit est pariatur, nobis aut iure exercitationem ea dolor ut minima odit quam numquam, perferendis sapiente doloremque!
+						</p>
+					</div>
+
+				</div>
+				
+				<div class="acord-item">
+					
+					<div class="acord-title">
+						<h2>Item con Imagen</h2>
+					</div>
+
+					<div class="acord-content">
+						<img src="../../shared_images/arrayan3.jpg" alt="">
+					</div>
+
+				</div>
+
+				<div class="acord-item">
+					
+					<div class="acord-title">
+						<h2>Item con Tabla</h2>
+					</div>
+
+					<div class="acord-content">
+						
+						<table>
+							<tr>
+								<th>Firstname</th>
+								<th>Lastname</th>
+								<th>Age</th>
+							  </tr>
+							  <tr>
+								<td>Jill</td>
+								<td>Smith</td>
+								<td>50</td>
+							  </tr>
+							  <tr>
+								<td>Eve</td>
+								<td>Jackson</td>
+								<td>94</td>
+							  </tr>
+						</table>
+
+					</div>
+
+				</div>
+
+			</div>
 
 		</section>
 		

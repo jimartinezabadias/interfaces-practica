@@ -1,0 +1,38 @@
+
+#eventos{
+    display: flex;
+    flex-flow: column;
+}
+
+#eventos > h1{
+    text-align: center;
+}
+
+.acord-title{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 16px;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.acord-title:hover{
+    background-color: #ccc;
+}
+
+.acord-content > img {
+    max-width: 100%;
+}
+
+.acord-content{
+    /* padding: 0px 8px 8px 8px; */
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.acord-content :first-child {
+    padding: 8px 8px 16px 8px;
+}
