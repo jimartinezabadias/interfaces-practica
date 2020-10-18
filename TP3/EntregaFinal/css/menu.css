@@ -1,41 +1,49 @@
 .menu {
     position: fixed;
-    top: 50px;
-    right: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    width: 100%;
+    min-height: 100vh;
     z-index: 2;
 }
 
 #menu-button {
-    color: rgb(255, 255, 255);
-    /* color: rgb(222, 200, 76); */
-    background-color: rgb(17, 62, 147);
+    position: absolute;
+    top: 30px; right: 30px;
+    
     display: flex;
     align-items: center;
-    letter-spacing: 2px;
+    
+    color: rgb(255, 255, 255);
+    background-color: rgb(17, 62, 147);
+    letter-spacing: 1px;
     font-family: sans-serif;
-    font-size: 20px;
-    /* font-weight: bold; */
+    font-size: 18px;
     cursor: pointer;
-    text-align: center;
     border: none;
     border-radius: 30px;
-    padding: 16px 32px;
+    padding: 16px 24px;
     margin: 0px;
     text-decoration: none;
-    text-align: center;
 
     filter: drop-shadow(-2px 4px 5px rgb(63, 52, 60)) ;
+
+    z-index: 2;
+
 }
 
 #menu-container{
     position: absolute;
-    left: -69vw;
-    top: 0vh;
-    width: 67vw;
-    height: 88vh;
-    
+
     display: flex;
     flex-direction: column;
+    
+    width: 100%;
+    height: 100%;
+    
     align-items: center;
     justify-content: center;
     
@@ -43,18 +51,13 @@
 
     /* overflow: hidden; */
 
-    /* border: 10px solid #ffffff;
-    box-shadow:inset 0px 0px 0px 10px rgb(17, 62, 147); */
-
-    border-radius: 30px;
-
     visibility: hidden;
 }
 
 #menu-items{
-    position: absolute;
     display: flex;
     flex-direction: column;
+    
     text-align: center;
     
     opacity: 0;
@@ -71,15 +74,16 @@
     font-weight: bold;
 
     color: rgb(17, 62, 147);
-    font-size: 33px;
-    padding: 16px;
+    font-size: 25px;
+    padding: 12px;
 
     z-index: 2;
 }
 
 #menu-mantel{
     position: absolute;
-    width: 1000px;
+
+    width: 900px;
     height: 500px;
     background: url(../images/mantel-rojo.jpg);
     filter: drop-shadow(-10px 10px 20px rgb(74, 61, 70));
@@ -95,10 +99,10 @@
 
 #menu-fork{
     position: absolute;
-    top: 20px;
-    left: 30px;
-    width: 200px;
-    height: 600px;
+    top: 10%; right: 70%;
+    
+    width: 150px;
+    height: 500px;
     
     background: url(../images/fork.png) no-repeat;
     background-size: contain;
@@ -116,10 +120,10 @@
 
 #menu-knife{
     position: absolute;
-    top: 150px;
-    right: 50px;
-    width: 200px;
-    height: 600px;
+    top: 15%; left: 70%;
+    
+    width: 150px;
+    height: 500px;
 
     background: url(../images/knife.png) no-repeat;
     background-size: contain;
@@ -138,8 +142,8 @@
 
 #menu-plate{
     position: absolute;
-    width: 750px;
-    height: 750px;
+    width: 600px;
+    height: 600px;
 
     background: url(../images/plate.png) no-repeat;
     background-size: 100%;
