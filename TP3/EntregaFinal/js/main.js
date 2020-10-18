@@ -2,10 +2,10 @@
 "use strict"
 
 // header
-let paris;
-let remy;
-let ling;
-let col;
+let header_background;
+let header_ling;
+let header_colette;
+// let remy;
 
 // menu
 let menu_btn;
@@ -29,13 +29,13 @@ let slideIndex = 1;
 
 function handleScroll() {
     let value = window.scrollY;
-    // console.log(value);
+    console.log(value);
 
     // Animate Header
-    if ( value < 500 ){
-        paris.style.backgroundPosition = `100% ${value * 0.12}%`;
-        ling.style.backgroundPosition = `200px ${335 - value * 0.4}px`;
-        col.style.backgroundPosition = `1070px ${430 - value * 0.4}px`;
+    if ( value < 290 ){
+        header_background.style.backgroundPosition = `100% ${value * 0.07}%`;
+        header_ling.style.bottom = `${-35 + value * 0.12}%`;
+        header_colette.style.bottom = `${-35 + value * 0.12}%`;
     }
 
 }
@@ -93,30 +93,6 @@ function mouseMove(e) {
 // }
 
 
-// function showPrevSlide() {
-//     let actual_slide = document.querySelector(`#slide-${selected}`);
-//     selected--;
-//     if (selected < 1) {
-//         selected = 6;
-//     }
-//     let next_slide = document.querySelector(`#slide-${selected}`);
-    
-//     actual_slide.classList.remove("selected");
-//     next_slide.classList.add("selected");
-// }
-
-// function showNextSlide() {
-//     let actual_slide = document.querySelector(`#slide-${selected}`);
-//     selected++;
-//     if (selected > 6) {
-//         selected = 1;
-//     }
-//     let next_slide = document.querySelector(`#slide-${selected}`);
-    
-//     actual_slide.classList.remove("selected");
-//     next_slide.classList.add("selected");
-// }
-
 // Next/previous controls
 function nextSlide(n) {
     showSlides(slideIndex += n);
@@ -150,10 +126,10 @@ function showSlides(n) {
 function mainFunction() {
     
     // Header elements
-    paris = document.querySelector("#paris");
-    remy = document.querySelector("#header_remy");
-    ling = document.querySelector("#header_linguini");
-    col = document.querySelector("#header_colete");
+    header_background = document.querySelector("#header_background");
+    header_ling = document.querySelector("#header_linguini");
+    header_colette = document.querySelector("#header_colette");
+    // remy = document.querySelector("#header_remy");
 
     // Header events
     window.addEventListener("scroll", handleScroll);
