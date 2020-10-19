@@ -27,7 +27,7 @@
     position: absolute;
     left: 12%;
     bottom: -35%;
-    
+    transition: bottom 0.1s ease;
     width: 30%;
 }
 
@@ -35,7 +35,7 @@
     position: absolute;
     bottom: -35%;
     right: 14%;
-    
+    transition: bottom 0.1s ease;
     width: 15%;
 }
 

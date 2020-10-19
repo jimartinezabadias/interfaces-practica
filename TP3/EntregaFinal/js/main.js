@@ -18,6 +18,11 @@ let fork;
 let menu_items;
 let menu_options;
 
+// contador
+let countText;
+let countBanner;
+let countDownDate;
+
 // cards
 let ling_card;
 let remy_card;
@@ -164,6 +169,31 @@ function showSlides(n) {
     dots[slideIndex-1].classList.add("selected");
 }
 
+function updateCountdown() {
+    
+    let now = new Date().getTime();
+
+    let distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+    // Display the result in the element with id="demo"
+    countText.innerHTML = "¡ Faltan " + days + " días, " + hours + " horas, "
+    + minutes + " minutos y " + seconds + " segundos para el estreno !";
+
+    if (seconds % 2 == 0){
+        countBanner.style.transform = "skew(-5deg) rotate(-5deg)";
+    } else {
+        countBanner.style.transform = "skew(-4deg) rotate(-4deg)";
+    }
+
+}
+
 
 function mainFunction() {
     
@@ -189,6 +219,12 @@ function mainFunction() {
 
     // Menu events
     menu_btn.addEventListener("click", handleMenuBtn);
+
+    // Contador
+    countBanner = document.querySelector(".banner");
+    countText = document.querySelector("#countdown");
+    countDownDate = new Date("Oct 28, 2020 15:37:25").getTime();
+    setInterval(updateCountdown,1000);
     
     // Cards
     ling_card = document.querySelector("#ling_card");
