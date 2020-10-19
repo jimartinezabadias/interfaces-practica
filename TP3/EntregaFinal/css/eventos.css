@@ -8,6 +8,7 @@
 .acordeon{
     border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #eventos > h1{
@@ -20,25 +21,21 @@
 
     background-color: whitesmoke;
     cursor: pointer;
-    padding: 16px;
+    padding: 16px 32px;
     transition: 0.4s;
     overflow: hidden;
+}
+
+.acord-title.active{
+    background-color: rgb(255, 242, 183);
 }
 
 .acord-title > h2 {
     color: rgb(17, 62, 147);
     font-size: 20px;
-    transform: translateX(0%);
-    transition: transform 0.4s ease;
-}
-
-.acord-title.active {
-    
-}
-
-.acord-title.active > h2{
-    transform: translateX(75%);
-    transition: transform 0.4s ease;
+    font-weight: normal;
+    /* transform: translateX(0%); */
+    /* transition: transform 0.4s ease; */
 }
 
 .acord-title:hover{
@@ -49,18 +46,52 @@
 .acord-content{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* padding: 0px 8px 8px 8px; */
+
     background-color: white;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+
+    align-items: center;
+    
+    transform-style: preserve-3d;
+    perspective: 500px;
+    perspective-origin: 75%;
 }
+
 
 .acord-content > img {
     max-width: 100%;
-    padding: 16px;
+    padding: 32px;
+    
+    transform: translateZ(-6em);
+    transition: transform 0.3s ease;
 }
 
-.acord-content > p {
-    padding: 16px;
+.acord-content > img:hover {
+    transform: translateZ(0em);
+    transition: transform 0.3s ease;
+}
+
+.acc_icon {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.acc_icon > svg{
+    color: rgb(17, 62, 147);
+    width: 40%;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.acord-title.active svg {
+    transform: rotate(-180deg);
+    transition: transform 0.3s ease;
+    
+}
+
+.evt_info {
+    padding: 32px;
 }

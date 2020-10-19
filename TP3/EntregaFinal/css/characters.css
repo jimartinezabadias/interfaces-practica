@@ -38,8 +38,8 @@
     align-items: flex-end;
 
     /* border-radius: 50%; */
-    width: 70%;
-    height: 350px;
+    width: 50%;
+    height: 250px;
 
     /* background-color: aqua; */
 
@@ -51,8 +51,8 @@
     /* transform: translateZ(-1em); */
     
     transform-style: preserve-3d;
-    /* perspective-origin: 50% 0%; */
     perspective: 800px;
+    /* perspective-origin: 50% 0%; */
     
 
     /* transform-origin: center; */

@@ -31,7 +31,7 @@ let cardX;
 let cardY;
 
 // slider
-let slideIndex = 1;
+let slideIndex;
 
 
 function handleScroll() {
@@ -247,6 +247,7 @@ function mainFunction() {
     colette_card.addEventListener("mousemove", mouseMove);
     
     // Slider
+    slideIndex = 1;
     currentSlide(slideIndex);
 
     // Eventos
