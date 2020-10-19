@@ -8,6 +8,7 @@
     mix-blend-mode: luminosity;
 
     filter: blur(2px);
+
 }
 
 @keyframes light{
@@ -20,19 +21,17 @@
 }
 
 #light_1{
-
-    transform: translateX(92px) translateY(52px);
+    transform: translateX(93px) translateY(54px);
     
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     
     background-color: white;
 
-    animation: light 1s steps(5) infinite alternate-reverse;
+    animation: light 1s linear infinite alternate-reverse;
 }
 
 #light_2{
-
     transform: translateX(100px) translateY(351px);
 
     width: 10px;
@@ -40,11 +39,10 @@
 
     background-color: rgb(255, 246, 121);
 
-    animation: light 1s steps(3) infinite alternate-reverse 0.5s;
+    animation: light 1s linear infinite alternate-reverse 0.5s;
 }
 
 #light_3{
-
     transform: translateX(105px) translateY(351px);
     
     width: 9px;
@@ -52,11 +50,10 @@
     
     background-color: rgb(255, 246, 121);
     
-    animation: light 1s steps(3) infinite alternate-reverse 0.7s;
+    animation: light 1.5s linear infinite alternate-reverse 0.7s;
 }
 
 #light_4{
-    /* top: 351px; left: 113px; */
     transform: translateX(113px) translateY(351px);
     
     
@@ -65,11 +62,10 @@
     
     background-color: rgb(255, 246, 121);
     
-    animation: light 1s steps(3) infinite alternate-reverse 0.3s;
+    animation: light 2s linear infinite alternate-reverse 0.3s;
 }
 
 #light_5{
-    /* top: 351px; left: 82px; */
     transform: translateX(82px) translateY(351px);
     
     width: 9px;
@@ -77,11 +73,10 @@
     
     background-color: rgb(255, 246, 121);
     
-    animation: light 1s steps(3) infinite alternate-reverse 0.5s;
+    animation: light 1s linear infinite alternate-reverse 0.5s;
 }
 
 #light_6{
-    /* top: 308px; left: 89px; */
     transform: translateX(89px) translateY(308px);
     
     width: 6px;
@@ -89,11 +84,10 @@
     
     background-color: rgb(255, 246, 121);
     
-    animation: light 1s steps(3) infinite alternate-reverse 0.7s;
+    animation: light 1.5s linear infinite alternate-reverse 0.7s;
 }
 
 #light_7{
-    /* top: 148px; left: 78px; */
     transform: translateX(78px) translateY(148px);
 
     width: 7px;
@@ -101,5 +95,60 @@
     
     background-color: rgb(255, 246, 121);
     
-    animation: light 1s steps(3) infinite alternate-reverse 0.1s;
+    animation: light 2s linear infinite alternate-reverse 0.1s;
+}
+
+#light_8{
+    transform: translateX(99px) translateY(86px);
+
+    width: 7px;
+    height: 7px;
+    
+    background-color: rgb(255, 255, 255);
+    
+    animation: light 1.5s linear infinite alternate-reverse 0.3s;
+}
+
+#light_9{
+    transform: translateX(179px) translateY(493px);
+
+    width: 12px;
+    height: 12px;
+    
+    background-color:  rgb(255, 246, 121);
+    
+    animation: light 1.5s linear infinite alternate-reverse 0.3s;
+}
+
+#light_10{
+    transform: translateX(70px) translateY(493px);
+
+    width: 10px;
+    height: 10px;
+    
+    background-color:  rgb(255, 246, 121);
+    
+    animation: light 1.5s linear infinite alternate-reverse 0.3s;
+}
+
+#light_11{
+    transform: translateX(205px) translateY(580px);
+
+    width: 5px;
+    height: 5px;
+    
+    background-color:  rgb(255, 246, 121);
+    
+    animation: light 1.5s linear infinite alternate-reverse 0.3s;
+}
+
+#light_12{
+    transform: translateX(75px) translateY(642px);
+
+    width: 10px;
+    height: 10px;
+    
+    background-color:  rgb(255, 246, 121);
+    
+    animation: light 2s linear infinite alternate-reverse 0.3s;
 }

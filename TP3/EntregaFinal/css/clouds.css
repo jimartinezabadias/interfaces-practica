@@ -73,7 +73,7 @@
     animation: clouds_1 45s linear infinite 2s;
 }
 #cloud_3{
-    bottom: 90%;
+    bottom: 65%;
     transform: scaleY(-1);
     animation: clouds_1 37s linear infinite 18s;
 }
@@ -110,7 +110,7 @@
 }
 
 #cloud_11{
-    bottom: 90%;
+    bottom: 55%;
     transform: scaleY(-1);
     animation: clouds_2 37s linear infinite 58s;
 }

@@ -37,10 +37,10 @@ function handleScroll() {
     // Animate Header
     if ( value < 290 ){
         header_background.style.backgroundPosition = `100% ${value * 0.07}%`;
-        // console.log(header_background.style.backgroundPosition);
+
         for (let i = 0; i < lights.length; i++) {
             let orig = lightsTransform[i];
-            lights[i].style.transform = `translateX(${orig.x}px) translateY(${orig.y - value * 0.35}px)`;
+            lights[i].style.transform = `translateX(${orig.x}px) translateY(${orig.y - value * 0.36}px)`;
         }
         
         header_ling.style.bottom = `${-35 + value * 0.12}%`;
