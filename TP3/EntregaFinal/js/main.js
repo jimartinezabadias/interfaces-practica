@@ -194,6 +194,16 @@ function updateCountdown() {
 
 }
 
+function accFunct() {
+    this.classList.toggle("active");
+    var accContent = this.nextElementSibling;
+    if (accContent.style.maxHeight) {
+        accContent.style.maxHeight = null;
+    } else {
+        accContent.style.maxHeight = accContent.scrollHeight + "px";
+    }
+}
+
 
 function mainFunction() {
     
@@ -237,16 +247,13 @@ function mainFunction() {
     colette_card.addEventListener("mousemove", mouseMove);
     
     // Slider
-    // let prev = document.querySelector("[data-slide=prev]");
-    // let next = document.querySelector("[data-slide=next]");
-    
     currentSlide(slideIndex);
 
-    // let first_slide = document.querySelector(`#slide-${slideIndex}`);
-    // first_slide.classList.add("selected");
-
-    // prev.addEventListener("click", nextSlide(-1));
-    // next.addEventListener("click", nextSlide(1));
+    // Eventos
+    let acc = document.querySelectorAll(".acord-title");
+    acc.forEach(ac_item => {
+        ac_item.addEventListener("click", accFunct);
+    });
     
 }
 

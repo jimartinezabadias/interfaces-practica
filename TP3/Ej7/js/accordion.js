@@ -1,7 +1,7 @@
 
 "use strict"
 
-function accFunct(params) {
+function accFunct() {
     
     this.classList.toggle("active");
     var accContent = this.nextElementSibling;
