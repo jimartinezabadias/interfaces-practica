@@ -5,7 +5,8 @@
 let header_background;
 let header_ling;
 let header_colette;
-// let remy;
+let lights;
+let lightsTransform;
 
 // menu
 let menu_btn;
@@ -31,13 +32,34 @@ function handleScroll() {
     let value = window.scrollY;
     // console.log(value);
 
+    // console.log(lights);
+
     // Animate Header
     if ( value < 290 ){
         header_background.style.backgroundPosition = `100% ${value * 0.07}%`;
+        // console.log(header_background.style.backgroundPosition);
+        for (let i = 0; i < lights.length; i++) {
+            let orig = lightsTransform[i];
+            lights[i].style.transform = `translateX(${orig.x}px) translateY(${orig.y - value * 0.35}px)`;
+        }
+        
         header_ling.style.bottom = `${-35 + value * 0.12}%`;
         header_colette.style.bottom = `${-35 + value * 0.12}%`;
     }
 
+}
+
+function getTransform(lights) {
+    let transform = new Array();
+
+    for (let i = 0; i < lights.length; i++) {
+        let style = window.getComputedStyle(lights[i])
+                .getPropertyValue('transform')
+                .match(/(-?[0-9\.]+)/g);
+        transform.push({x: style[4], y: style[5]});    
+    }
+
+    return transform;
 }
 
 async function handleMenuBtn() {
@@ -134,7 +156,8 @@ function mainFunction() {
     header_background = document.querySelector("#header_background");
     header_ling = document.querySelector("#header_linguini");
     header_colette = document.querySelector("#header_colette");
-    // remy = document.querySelector("#header_remy");
+    lights = document.querySelectorAll(".light");
+    lightsTransform = getTransform(lights);
 
     // Header events
     window.addEventListener("scroll", handleScroll);

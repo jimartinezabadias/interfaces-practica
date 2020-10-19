@@ -1,0 +1,105 @@
+
+.light {
+    position: absolute;
+    top: 0; left: 0;
+
+    border-radius: 50%;
+    
+    mix-blend-mode: luminosity;
+
+    filter: blur(2px);
+}
+
+@keyframes light{
+    from {
+        opacity: 10%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+#light_1{
+
+    transform: translateX(92px) translateY(52px);
+    
+    width: 6px;
+    height: 6px;
+    
+    background-color: white;
+
+    animation: light 1s steps(5) infinite alternate-reverse;
+}
+
+#light_2{
+
+    transform: translateX(100px) translateY(351px);
+
+    width: 10px;
+    height: 10px;
+
+    background-color: rgb(255, 246, 121);
+
+    animation: light 1s steps(3) infinite alternate-reverse 0.5s;
+}
+
+#light_3{
+
+    transform: translateX(105px) translateY(351px);
+    
+    width: 9px;
+    height: 9px;
+    
+    background-color: rgb(255, 246, 121);
+    
+    animation: light 1s steps(3) infinite alternate-reverse 0.7s;
+}
+
+#light_4{
+    /* top: 351px; left: 113px; */
+    transform: translateX(113px) translateY(351px);
+    
+    
+    width: 10px;
+    height: 10px;
+    
+    background-color: rgb(255, 246, 121);
+    
+    animation: light 1s steps(3) infinite alternate-reverse 0.3s;
+}
+
+#light_5{
+    /* top: 351px; left: 82px; */
+    transform: translateX(82px) translateY(351px);
+    
+    width: 9px;
+    height: 9px;
+    
+    background-color: rgb(255, 246, 121);
+    
+    animation: light 1s steps(3) infinite alternate-reverse 0.5s;
+}
+
+#light_6{
+    /* top: 308px; left: 89px; */
+    transform: translateX(89px) translateY(308px);
+    
+    width: 6px;
+    height: 6px;
+    
+    background-color: rgb(255, 246, 121);
+    
+    animation: light 1s steps(3) infinite alternate-reverse 0.7s;
+}
+
+#light_7{
+    /* top: 148px; left: 78px; */
+    transform: translateX(78px) translateY(148px);
+
+    width: 7px;
+    height: 7px;
+    
+    background-color: rgb(255, 246, 121);
+    
+    animation: light 1s steps(3) infinite alternate-reverse 0.1s;
+}
