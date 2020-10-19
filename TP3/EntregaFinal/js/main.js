@@ -16,6 +16,7 @@ let plate;
 let knife;
 let fork;
 let menu_items;
+let menu_options;
 
 // cards
 let ling_card;
@@ -62,29 +63,43 @@ function getTransform(lights) {
     return transform;
 }
 
-async function handleMenuBtn() {
+function showMenu() {
+    menu_btn.classList.add("visible");
+    menu.style.visibility = "visible";
+
+    mantel.classList.add("mantel_active");
+    plate.classList.add("plate_active");
+    knife.classList.add("knife_active");
+    fork.classList.add("fork_active");
+    menu_items.classList.add("menu_items_active");
+}
+
+async function hideMenu() {
+    menu_btn.classList.remove("visible");
+        
+    mantel.classList.remove("mantel_active");
+    plate.classList.remove("plate_active");
+    knife.classList.remove("knife_active");
+    fork.classList.remove("fork_active");
+    menu_items.classList.remove("menu_items_active");
+    
+    await new Promise(r => setTimeout(r, 500));
+
+    menu.style.visibility = "hidden";
+}
+
+
+function handleMenuBtn() {
     if (menu_btn.classList.contains("visible")){
-        menu_btn.classList.remove("visible");
-        
-        mantel.classList.remove("mantel_active");
-        plate.classList.remove("plate_active");
-        knife.classList.remove("knife_active");
-        fork.classList.remove("fork_active");
-        menu_items.classList.remove("menu_items_active");
-        
-        await new Promise(r => setTimeout(r, 500));
-
-        menu.style.visibility = "hidden";
-
+        hideMenu();
+        menu_options.forEach(item => {
+            item.removeEventListener("click",hideMenu);
+        });
     } else {
-        menu_btn.classList.add("visible");
-        menu.style.visibility = "visible";
-
-        mantel.classList.add("mantel_active");
-        plate.classList.add("plate_active");
-        knife.classList.add("knife_active");
-        fork.classList.add("fork_active");
-        menu_items.classList.add("menu_items_active");
+        showMenu();
+        menu_options.forEach(item => {
+            item.addEventListener("click",hideMenu);
+        });
     }
 }
 
@@ -170,6 +185,7 @@ function mainFunction() {
     knife = document.querySelector("#menu-knife");
     fork = document.querySelector("#menu-fork");
     menu_items = document.querySelector("#menu-items");
+    menu_options = document.querySelectorAll(".menu-item");
 
     // Menu events
     menu_btn.addEventListener("click", handleMenuBtn);

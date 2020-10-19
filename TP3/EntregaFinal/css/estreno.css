@@ -1,0 +1,40 @@
+#estreno{
+    display: flex;
+    flex-flow: column;
+
+    /* min-height: 200px; */
+    
+    justify-content: center;
+    align-items: center;
+
+    padding: 64px 128px;
+    /* background: url(../images/pattern.png);
+    background-size: 8%; */
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    border-radius: 50px;
+    /* border: 10px solid rgb(255, 255, 255); */
+    background-color: rgb(250, 220, 85);
+    transform: skew(-4deg) rotate(-4deg);
+    width: 70%;
+}
+
+.banner > img {
+    width: 10%;
+    padding: 32px;
+}
+
+#countdown{
+    margin: 0;
+    font-size: 30px;
+    max-width: 400px;
+    font-weight: normal;
+    color:  rgb(17, 62, 147);
+    padding: 16px;
+}

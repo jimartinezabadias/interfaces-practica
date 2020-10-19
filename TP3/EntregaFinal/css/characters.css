@@ -71,7 +71,7 @@
 }
 
 .card_image > h2{
-    color: rgb(222, 200, 76);
+    color: rgb(250, 220, 85);
     position: absolute;
     pointer-events: none;
     transform: translateZ(2em);

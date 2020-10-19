@@ -1,5 +1,5 @@
 
-.escenas_destacadas{
+#escenas_destacadas{
     display: flex;
     flex-flow: column;
     justify-content: center;
