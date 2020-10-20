@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/characters.css">
 	<link rel="stylesheet" href="css/escenas.css">
 	<link rel="stylesheet" href="css/eventos.css">
+	<link rel="stylesheet" href="css/formulario.css">
 
 </head>
 <body>
@@ -25,11 +26,21 @@
 		<section class="menu">
 
 			<button id="menu-button">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-					style="width: 24px; padding: 4px 8px 4px 4px;"
-					stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-				</svg> Menú
+				<div class="icons">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+						id="hamb_icon"
+						class="menu_icon"
+						stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+						id="x_icon"
+						class="menu_icon"
+						stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</div>
+				Menú
 			</button>
 
 			<div id="menu-container">
@@ -44,7 +55,7 @@
 					<a href="#characters" class="menu-item">Personajes</a>
 					<a href="#escenas_destacadas" class="menu-item">Escenas destacadas</a>
 					<a href="#eventos" class="menu-item">Eventos</a>
-					<a href="#" class="menu-item">Saluda a los Protagonistas</a>
+					<a href="#formulario" class="menu-item">Saluda a los Protagonistas</a>
 				</div>
 
 			</div>
@@ -392,6 +403,54 @@
 
 		</section>
 		
+		<section id="formulario">
+
+			<h1>Saluda a los Protagonistas</h1>
+
+			<form id="form" action="#">
+				
+				<div id="select_personajes">
+					
+					<label>
+						<input type="radio" name="personaje" value="small" checked>
+						<img src="http://placehold.it/40x60/0bf/fff&text=A">
+					</label>
+					
+					<label>
+						<input type="radio" name="personaje" value="big">
+						<img src="http://placehold.it/40x60/b0f/fff&text=B">
+					</label>
+					
+					<label>
+						<input type="radio" name="personaje" value="big">
+						<img src="http://placehold.it/40x60/b0f/fff&text=B">
+					</label>
+					
+					<!-- <input type="radio" name="personaje" id="form_remy">
+					<input type="radio" name="personaje" id="form_ling">
+					<input type="radio" name="personaje" id="form_collette"> -->
+				</div>
+
+				<div id="form_fields">
+
+					<label for="nombre">Nombre</label>
+					<input type="text" name="nombre" id="">
+	
+					<label for="email">E-Mail</label>
+					<input type="email" name="email" id="">
+	
+					<label for="mensaje">Mensaje:</label>
+					<textarea name="mensaje" id="" cols="30" rows="10"></textarea>
+
+					<button type="submit">
+						Enviar
+					</button>
+
+				</div>
+
+			</form>
+
+		</section>
 
 	</div>
 

@@ -44,6 +44,7 @@
 
 .acord-title:hover{
     background-color: rgb(247, 230, 158);
+    text-decoration: underline rgb(17, 62, 147);
 }
 
 

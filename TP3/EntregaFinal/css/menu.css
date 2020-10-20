@@ -32,10 +32,51 @@
     margin: 0px;
     text-decoration: none;
 
-    filter: drop-shadow(-2px 4px 5px rgb(63, 52, 60)) ;
+    filter: drop-shadow(-1px 3px 3px rgb(74, 63, 71)) ;
 
     z-index: 2;
+    transition: background-color 0.2s ease;
+}
 
+#menu-button:hover{
+    background-color: rgb(22, 79, 183);
+    transition: background-color 0.2s ease;
+}
+
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 4px 8px 4px 4px;
+    height: 24px;
+    width: 24px;
+    overflow: hidden;
+}
+
+.menu_icon{
+    position: absolute;
+    width: 24px;
+}
+
+#hamb_icon{
+    transform: translateY(0px);
+    transition: transform 0.2s ease-in;
+}
+
+.visible #hamb_icon{
+    transform: translateY(-24px);
+    transition: transform 0.2s ease-out;
+}
+
+#x_icon{
+    transform: translateY(24px);
+    transition: transform 0.2s ease-in;
+}
+
+.visible #x_icon {
+    transform: translateY(0px);
+    transition: transform 0.2s ease-out;
 }
 
 #menu-container{
@@ -83,9 +124,11 @@
     z-index: 2;
 
     pointer-events: all;
+    transition: color 0.2s ease;
 }
 
 .menu-item:hover{
+    transition: color 0.2s ease;
     color: rgb(65, 119, 226);
 }
 
