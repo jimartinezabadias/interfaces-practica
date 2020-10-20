@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 96px;
     grid-row-gap: 72px;
-    padding: 16px 128px;
+    padding: 0px 128px;
 
     /* background-color: bisque; */
 
@@ -23,9 +23,6 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
-    
-    
 }
 
 /* #ling_card:hover{
@@ -37,27 +34,12 @@
     justify-content: center;
     align-items: flex-end;
 
-    /* border-radius: 50%; */
     width: 50%;
     height: 250px;
-
-    /* background-color: aqua; */
-
-    /* background: url(../images/mantel-azul.jpg);
-    background-size: cover; */
-
-    /* filter: drop-shadow(-5px 5px 10px rgb(63, 52, 60)) ; */
-
-    /* transform: translateZ(-1em); */
     
     transform-style: preserve-3d;
     perspective: 800px;
-    /* perspective-origin: 50% 0%; */
-    
 
-    /* transform-origin: center; */
-
-    /* transform: rotateX(0deg) rotateY(0deg); */
 }
 
 #colette_card_img,

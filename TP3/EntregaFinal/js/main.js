@@ -36,7 +36,7 @@ let slideIndex;
 
 function handleScroll() {
     let value = window.scrollY;
-    // console.log(value);
+    console.log(value);
 
     // console.log(lights);
 
@@ -51,6 +51,11 @@ function handleScroll() {
         
         header_ling.style.bottom = `${-35 + value * 0.12}%`;
         header_colette.style.bottom = `${-35 + value * 0.12}%`;
+    }
+
+    // Animate countdown
+    if ( value > 200  && value < 350 ) {
+        countBanner.style.transform = `skew(-4deg) rotate(-4deg) translateX(${- 500 + value * 1.5}px)`;
     }
 
 }
@@ -186,11 +191,12 @@ function updateCountdown() {
     countText.innerHTML = "¡ Faltan " + days + " días, " + hours + " horas, "
     + minutes + " minutos y " + seconds + " segundos para el estreno !";
 
-    if (seconds % 2 == 0){
-        countBanner.style.transform = "skew(-5deg) rotate(-5deg)";
-    } else {
-        countBanner.style.transform = "skew(-4deg) rotate(-4deg)";
-    }
+    // ver de animar algun elemento adentro del banner
+    // if (seconds % 2 == 0){
+    //     countBanner.style.transform = "skew(-5deg) rotate(-5deg)";
+    // } else {
+    //     countBanner.style.transform = "skew(-4deg) rotate(-4deg)";
+    // }
 
 }
 
@@ -214,9 +220,6 @@ function mainFunction() {
     lights = document.querySelectorAll(".light");
     lightsTransform = getTransform(lights);
 
-    // Header events
-    window.addEventListener("scroll", handleScroll);
-
     // Menu
     menu_btn = document.querySelector("#menu-button");
     menu = document.querySelector("#menu-container");
@@ -227,34 +230,41 @@ function mainFunction() {
     menu_items = document.querySelector("#menu-items");
     menu_options = document.querySelectorAll(".menu-item");
 
-    // Menu events
-    menu_btn.addEventListener("click", handleMenuBtn);
-
     // Contador
     countBanner = document.querySelector(".banner");
     countText = document.querySelector("#countdown");
     countDownDate = new Date("Oct 28, 2020 15:37:25").getTime();
-    setInterval(updateCountdown,1000);
     
     // Cards
     ling_card = document.querySelector("#ling_card");
     remy_card = document.querySelector("#remy_card");
     colette_card = document.querySelector("#colette_card");
-
-    // Cards events
-    ling_card.addEventListener("mousemove", mouseMove);
-    remy_card.addEventListener("mousemove", mouseMove);
-    colette_card.addEventListener("mousemove", mouseMove);
     
     // Slider
     slideIndex = 1;
     currentSlide(slideIndex);
-
+    
     // Eventos
+    // Header events
+    window.addEventListener("scroll", handleScroll);
+
+    // Menu events
+    menu_btn.addEventListener("click", handleMenuBtn);
+    
+    // Cards events
+    ling_card.addEventListener("mousemove", mouseMove);
+    remy_card.addEventListener("mousemove", mouseMove);
+    colette_card.addEventListener("mousemove", mouseMove);
+
+    // Acordeon Events
     let acc = document.querySelectorAll(".acord-title");
     acc.forEach(ac_item => {
         ac_item.addEventListener("click", accFunct);
     });
+
+    // Functions
+    // Countdown function
+    setInterval(updateCountdown,1000);
     
 }
 

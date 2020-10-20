@@ -1,15 +1,15 @@
 #estreno{
+    position: relative;
     display: flex;
     flex-flow: row;
-
-    /* min-height: 200px; */
     
     justify-content: center;
     align-items: center;
 
     padding: 32px 128px 16px 128px;
-    /* background: url(../images/pattern.png);
-    background-size: 8%; */
+
+    overflow: hidden;
+ 
 }
 
 .banner{
@@ -21,8 +21,8 @@
     border-radius: 50px;
     border: 5px dotted rgb(255, 255, 255);
     background-color: rgb(250, 220, 85);
-    transform: skew(-4deg) rotate(-4deg);
-    transition: transform 0.5s ease;
+    transform: skew(-4deg) rotate(-4deg) translateX(-500px);
+    transition: transform 0.3s ease;
     width: 50%;
 }
 
