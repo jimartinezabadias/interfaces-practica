@@ -7,6 +7,10 @@
     padding: 16px 128px;
 }
 
+#escenas_destacadas > h1{
+    padding-bottom: 16px;
+}
+
 #slider{
     position: relative;
     display: flex;

@@ -5,6 +5,10 @@
     padding: 16px 128px;
 }
 
+#eventos > h1{
+    padding-bottom: 16px;
+}
+
 .acordeon{
     border-radius: 20px;
     overflow: hidden;
@@ -60,15 +64,14 @@
 }
 
 
-.acord-content > img {
+.acord-content img {
     max-width: 100%;
-    padding: 32px;
     
     transform: translateZ(-6em);
     transition: transform 0.3s ease;
 }
 
-.acord-content > img:hover {
+.acord-content img:hover {
     transform: translateZ(0em);
     transition: transform 0.3s ease;
 }
@@ -94,4 +97,9 @@
 
 .evt_info {
     padding: 32px;
+}
+
+.evt_info > h3{
+    margin: 0;
+    padding-top: 16px;
 }
