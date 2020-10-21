@@ -29,7 +29,7 @@
     border: none;
     border-radius: 30px;
     padding: 14px 22px;
-    padding-right: 27px;
+    padding-right: 26px;
     margin: 0px;
     text-decoration: none;
 
@@ -120,12 +120,12 @@
     text-align: center;
     
     opacity: 0;
-    transition: opacity 0.3s ease-in 0.3s;
+    transition: opacity 0.3s ease-in 0s;
 }
 
-.menu_items_active{
+#menu-items.menu_items_active{
     opacity: 100% !important;
-    transition: opacity 0.3s ease-out 0s;
+    transition: opacity 0.3s ease-out 0.5s;
 }
 
 .menu-item{
@@ -163,7 +163,7 @@
 
 .mantel_active{
     transform: translateY(0px) rotate(-2deg) !important;
-    transition: transform 0.3s ease-out 1s;
+    transition: transform 0.3s ease-out 0.8s;
 }
 
 #menu-fork{
