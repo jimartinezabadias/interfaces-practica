@@ -32,11 +32,19 @@ let cardY;
 
 // slider
 let slideIndex;
+let slide_left;
+let slide_right;
+
+// eventos
+let accordeon_titles;
+
+// formulario
+let btn_progress;
 
 
 function handleScroll() {
     let value = window.scrollY;
-    console.log(value);
+    // console.log(value);
 
     // console.log(lights);
 
@@ -201,13 +209,37 @@ function updateCountdown() {
 }
 
 function accFunct() {
-    this.classList.toggle("active");
-    var accContent = this.nextElementSibling;
+
+    accordeon_titles.forEach(acc => {
+        acc.classList.remove("active");
+        let accContent = acc.nextElementSibling;
+        accContent.style.maxHeight = null;
+    });
+    
+    this.classList.add("active");
+
+    let accContent = this.nextElementSibling;
     if (accContent.style.maxHeight) {
         accContent.style.maxHeight = null;
     } else {
         accContent.style.maxHeight = accContent.scrollHeight + "px";
     }
+
+}
+
+async function handleForm(e) {
+    e.preventDefault();
+    this.classList.add("loading");
+    
+    await new Promise(r => setTimeout(r, 1000));
+    
+    this.classList.add("sent");
+    
+    await new Promise(r => setTimeout(r, 2000));
+    
+    this.classList.remove("sent");
+    this.classList.remove("loading");
+
 }
 
 
@@ -241,9 +273,17 @@ function mainFunction() {
     colette_card = document.querySelector("#colette_card");
     
     // Slider
+    slide_left = document.querySelector("#slide_left");
+    slide_right = document.querySelector("#slide_right");
     slideIndex = 1;
     currentSlide(slideIndex);
     
+    // Acordeon
+    accordeon_titles = document.querySelectorAll(".acord-title");
+
+    // Formulario
+    btn_progress = document.querySelector("#btn_progress");
+
     // Eventos
     // Header events
     window.addEventListener("scroll", handleScroll);
@@ -256,11 +296,18 @@ function mainFunction() {
     remy_card.addEventListener("mousemove", mouseMove);
     colette_card.addEventListener("mousemove", mouseMove);
 
+    // Slider Events
+    slide_left.addEventListener("click", () => { nextSlide(-1) });
+    slide_right.addEventListener("click", () => { nextSlide(1) });
+
     // Acordeon Events
-    let acc = document.querySelectorAll(".acord-title");
-    acc.forEach(ac_item => {
+    accordeon_titles.forEach(ac_item => {
         ac_item.addEventListener("click", accFunct);
     });
+    accordeon_titles[0].click();
+
+    // Formulario Events
+    btn_progress.addEventListener("click",handleForm);
 
     // Functions
     // Countdown function

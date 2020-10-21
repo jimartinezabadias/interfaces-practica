@@ -16,6 +16,11 @@ body{
     font-size: 20px;
     color: white;
     cursor: pointer;
+
+    border: none;
+    border-radius: 30px;
+    padding: 14px 22px;
+    margin-top: 32px;
 }
 
 #progress {

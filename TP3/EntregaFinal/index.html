@@ -55,7 +55,7 @@
 					<a href="#characters" class="menu-item">Personajes</a>
 					<a href="#escenas_destacadas" class="menu-item">Escenas destacadas</a>
 					<a href="#eventos" class="menu-item">Eventos</a>
-					<a href="#formulario" class="menu-item">Saluda a los Protagonistas</a>
+					<a href="#formulario" class="menu-item">Saluda a los Personajes</a>
 				</div>
 
 			</div>
@@ -239,8 +239,7 @@
 			</div>
 			
 			<!-- Left and right controls -->
-			<span class="slider-control slider-control-left" 
-				onclick="nextSlide(-1)"
+			<span id="slide_left" class="slider-control slider-control-left" 
 				href="#" data-slide="prev">
 
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -249,8 +248,8 @@
 		
 			</span>
 			
-			<span class="slider-control slider-control-right" 
-				onclick="nextSlide(1)"
+			<span id="slide_right"
+				class="slider-control slider-control-right" 
 				data-slide="next">
 
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -405,30 +404,29 @@
 		
 		<section id="formulario">
 
-			<h1>Saluda a los Protagonistas</h1>
+			<h1>Saluda a los Personajes</h1>
 
 			<form id="form" action="#">
+
+				<p>Elige un personaje</p>
 				
 				<div id="select_personajes">
 					
 					<label>
-						<input type="radio" name="personaje" value="small" checked>
-						<img src="http://placehold.it/40x60/0bf/fff&text=A">
+						<input type="radio" name="personaje" value="remy" checked>
+						<img src="images/Remy-1.png">
 					</label>
 					
 					<label>
-						<input type="radio" name="personaje" value="big">
-						<img src="http://placehold.it/40x60/b0f/fff&text=B">
+						<input type="radio" name="personaje" value="linguini">
+						<img src="images/Linguini-1.png">
 					</label>
 					
 					<label>
-						<input type="radio" name="personaje" value="big">
-						<img src="http://placehold.it/40x60/b0f/fff&text=B">
+						<input type="radio" name="personaje" value="colette">
+						<img src="images/Colette-1.png">
 					</label>
 					
-					<!-- <input type="radio" name="personaje" id="form_remy">
-					<input type="radio" name="personaje" id="form_ling">
-					<input type="radio" name="personaje" id="form_collette"> -->
 				</div>
 
 				<div id="form_fields">
@@ -442,8 +440,26 @@
 					<label for="mensaje">Mensaje:</label>
 					<textarea name="mensaje" id="" cols="30" rows="10"></textarea>
 
-					<button type="submit">
+					<button type="submit"
+						id="btn_progress">
+						
+						<div id="progress"></div>
+						
 						Enviar
+						<div class="icons">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+								id="plane_icon"
+								class="menu_icon"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+							</svg>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+								id="check_icon"
+								class="menu_icon"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+							</svg>
+						</div>
 					</button>
 
 				</div>

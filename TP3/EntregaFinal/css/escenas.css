@@ -37,16 +37,40 @@
     color: rgb(17, 62, 147);
     z-index: 1;
     padding: 0px 16px;
-    width: 100px;
+    width: 80px;
     cursor: pointer;
 }
 
-.slider-control-left{
-    left: 17%;
+.slider-control:hover{
+    color: rgb(25, 87, 201);
 }
 
-.slider-control-right{
-    right: 17%;
+/* @keyframes left_slider{
+    from { transform: translateX(-350px) translateY(15px); }
+    to { transform: translateX(-355px) translateY(15px); }
+} */
+#slide_left{
+    transform: translateX(-350px) translateY(15px);
+    transition: transform 0.3s ease;
+}
+
+#slide_left:hover{
+    /* left: 17%; */
+    transform: translateX(-360px) translateY(15px);
+    transition: transform 0.3s ease;
+    /* animation: left_slider 0.3s 2 ease-in alternate; */
+}
+
+#slide_right{
+    transform: translateX(350px) translateY(15px);
+    transition: transform 0.2s ease;
+    /* right: 17%; */
+}
+
+#slide_right:hover{
+    transform: translateX(360px) translateY(15px);
+    transition: transform 0.2s ease;
+    /* right: 17%; */
 }
 
 .slide.selected{
@@ -60,17 +84,19 @@
     padding-top: 32px;
 }
 
-.dot {
+.dot{
     cursor: pointer;
     height: 20px;
     width: 20px;
     margin: 0 8px;
     background-color:rgb(121, 159, 230);
     border-radius: 50%;
-    transition: background-color 0.6s ease;
+    transform: scale(1);
+    transition: background-color 0.6s, transform 0.6s 0.1s;
   }
 
 .dot.selected{
     background-color: rgb(17, 62, 147);
-    transition: background-color 0.6s ease;
+    transform: scale(1.4);
+    transition: background-color 0.6s, transform 0.6s;
 }
