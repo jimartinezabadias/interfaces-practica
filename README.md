@@ -15,5 +15,5 @@ Desciption: Basic paint application that also implements image filters. Written 
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP2/EntregaFinal/
 
-Desciption: Connect Four game with customizable board size. Was written in JavaScript. Game elements position and their sizes are calculated on each game start, based a few parameters.
+Connect Four game with customizable board size. Was written in JavaScript. Each game element position and size are calculated on  game start.
 
