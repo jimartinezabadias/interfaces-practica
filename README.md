@@ -6,6 +6,8 @@ Repo de Trabajos Prácticos de la Materia Visualización e Interfaces 2020 - UNI
 
 ### 1. MS Paint like web application
 
+![project screenshot](https://github.com/jimartinezabadias/interfaces-practica/blob/master/TP1/EntregaFinal/screenshot_tp1.png)
+
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP1/EntregaFinal/
 
 Desciption: Basic paint application that also implements image filters. Written in JavaScript using Canvas and 2D Context pixel manipulation.
