@@ -26,6 +26,8 @@ Desciption: Connect Four game with customizable board size. Was written in JavaS
 
 ### 3. Ratatouille (film) Website
 
+![project screenshot](https://github.com/jimartinezabadias/interfaces-practica/blob/master/TP3/EntregaFinal/screenshot_tp3.png)
+
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP3/EntregaFinal/
 
 Desciption: Website to promote the movie Ratatouille. Implements procedural animations, keyframe animations, transitions, and geometric transformations using CSS and Javascript.
