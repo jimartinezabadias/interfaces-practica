@@ -1,5 +1,6 @@
 # Visualización e interfaces
-Repo de Trabajos Prácticos de la Materia Visualización e Interfaces 2020 - UNICEN FCE
+Practical works in User Interfaces and Interactions 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
+Trabajos Prácticos de la materia Interfaces de usuario e Interacción 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
 
 
 ## Projects
@@ -10,7 +11,7 @@ Repo de Trabajos Prácticos de la Materia Visualización e Interfaces 2020 - UNI
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP1/EntregaFinal/
 
-Desciption: Basic paint application that also implements image filters. Written in JavaScript using Canvas and 2D Context pixel manipulation.
+Desciption: Basic paint application that implements image filters. Written in JavaScript using Canvas and 2D Context pixel manipulation.
 
 
 
@@ -20,7 +21,7 @@ Desciption: Basic paint application that also implements image filters. Written 
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP2/EntregaFinal/
 
-Desciption: Connect Four game with customizable board size. Was written in JavaScript. Elements in the screen are positioned and sized on  game start.
+Desciption: Connect Four game written in JavaScript where the user can customize board size. Elements in the screen are positioned and sized on game start.
 
 
 
@@ -30,13 +31,15 @@ Desciption: Connect Four game with customizable board size. Was written in JavaS
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP3/EntregaFinal/
 
-Desciption: Website to promote the movie Ratatouille. Implements procedural animations, keyframe animations, transitions, and geometric transformations using CSS and Javascript.
+Desciption: Implementation of procedural animations, keyframe animations, transitions, and geometric transformations using CSS and Javascript.
 
 
 
 ### 4 & 5 Music Streaming Web Application
 
+![project screenshot](https://github.com/jimartinezabadias/Grupo10-Interfaces/blob/master/screenshot_tp4-tp5.png)
+
 Repo Link: https://github.com/jimartinezabadias/Grupo10-Interfaces
 
-Desciption: Music streaming website. High fidelity prototyping applying UX / UI fundamentals. Implementation of the mobile and desktop interface with HTML, CSS and JavaScript.
+Desciption: High fidelity prototyping applying UX / UI fundamentals. Implementation of mobile and desktop interface using HTML, CSS and JavaScript.
 
