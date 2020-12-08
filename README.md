@@ -42,5 +42,5 @@ Desciption: Implementation of procedural animations, keyframe animations, transi
 
 Repo Link: https://github.com/jimartinezabadias/Grupo10-Interfaces
 
-Desciption: High fidelity prototyping applying UX / UI fundamentals. Implementation of mobile and desktop interface using HTML, CSS and JavaScript.
+Desciption: Prototype mobile and desktop interfaces applying UX / UI fundamentals. Made using Figma, HTML, CSS and JavaScript.
 
