@@ -1,4 +1,4 @@
-# Visualización e interfaces
+# Interfaces de usuario e Interacción
 Practical works in User Interfaces and Interactions 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
 
 Trabajos Prácticos de la materia Interfaces de usuario e Interacción 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
@@ -12,7 +12,7 @@ Trabajos Prácticos de la materia Interfaces de usuario e Interacción 2020, FCE
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP1/EntregaFinal/
 
-Desciption: Basic paint application that implements image filters. Written in JavaScript using Canvas and 2D Context pixel manipulation.
+Description: Basic paint application that implements image filters. Written in JavaScript using Canvas and 2D Context pixel manipulation.
 
 
 
@@ -22,7 +22,7 @@ Desciption: Basic paint application that implements image filters. Written in Ja
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP2/EntregaFinal/
 
-Desciption: Connect Four game written in JavaScript where the user can customize board size. Elements in the screen are positioned and sized on game start.
+Description: Connect Four game written in JavaScript where the user can customize board size.
 
 
 
@@ -32,7 +32,7 @@ Desciption: Connect Four game written in JavaScript where the user can customize
 
 Link: https://jimartinezabadias.github.io/interfaces-practica/TP3/EntregaFinal/
 
-Desciption: Implementation of procedural animations, keyframe animations, transitions, and geometric transformations using CSS and Javascript.
+Description: Website implements procedural animations, keyframe animations, transitions, and geometric transformations using CSS and Javascript.
 
 
 
@@ -42,5 +42,5 @@ Desciption: Implementation of procedural animations, keyframe animations, transi
 
 Repo Link: https://github.com/jimartinezabadias/Grupo10-Interfaces
 
-Desciption: Prototype mobile and desktop interfaces applying UX / UI fundamentals. Made using Figma, HTML, CSS and JavaScript.
+Description: This website interface was prototyped applying UI/UX concepts and design patterns. It has a mobile and desktop design. Made using Figma, HTML, CSS and JavaScript.
 
