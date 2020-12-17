@@ -42,5 +42,5 @@ Description: Website implements procedural animations, keyframe animations, tran
 
 Repo Link: https://github.com/jimartinezabadias/Grupo10-Interfaces
 
-Description: This website was prototyped applying UI/UX concepts and design patterns. It has a mobile and desktop design. Made using Figma, HTML, CSS and JavaScript.
+Description: This is a prototype of a music streaming website that has mobile and desktop interface. Was made applying UI/UX concepts and design patterns and using Figma, HTML, CSS and JavaScript.
 
