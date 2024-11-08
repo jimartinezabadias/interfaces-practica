@@ -1,5 +1,5 @@
 # Interfaces de usuario e Interacción
-Practical works in User Interfaces and Interactions 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
+User interfaces and interactivity. Year 2020, Universidad Nacional del Centro de la Prov. de Buenos Aires.
 
 Trabajos prácticos de la materia Interfaces de Usuario e Interacción 2020, FCE, Universidad Nacional del Centro de la Prov. de Buenos Aires.
 
